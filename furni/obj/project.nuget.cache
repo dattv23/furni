@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "goYfHjsSE+GQZiwnP16laa2RrOPH2A92bbOP7c9s9/lQ89RJsm2unqb/owHtvoiJWmPQwo0XIa70S4AMgFXJCQ==",
+  "dgSpecHash": "9krjf8TzuHBTejZpFdoLfwft6cjBLHGVJltjYTadjRQMZ7N74oiyTnSDoGdt+pOmWzh18i0XiPv+wCgC8V3nfQ==",
   "success": true,
   "projectFilePath": "D:\\HUTECH_IT\\BaoCao_LTW\\furni\\furni\\furni.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

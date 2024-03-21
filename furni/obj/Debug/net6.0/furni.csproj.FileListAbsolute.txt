@@ -286,3 +286,4 @@ D:\HUTECH_IT\BaoCao_LTW\furni\furni\bin\Debug\net6.0\runtimes\win-x64\native\e_s
 D:\HUTECH_IT\BaoCao_LTW\furni\furni\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\HUTECH_IT\BaoCao_LTW\furni\furni\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
 D:\HUTECH_IT\BaoCao_LTW\furni\furni\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\HUTECH_IT\BaoCao_LTW\furni\furni\bin\Debug\net6.0\AutoMapper.dll
