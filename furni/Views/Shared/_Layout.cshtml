@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!doctype html>
 <html lang="zxx">
 
 <head>
@@ -71,7 +74,7 @@
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" href="#"><img src="/images/user.svg"></a></li>
+                    <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><img src="/images/user.svg"></a></li>
                     <li><a class="nav-link" href="cart.html"><img src="/images/cart.svg"></a></li>
                 </ul>
             </div>
