@@ -1,0 +1,11 @@
+{
+    "folders": [
+		{
+			"name": "furni-1.0.0",
+			"path": "../../.."
+		}
+	],
+    "settings": {
+        "liveServer.settings.port": 5501
+    }
+}

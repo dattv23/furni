@@ -1,0 +1,30 @@
+.product_image_area {
+    font-family: "Poppins", sans-serif;
+    padding-top: 150px;
+}
+
+.product_image_area .s_product_text h5{
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.product_image_area .s_product_text h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.product_image_area .s_product_text > h2 {
+  color:  rgb(255, 51, 104);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+.single_product_item .single_product_text {
+    text-align: center;
+}
+

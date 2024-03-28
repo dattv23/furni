@@ -1,50 +1,217 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!doctype html>
+<html lang="zxx">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - furni</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/furni.styles.css" asp-append-version="true" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sản phẩm</title>
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/owl.carousel.min.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/nice-select.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/css_aranzo/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/slick.css">
+    <link rel="stylesheet" href="/assets/css/css_aranzo/price_rangs.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/style.css">
+
+    <link href="/css/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/detail.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">furni</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+    <!--::header part start::-->
+    <!-- Start Header/Navigation -->
+    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsFurni">
+                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                    <li>@Html.ActionLink("Home", "index", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Shop", "ShowProduct", "Product", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About us", "AboutUs", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Services", "Service", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                </ul>
+
+                <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                    <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><img src="/images/user.svg"></a></li>
+                    <li><a class="nav-link" href="cart.html"><img src="/images/cart.svg"></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    @RenderBody()
+    <!-- product_list part end-->
+    <!--::footer_part start::-->
+    <footer class="footer_part">
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Top Products</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Managed Website</a></li>
+                            <li><a href="">Manage Reputation</a></li>
+                            <li><a href="">Power Tools</a></li>
+                            <li><a href="">Marketing Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Jobs</a></li>
+                            <li><a href="">Brand Assets</a></li>
+                            <li><a href="">Investor Relations</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Features</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Jobs</a></li>
+                            <li><a href="">Brand Assets</a></li>
+                            <li><a href="">Investor Relations</a></li>
+                            <li><a href="">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Resources</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Guides</a></li>
+                            <li><a href="">Research</a></li>
+                            <li><a href="">Experts</a></li>
+                            <li><a href="">Agencies</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_footer_part">
+                        <h4>Newsletter</h4>
+                        <p>
+                            Heaven fruitful doesn't over lesser in days. Appear creeping
+                        </p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank"
+                                  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                  method="get" class="subscribe_form relative mail_part">
+                                <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                       class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = ' Email Address '">
+                                <button type="submit" name="submit" id="newsletter-submit"
+                                        class="email_icon newsletter-submit button-contactForm">
+                                    subscribe
+                                </button>
+                                <div class="mt-10 info"></div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - furni - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div class="copyright_part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="copyright_text">
+                            <P>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </P>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer_icon social_icon">
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
+                                <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--::footer_part end::-->
+    <!-- jquery plugins here-->
+    <script src="/js/js_aranzo/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/js_aranzo/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/js_aranzo/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/js_aranzo/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/js_aranzo/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/js_aranzo/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="/js/js_aranzo/owl.carousel.min.js"></script>
+    <script src="/js/js_aranzo/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/js_aranzo/slick.min.js"></script>
+    <script src="/js/js_aranzo/jquery.counterup.min.js"></script>
+    <script src="/js/js_aranzo/waypoints.min.js"></script>
+    <script src="/js/js_aranzo/contact.js"></script>
+    <script src="/js/js_aranzo/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/js_aranzo/jquery.form.js"></script>
+    <script src="/js/js_aranzo/jquery.validate.min.js"></script>
+    <script src="/js/js_aranzo/mail-script.js"></script>
+    <script src="/js/js_aranzo/stellar.js"></script>
+    <script src="/js/js_aranzo/price_rangs.js"></script>
+    <!-- custom js -->
+    <script src="/js/js_aranzo/custom.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
