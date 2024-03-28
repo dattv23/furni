@@ -1,0 +1,705 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model furni.Data.Product
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+
+    <link rel="icon" href="/img/favicon.png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/bootstrap.min.css" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/animate.css" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/css/css_aranzo/lightslider.min.css" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/all.css" />
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/flaticon.css" />
+    <link rel="stylesheet" href="/assets/css/css_aranzo/themify-icons.css" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/magnific-popup.css" />
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/assets/css/css_aranzo/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="/css/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/detail.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <title>Chi Tiết Sản Phẩm</title>
+</head>
+<body>
+
+
+    <!-- Start Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
+                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="hero-img-wrap">
+                        <img src="/images/couch.png" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!--================Single Product Area =================-->
+    <div class="product_image_area section_padding" id="para-detail" style="padding-bottom: 0px; padding-top: 100px">
+        <div class="container">
+            <div class="row s_product_inner justify-content-between">
+                <div class="col-lg-7 col-xl-7 " style="border: 2px solid #ccc; padding-top: 30px">
+                    <div class="product_slider_img">
+                        <div id="vertical">
+                            <div data-thumb="/images/GheTinhYeu.png">
+                                <img src="/images/GheTinhYeu.png" />
+                            </div>
+                            <div data-thumb="/images/GheTinhYeu.png">
+                                <img src="/images/GheTinhYeu.png" />
+                            </div>
+                            <div data-thumb="/images/GheTinhYeu.png">
+                                <img src="/images/GheTinhYeu.png" />
+                            </div>
+                            <div data-thumb="/images/GheTinhYeu.png">
+                                <img src="/images/GheTinhYeu.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-4">
+                    <div class="s_product_text">
+                        <h3>@Model.Name</h3>
+                        <h2>@Model.Price.ToString("C")</h2>
+                        <ul class="list">
+                            <li>
+                                <a class="active" href="#" style="text-decoration: none; font-weight: 500; font-size: 16px">
+                                    <span style="font-size: 16px; font-weight: 500">Loại</span> : @Model.Category.Name
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active" href="#" style="text-decoration: none; font-weight: 500; font-size: 16px">
+                                    <span style="font-size: 16px; font-weight: 500">Khả dụng</span> : Trong kho
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active" href="#" style="text-decoration: none; font-weight: 500" ; font-size: 16px>
+                                    <span style="font-size: 16px; font-weight: 500">Bảo hành</span> : @Model.Specification.FreshnessDuration Năm
+                                </a>
+                            </li>
+                        </ul>
+                        <p>
+                            Tận hưởng những phút giây bên gia đình bằng
+                            những chiếc ghế êm ái, đầy sang trọng trong
+                            tổ ấm của bạn.
+                        </p>
+                        <div class="card_area d-flex justify-content-between align-items-center">
+                            <div class="product_count">
+                                <span class="inumber-decrement">
+                                    <i class="ti-minus fa-solid fa-minus"></i>
+                                </span>
+                                <input class="input-number"
+                                       type="text"
+                                       value="1"
+                                       min="0"
+                                       max="10"
+                                       style="background-color: #f0f2f1;" />
+                                <span class="number-increment">
+                                    <i class="ti-plus  fa-duotone fa-plus" style="font-size: 20px;"></i>
+                                </span>
+                            </div>
+                            <a href="#" class="btn_3" style="text-decoration: none;">Thêm vào giỏ hàng</a>
+                            <a href="#" class="like_us">
+                                <i class="ti-heart fa-regular fa-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================End Single Product Area =================-->
+    <!--================Product Description Area =================-->
+    <section class="product_description_area">
+        <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="home-tab"
+                       data-toggle="tab"
+                       href="#home"
+                       role="tab"
+                       aria-controls="home"
+                       aria-selected="true">Mô tả</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="profile-tab"
+                       data-toggle="tab"
+                       href="#profile"
+                       role="tab"
+                       aria-controls="profile"
+                       aria-selected="false">Chi tiết</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="contact-tab"
+                       data-toggle="tab"
+                       href="#contact"
+                       role="tab"
+                       aria-controls="contact"
+                       aria-selected="false">Bình luận</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       id="review-tab"
+                       data-toggle="tab"
+                       href="#review"
+                       role="tab"
+                       aria-controls="review"
+                       aria-selected="false">Tổng quan</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade"
+                     id="home"
+                     role="tabpanel"
+                     aria-labelledby="home-tab">
+                    <p>
+                        "Chiếc @Model.Name mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."
+                    </p>
+                    <p>
+                        Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn.
+                    </p>
+                </div>
+                <div class="tab-pane fade"
+                     id="profile"
+                     role="tabpanel"
+                     aria-labelledby="profile-tab">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5>Độ rộng</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.Specification.Width</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Chiều cao</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.Specification.Height</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Chiều sâu</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.Specification.Depth</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Khối lượng</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.Specification.Weight kg</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Chất lượng</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@(Model.Specification.QualityChecking ? "Tốt" : "Không tốt")</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Bảo hành</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.Specification.FreshnessDuration năm</h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade"
+                     id="contact"
+                     role="tabpanel"
+                     aria-labelledby="contact-tab">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="comment_list">
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-1.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Blake Ruiz</h4>
+                                            <h5>
+                                                12th Feb, 2017 at 05:56 pm
+                                            </h5>
+                                            <a class="reply_btn" href="#">Reply</a>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        "Chiếc @Model.Name không chỉ là một món đồ nội thất thông thường, mà còn là một tác phẩm nghệ thuật trong không gian sống của bạn. Với thiết kế tối giản nhưng vô cùng tinh tế, bàn Mowism UA đã vượt qua mọi kỳ vọng về một chiếc bàn chức năng. Không chỉ đẹp về mặt thẩm mỹ, bàn còn được làm từ chất liệu cao cấp, đảm bảo độ bền và sự ổn định trong mọi điều kiện sử dụng.
+                                    </p>
+                                </div>
+                                <div class="review_item reply">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-2.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Blake Ruiz</h4>
+                                            <h5>
+                                                12th Feb, 2017 at 05:56 pm
+                                            </h5>
+                                            <a class="reply_btn" href="#">Reply</a>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        "Chiếc @Model.Name không chỉ là một món đồ nội thất thông thường, mà còn là một tác phẩm nghệ thuật trong không gian sống của bạn. Với thiết kế tối giản nhưng vô cùng tinh tế, bàn Mowism UA đã vượt qua mọi kỳ vọng về một chiếc bàn chức năng. Không chỉ đẹp về mặt thẩm mỹ, bàn còn được làm từ chất liệu cao cấp, đảm bảo độ bền và sự ổn định trong mọi điều kiện sử dụng.
+                                    </p>
+                                </div>
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-3.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Blake Ruiz</h4>
+                                            <h5>
+                                                12th Feb, 2017 at 05:56 pm
+                                            </h5>
+                                            <a class="reply_btn" href="#">Reply</a>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        "Chiếc @Model.Name mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h4>Post a comment</h4>
+                                <form class="row contact_form"
+                                      action="contact_process.php"
+                                      method="post"
+                                      id="contactForm"
+                                      novalidate="novalidate">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="name"
+                                                   name="name"
+                                                   placeholder="Your Full name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="email"
+                                                   class="form-control"
+                                                   id="email"
+                                                   name="email"
+                                                   placeholder="Email Address" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="number"
+                                                   name="number"
+                                                   placeholder="Phone Number" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control"
+                                                      name="message"
+                                                      id="message"
+                                                      rows="1"
+                                                      placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit"
+                                                value="submit"
+                                                class="btn_3">
+                                            Submit Now
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show active"
+                     id="review"
+                     role="tabpanel"
+                     aria-labelledby="review-tab">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row total_rate">
+                                <div class="col-6">
+                                    <div class="box_total">
+                                        <h5>Đánh giá sản phẩm</h5>
+                                        <h4>4.0</h4>
+                                        <h6>(03 Đánh giá)</h6>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating_list">
+                                        <h3>Dựa trên 3 đánh giá</h3>
+                                        <ul class="list">
+                                            <li>
+                                                <a href="#">
+                                                    5 Star
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    4 Star
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    3 Star
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    2 Star
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    1 Star
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    01
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review_list">
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-1.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Jack</h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do
+                                        eiusmod tempor incididunt ut labore
+                                        et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo
+                                    </p>
+                                </div>
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-2.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Trịnh Trần Phương Tuấn</h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do
+                                        eiusmod tempor incididunt ut labore
+                                        et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo
+                                    </p>
+                                </div>
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/img/product/single-product/review-3.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>J97</h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do
+                                        eiusmod tempor incididunt ut labore
+                                        et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h4>Thêm 1 đánh giá</h4>
+                                <p>Đánh giá của bạn:</p>
+                                <ul class="list">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>Nổi bật</p>
+                                <form class="row contact_form"
+                                      action="contact_process.php"
+                                      method="post"
+                                      novalidate="novalidate">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="name"
+                                                   placeholder="Your Full name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="email"
+                                                   class="form-control"
+                                                   name="email"
+                                                   placeholder="Email Address" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="number"
+                                                   placeholder="Phone Number" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control"
+                                                      name="message"
+                                                      rows="1"
+                                                      placeholder="Review"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit"
+                                                value="submit"
+                                                class="btn_3">
+                                            Đánh giá ngay
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Product Description Area =================-->
+    <!-- product_list part start-->
+    @* <section class="product_list best_seller">
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-lg-12">
+    <div class="section_tittle text-center">
+    <h2>Sản phẩm bán chạy<span>shop</span></h2>
+    </div>
+    </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+    <div class="col-lg-12">
+    <div class="best_product_slider owl-carousel">
+
+    <div class="single_product_item">
+    <img src="/images/product-1.png" alt="" />
+    <div class="single_product_text">
+    <h4>Quartz Belt Watch</h4>
+    <h3>$150.00</h3>
+    </div>
+    </div>
+
+
+    <div class="single_product_item">
+    <img src="/images/product-2.png" alt="" />
+    <div class="single_product_text">
+    <h4>Quartz Belt Watch</h4>
+    <h3>$150.00</h3>
+    </div>
+    </div>
+    <div class="single_product_item">
+    <img src="/images/product-3.png" alt="" />
+    <div class="single_product_text">
+    <h4>Quartz Belt Watch</h4>
+    <h3>$150.00</h3>
+    </div>
+    </div>
+    <div class="single_product_item">
+    <img src="/images/product-1.png" alt="" />
+    <div class="single_product_text">
+    <h4>Quartz Belt Watch</h4>
+    <h3>$150.00</h3>
+    </div>
+    </div>
+    <div class="single_product_item">
+    <img src="/images/product-1.png" alt="" />
+    <div class="single_product_text">
+    <h4>Quartz Belt Watch</h4>
+    <h3>$150.00</h3>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section> *@
+    <!-- product_list part end-->
+    <!-- jquery plugins here-->
+    <!-- jquery -->
+    <script src="/js/js_aranzo/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="/js/js_aranzo/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/js_aranzo/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="/js/js_aranzo/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="/js/js_aranzo/lightslider.min.js"></script>
+    <!-- swiper js -->
+    <script src="/js/js_aranzo/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="/js/js_aranzo/owl.carousel.min.js"></script>
+    <script src="js/js_aranzo/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="/js/js_aranzo/slick.min.js"></script>
+    <script src="/js/js_aranzo/swiper.jquery.js"></script>
+    <script src="/js/js_aranzo/jquery.counterup.min.js"></script>
+    <script src="/js/js_aranzo/waypoints.min.js"></script>
+    <script src="/js/js_aranzo/contact.js"></script>
+    <script src="/js/js_aranzo/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/js_aranzo/jquery.form.js"></script>
+    <script src="/js/js_aranzo/jquery.validate.min.js"></script>
+    <script src="/js/js_aranzo/mail-script.js"></script>
+    <script src="/js/js_aranzo/stellar.js"></script>
+    <!-- custom js -->
+    <script src="/js/js_aranzo/theme.js"></script>
+    <script src="/js/js_aranzo/custom.js"></script>
+</body>
+</html>
+
+
