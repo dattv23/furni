@@ -9,6 +9,16 @@ namespace furni.Controllers
 {
     public class ProductController : Controller
     {
+        public IActionResult Detail()
+        {
+            return View();
+        }
+        
+        public IActionResult ShowProducts()
+        {
+            return View();
+        }
+        
         private readonly ILogger<ProductController> _logger;
         private readonly ApplicationDbContext _context;
         private const int PageSize = 16;
@@ -76,8 +86,6 @@ namespace furni.Controllers
             return View(viewModel);
         }
 
-
-
         public IActionResult Payment()
         {
             return View();
@@ -86,5 +94,12 @@ namespace furni.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Thanks()
+        {
+            return View();
+        }
+
     }
 }
