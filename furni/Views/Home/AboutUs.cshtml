@@ -1,86 +1,33 @@
-﻿
-	<!-- End Header/Navigation -->
-	<!-- Start Hero Section -->
-	<div class="hero">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-5">
-					<div class="intro-excerpt">
-						<h1>Xin <span clsas="d-block">chào</span></h1>
-						<p class="mb-4">Chào mừng bạn đến với cửa hàng của chúng tôi.</p>
-						<p><a href="" class="btn btn-secondary me-2">Mua ngay</a><a href="#" class="btn btn-white-outline">Khám phá</a></p>
-					</div>
+﻿@{
+	ViewData["Title"] = "AboutUs";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start Hero Section -->
+<div class="hero">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-5">
+				<div class="intro-excerpt">
+					<h1>Về chúng tôi</h1>
+					<p class="mb-4">Xin chào, cảm ơn bạn đã quan tâm về những người tạo ra cửa hàng này.</p>
+					<p><a href="" class="btn btn-secondary me-2">Mua ngay</a><a href="#" class="btn btn-white-outline">Khám phá</a></p>
 				</div>
-				<div class="col-lg-7">
-					<div class="hero-img-wrap">
-						<img src="/images/couch.png" class="img-fluid">
-					</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="hero-img-wrap">
+					<img src="/images/couch.png" class="img-fluid">
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Hero Section -->
-	<!-- Start Product Section -->
-	<div class="product-section" style="margin-top:30px">
-		<div class="container">
-			<div class="row">
-
-				<!-- Start Column 1 -->
-				<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-					<h2 class="mb-4 section-title">Gợi ý cho bạn.</h2>
-				<p class="mb-4">Khám phá ngay các sản phẩm mới nhất, ưu đãi đặc biệt và sự đa dạng trong bộ sưu tập thời trang của chúng tôi để thể hiện phong cách của bạn một cách tự tin và độc đáo.</p>
-					<p><a href="shop.html" class="btn">Khám phá</a></p>
-				</div>
-				<!-- End Column 1 -->
-				<!-- Start Column 2 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="/images/product-1.png" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Ghế ăn</h3>
-						<strong class="product-price">$50.00</strong>
-
-						<span class="icon-cross">
-							<img src="/images/cross.svg" class="img-fluid">
-						</span>
-					</a>
-				</div>
-				<!-- End Column 2 -->
-				<!-- Start Column 3 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="/images/product-2.png" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Ghế bar</h3>
-						<strong class="product-price">$78.00</strong>
-
-						<span class="icon-cross">
-							<img src="/images/cross.svg" class="img-fluid">
-						</span>
-					</a>
-				</div>
-				<!-- End Column 3 -->
-				<!-- Start Column 4 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="/images/product-3.png" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Ghế băng</h3>
-						<strong class="product-price">$43.00</strong>
-
-						<span class="icon-cross">
-							<img src="/images/cross.svg" class="img-fluid">
-						</span>
-					</a>
-				</div>
-				<!-- End Column 4 -->
-
-			</div>
-		</div>
-	</div>
-	<!-- End Product Section -->
-	<!-- Start Why Choose Us Section -->
-	<div class="why-choose-section">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-6">
+</div>
+<!-- End Hero Section -->
+<!-- Start Why Choose Us Section -->
+<div class="why-choose-section">
+	<div class="container">
+		<div class="row justify-content-between align-items-center">
+			<div class="col-lg-6">
 				<h2 class="section-title">Tại sao chọn chúng tôi.</h2>
 				<p>
 					Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.
@@ -129,94 +76,20 @@
 					</div>
 
 				</div>
-				</div>
-
-				<div class="col-lg-5">
-					<div class="img-wrap">
-						<img src="/images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
-					</div>
-				</div>
-
 			</div>
-		</div>
-	</div>
-	<!-- End Why Choose Us Section -->
-	<!-- Start We Help Section -->
-	<div class="we-help-section">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-7 mb-5 mb-lg-0">
-					<div class="imgs-grid">
-						<div class="grid grid-1"><img src="/images/img-grid-1.jpg" alt="Untree.co"></div>
-						<div class="grid grid-2"><img src="/images/img-grid-2.jpg" alt="Untree.co"></div>
-						<div class="grid grid-3"><img src="/images/img-grid-3.jpg" alt="Untree.co"></div>
-					</div>
-				</div>
-				<div class="col-lg-5 ps-lg-5">
-				<h2 class="section-title mb-4">Chúng tôi giúp bạn thiết kế nội thất hiện đại</h2>
-				<p>Chúng tôi chuyên tư vấn và thiết kế nội thất hiện đại để mang đến không gian sống đẳng cấp và tinh tế cho bạn. Được trải nghiệm và chăm sóc tỉ mỉ, chúng tôi cam kết tạo ra những không gian sống ấn tượng và đáng yêu nhất.</p>
 
-					<ul class="list-unstyled custom-list my-4">
-					<li>Đáp ứng mọi nhu cầu và mong muốn của bạn để tạo ra không gian sống hoàn hảo nhất.</li>
-					<li>Chất lượng dịch vụ và sự hài lòng của khách hàng là ưu tiên hàng đầu của chúng tôi.</li>
-					<li>Đảm bảo mang lại không gian sống và làm việc thoải mái</li>
-					<li>hiện đại và đầy chất lượng cho mọi khách hàng.</li>
-					</ul>
-					<p><a herf="#" class="btn">Khám phá</a></p>
+			<div class="col-lg-5">
+				<div class="img-wrap">
+					<img src="/images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
 				</div>
 			</div>
+
 		</div>
 	</div>
-	<!-- End We Help Section -->
-	<!-- Start Popular Product -->
-	<div class="popular-product">
-		<div class="container">
-			<div class="row">
+</div>
+<!-- End Why Choose Us Section -->
 
-				<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-					<div class="product-item-sm d-flex">
-						<div class="thumbnail">
-							<img src="/images/product-1.png" alt="Image" class="img-fluid">
-						</div>
-						<div class="pt-3">
-							<h3>Ghế ăn</h3>
-						<p>Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ.</p>
-							<p><a href="#">Xem thêm</a></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-					<div class="product-item-sm d-flex">
-						<div class="thumbnail">
-							<img src="/images/product-2.png" alt="Image" class="img-fluid">
-						</div>
-						<div class="pt-3">
-							<h3>Ghế bar</h3>
-						<p>Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ, thị hiếu và hơn hết là đúng kinh tế và nhu cầu sử dụng.</p>
-							<p><a href="#">Xem thêm</a></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-					<div class="product-item-sm d-flex">
-						<div class="thumbnail">
-							<img src="/images/product-3.png" alt="Image" class="img-fluid">
-						</div>
-						<div class="pt-3">
-							<h3>Ghế băng</h3>
-						<p>Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ, thị hiếu và hơn hết là đúng kinh tế và nhu cầu sử dụng. </p>
-							<p><a href="#">Xem thêm</a></p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!-- End Popular Product -->
-	<!-- Start Testimonial Slider -->
+<!-- Start Testimonial Slider -->
 <div class="testimonial-section before-footer-section">
 	<div class="container">
 		<div class="row">
@@ -333,11 +206,7 @@
 		</div>
 	</div>
 </div>
-	<!-- End Testimonial Slider -->
-	
-	<script src="/js/bootstrap.bundle.min.js"></script>
-	<script src="/js/tiny-slider.js"></script>
-	<script src="/js/custom.js"></script>
-
-
-
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/tiny-slider.js"></script>
+<script src="/js/custom.js"></script>
+<!-- End Testimonial Slider -->
