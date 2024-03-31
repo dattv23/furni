@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\furni",
+    "\\furni\\Data",
+    "\\furni\\Data\\Migrations"
+  ],
+  "SelectedNode": "\\furni\\Data\\Migrations\\20240320154454_ChangeFieldsOfUser.cs",
+  "PreviewInSolutionExplorer": false
+}

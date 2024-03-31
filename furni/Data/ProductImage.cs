@@ -23,6 +23,5 @@ namespace furni.Data
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        // Constructor, initializations, or additional properties can be added here.
     }
 }

@@ -35,14 +35,11 @@ namespace furni.Data
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; } // Link to the product's category.
 
-        public virtual Specification? Specification { get; set; } // Optional product specification.
+        public virtual Specification Specification { get; set; } // Optional product specification.
 
         // Collections for relationships with OrderItem and CartItem, enabling navigation.
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
         public virtual ICollection<CartItem> CartItems { get; set; } = new HashSet<CartItem>();
         public virtual ICollection<ProductImage> ProductImages { get; set; } = new HashSet<ProductImage>();
-
-        // The use of ICollection<T> instead of List<T> allows for more flexible handling of related entities,
-        // including enabling features like lazy loading.
     }
 }
