@@ -9,7 +9,13 @@
         .shop--detail .thumbnail:hover {
             cursor: pointer;
         }
+        .fancybox__container *:empty {
+            background: white !important;
+        }
+
     </style>
+          @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css\" />")
+
 </head>
 <div class="shop--detail">
     <div class="hero">
@@ -35,28 +41,29 @@
     <div class="product_image_area section_padding" id="para-detail" style="padding-bottom: 0px; padding-top: 100px">
         <div class="container">
             <div class="row s_product_inner justify-content-between">
-                <div class="col-lg-7 col-xl-7 row d-flex" style="border: 2px solid #ccc; padding-top: 30px">
+                <div class="col-lg-7 col-xl-7 row d-flex" style="border: 2px solid #ccc; padding-top: 0px">
                     <div class="product_single_preview col-10">
-                        <div class="preview_img">
-                            <img src="/images/product-1.png" id="mainImage" />
-                        </div>
+                        <a data-fancybox="gallery"
+                           data-src="/images/product-1.png">
+                            <img src="/images/product-1.png" />
+                        </a>
                     </div>
-                    <div class="product_slider_img col-2">
-                        <div data-thumb="/images/product-2.png" class="thumbnail" style="border: 1px solid red; margin: 14px 0px;">
+                    <div class="product_slider_img col-2 d-flex" style="flex-direction: column; justify-content: space-around">
+                        <div class="thumbnail" style="border: 1px solid red;">
+                            <img src="/images/product-1.png" />
+                        </div>
+                        <div class="thumbnail" style="border: 1px solid red;">
                             <img src="/images/product-2.png" />
                         </div>
-                        <div data-thumb="/images/product-1.png" class="thumbnail" style="border: 1px solid red; margin: 14px 0px;">
-                            <img src="/images/product-1.png" />
+                        <div class="thumbnail" style="border: 1px solid red;">
+                            <img src="/images/product-3.png" />
                         </div>
-                        <div data-thumb="/images/product-1.png" class="thumbnail" style="border: 1px solid red; margin: 14px 0px;">
-                            <img src="/images/product-1.png" />
-                        </div>
-                        <div data-thumb="/images/product-1.png" class="thumbnail" style="border: 1px solid red; margin: 14px 0px;">
+                        <div class="thumbnail" style="border: 1px solid red;">
                             <img src="/images/product-1.png" />
                         </div>
                     </div>
-                    
                 </div>
+
                 <div class="col-lg-5 col-xl-4">
                     <div class="s_product_text">
                         <h3>@Model.Name</h3>
@@ -73,9 +80,9 @@
                                 </a>
                             </li>
                             <li>
-                                
+
                                 <a class="active" href="#" style="text-decoration: none; font-weight: 500" ; font-size: 16px>
-                                <span style="font-size: 16px; font-weight: 500">Bảo hành</span> : @Model.Specification.FreshnessDuration Năm
+                                    <span style="font-size: 16px; font-weight: 500">Bảo hành</span> : @Model.Specification.FreshnessDuration Năm
                                 </a>
                             </li>
                         </ul>
@@ -100,12 +107,12 @@
                                 <input id="formQuantity" type="hidden" name="quantity" value="1" min="1" />
                                 <button class="btn_3" type="submit">Thêm vào giỏ hàng</button>
                             </form>
-                            
+
 
                             @* <a href="#" class="btn_3" style="text-decoration: none;">Thêm vào giỏ hàng</a> *@
-                           @*  <a href="#" class="like_us">
-                                <i class="ti-heart fa-regular fa-heart"></i>
-                            </a> *@
+                            @*  <a href="#" class="like_us">
+                        <i class="ti-heart fa-regular fa-heart"></i>
+                    </a> *@
                         </div>
                     </div>
                 </div>
@@ -583,8 +590,7 @@
         </div>
     </section>
 </div>
-<script>
-    //clikc ảnh
+<script>//clikc ảnh
     $(document).ready(function () {
         $(".thumbnail").click(function () {
             var imgUrl = $(this).find("img").attr("src");
@@ -613,21 +619,17 @@
             input.value = currentValue - 1;
         }
     });
-    // Chuyển trang
-
-
-    // document.getElementById("addToCartForm").addEventListener("submit", function (event) {
-    //     var externalQuantity = document.getElementById("externalQuantity").value;
-    //     document.getElementById("formQuantity").value = externalQuantity;
-    // });
 
     //KHông chuyển trang
-
     document.getElementById("addToCartForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Ngăn chặn chuyển trang mặc định của form
 
+        // Cập nhật giá trị của input formQuantity trước khi tạo FormData
+        var externalQuantityValue = document.getElementById("externalQuantity").value;
+        document.getElementById("formQuantity").value = externalQuantityValue;
+
         var form = this;
-        var formData = new FormData(form); // Lấy dữ liệu của form
+        var formData = new FormData(form); // Lấy dữ liệu của form sau khi đã cập nhật giá trị mới
 
         // Sử dụng XMLHttpRequest để gửi dữ liệu form đến action của controller
         var xhr = new XMLHttpRequest();
@@ -636,7 +638,15 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    swal("Thông báo","Thêm vào giỏ hàng thành công!", "success");
+
+                    var itemCountElement = document.getElementById('cart-item');
+                    var currentCount = parseInt(itemCountElement.textContent) || 0;
+                    var addedQuantity = parseInt(document.getElementById('externalQuantity').value);
+                    var newCount = currentCount + addedQuantity;
+
+                    itemCountElement.textContent = newCount; // Cập nhật UI
+                    swal("Thông báo", "Thêm vào giỏ hàng thành công!", "success");
+                    document.getElementById("externalQuantity").value = 1;
                     console.log("Tiệp nè hihi");
                 } else {
                     // Xử lý lỗi nếu có
@@ -645,9 +655,24 @@
             }
         };
         xhr.send(formData);
-    });
-
-    
-
-</script>
+    });</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js\"></script>")
+<script>Fancybox.bind('[data-fancybox="gallery"]', {
+        //
+    });</script>
+<script>
+    $(document).ready(function () {
+        // Khi một thumbnail được click
+        $(".thumbnail img").on("click", function () {
+            // Lấy đường dẫn của ảnh thumbnail được click
+            var newSrc = $(this).attr("src");
+
+            // Cập nhật đường dẫn của ảnh lớn với đường dẫn mới
+            $(".product_single_preview img").attr("src", newSrc);
+
+            // Cập nhật data-src của Fancybox để nó mở ảnh mới khi được click
+            $(".product_single_preview a").attr("data-src", newSrc);
+        });
+    });
+</script>
