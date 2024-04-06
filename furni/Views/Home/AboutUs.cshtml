@@ -1,7 +1,8 @@
 ﻿@{
-	ViewData["Title"] = "AboutUs";
-	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 <!-- Start Hero Section -->
 <div class="hero">
@@ -9,9 +10,9 @@
 		<div class="row justify-content-between">
 			<div class="col-lg-5">
 				<div class="intro-excerpt">
-					<h1>Về chúng tôi</h1>
-					<p class="mb-4">Xin chào, cảm ơn bạn đã quan tâm về những người tạo ra cửa hàng này.</p>
-					<p><a href="" class="btn btn-secondary me-2">Mua ngay</a><a href="#" class="btn btn-white-outline">Khám phá</a></p>
+					<h1>@Localizer["Về chúng tôi"]</h1>
+					<p class="mb-4">@Localizer["Xin chào, cảm ơn bạn đã quan tâm về những người tạo ra cửa hàng này."]</p>
+					<p><a href="" class="btn btn-secondary me-2">@Localizer["Mua ngay"]</a><a href="#" class="btn btn-white-outline">@Localizer["Khám phá"]</a></p>
 				</div>
 			</div>
 			<div class="col-lg-7">
@@ -28,10 +29,9 @@
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-lg-6">
-				<h2 class="section-title">Tại sao chọn chúng tôi.</h2>
+				<h2 class="section-title">@Localizer["Tại sao chọn chúng tôi"]</h2>
 				<p>
-					Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.
-					Chúng tôi cam kết cung cấp sản phẩm chất lượng, đa dạng và giá cả cạnh tranh để mang lại sự hài lòng tối đa cho khách hàng.
+					@Localizer["Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.Chúng tôi cam kết cung cấp sản phẩm chất lượng, đa dạng và giá cả cạnh tranh để mang lại sự hài lòng tối đa cho khách hàng."]					
 				</p>
 
 				<div class="row my-5">
@@ -40,8 +40,8 @@
 							<div class="icon">
 								<img src="/images/truck.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Giao hàng nhanh chóng và miễn phí</h3>
-							<p>Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm.</p>
+							<h3>@Localizer["Giao hàng nhanh chóng và miễn phí"]</h3>
+							<p>@Localizer["Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm."]</p>
 						</div>
 					</div>
 
@@ -50,8 +50,8 @@
 							<div class="icon">
 								<img src="/images/bag.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Mua sắm dễ dàng và thuận tiện</h3>
-							<p>Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu.</p>
+							<h3>@Localizer["Mua sắm dễ dàng và thuận tiện"]</h3>
+							<p>@Localizer["Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu."]</p>
 						</div>
 					</div>
 
@@ -60,8 +60,8 @@
 							<div class="icon">
 								<img src="/images/support.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Hỗ trợ 24/7</h3>
-							<p>Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn</p>
+							<h3>@Localizer["Hỗ trợ 24/7"]</h3>
+							<p>@Localizer["Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn"]</p>
 						</div>
 					</div>
 
@@ -70,8 +70,8 @@
 							<div class="icon">
 								<img src="/images/return.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Đổi trả dễ dàng, không phiền toái</h3>
-							<p>Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện.</p>
+							<h3>@Localizer["Đổi trả dễ dàng, không phiền toái"]</h3>
+							<p>@Localizer["Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện."]</p>
 						</div>
 					</div>
 
@@ -88,13 +88,12 @@
 	</div>
 </div>
 <!-- End Why Choose Us Section -->
-
 <!-- Start Testimonial Slider -->
 <div class="testimonial-section before-footer-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-7 mx-auto text-center">
-				<h2 class="section-title">Về chúng tôi</h2>
+				<h2 class="section-title">@Localizer["Về chúng tôi"]</h2>
 			</div>
 		</div>
 
@@ -115,7 +114,7 @@
 
 									<div class="testimonial-block text-center">
 										<blockquote class="mb-5">
-											<p>&ldquo;Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng..&rdquo;</p>
+											<p>&ldquo;@Localizer["Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng"].&rdquo;</p>
 										</blockquote>
 
 										<div class="author-info">
@@ -138,12 +137,12 @@
 
 									<div class="testimonial-block text-center">
 										<blockquote class="mb-5">
-											<p>&ldquo;Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa..&rdquo;</p>
+											<p>&ldquo;@Localizer["Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa"].&rdquo;</p>
 										</blockquote>
 
 										<div class="author-info">
 											<div class="author-pic">
-												<img src="/images/person5.jpg" alt="Maria Jones" class="img-fluid">
+												<img src="/images/person_4.jpg" alt="Maria Jones" class="img-fluid">
 											</div>
 											<h3 class="font-weight-bold">Phạm Khắc</h3>
 											<span class="position d-block mb-3">Backend.</span>
@@ -161,7 +160,7 @@
 
 									<div class="testimonial-block text-center">
 										<blockquote class="mb-5">
-											<p>&ldquo;Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng.&rdquo;</p>
+											<p>&ldquo;@Localizer["Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng"].&rdquo;</p>
 										</blockquote>
 
 										<div class="author-info">
@@ -182,7 +181,7 @@
 
 									<div class="testimonial-block text-center">
 										<blockquote class="mb-5">
-											<p>&ldquo;Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể.&rdquo;</p>
+											<p>&ldquo;@Localizer["Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể"].&rdquo;</p>
 										</blockquote>
 
 										<div class="author-info">
@@ -206,7 +205,3 @@
 		</div>
 	</div>
 </div>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/tiny-slider.js"></script>
-<script src="/js/custom.js"></script>
-<!-- End Testimonial Slider -->
