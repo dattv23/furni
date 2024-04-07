@@ -1,8 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
+
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
 <!-- Start Hero Section -->
 <div class="hero">
 	<div class="container">
@@ -24,7 +31,11 @@
 </div>
 <!-- End Hero Section -->
 <!-- Start Product Section -->
+
 <div class="product-section" style="margin-top:30px">
+
+<div class="product-section">
+
 	<div class="container">
 		<div class="row">
 
@@ -131,7 +142,7 @@
 					</div>
 
 				</div>
-				</div>
+			</div>
 
 			<div class="col-lg-5">
 				<div class="img-wrap">
@@ -163,6 +174,7 @@
 					<li>@Localizer["Chất lượng dịch vụ và sự hài lòng của khách hàng là ưu tiên hàng đầu của chúng tôi."]</li>
 					<li>@Localizer["Đảm bảo mang lại không gian sống và làm việc thoải mái."]</li>
 					<li>@Localizer["hiện đại và đầy chất lượng cho mọi khách hàng."]</li>
+					<li>@Localizer["Hiện đại và đầy chất lượng cho mọi khách hàng."]</li>
 				</ul>
 				<p><a herf="#" class="btn">@Localizer["Khám phá"]</a></p>
 			</div>
@@ -183,6 +195,7 @@
 					<div class="pt-3">
 						<h3>@Localizer["Ghế ăn"]</h3>
 						<p>@Localizer["Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ."]</p>
+						<p>@Localizer["Ghế ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ."]</p>
 						<p><a href="#">@Localizer["Xem thêm"]</a></p>
 					</div>
 				</div>
@@ -360,11 +373,58 @@
 		</div>
 	</div>
 </div>
-	<!-- End Testimonial Slider -->
-	
-	<script src="/js/bootstrap.bundle.min.js"></script>
-	<script src="/js/tiny-slider.js"></script>
-	<script src="/js/custom.js"></script>
+<!-- End Testimonial Slider -->
+<!-- Start Blog Section -->
+<div class="blog-section">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md-6">
+				<h2 class="section-title">Recent Blog</h2>
+			</div>
+			<div class="col-md-6 text-start text-md-end">
+				<a href="#" class="more">View All Posts</a>
+			</div>
+		</div>
 
+		<div class="row">
 
+			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+				<div class="post-entry">
+					<a href="#" class="post-thumbnail"><img src="/images/post-1.jpg" alt="Image" class="img-fluid"></a>
+					<div class="post-content-entry">
+						<h3><a href="#">First Time Home Owner Ideas</a></h3>
+						<div class="meta">
+							<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+				<div class="post-entry">
+					<a href="#" class="post-thumbnail"><img src="/images/post-2.jpg" alt="Image" class="img-fluid"></a>
+					<div class="post-content-entry">
+						<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+						<div class="meta">
+							<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+				<div class="post-entry">
+					<a href="#" class="post-thumbnail"><img src="/images/post-3.jpg" alt="Image" class="img-fluid"></a>
+					<div class="post-content-entry">
+						<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+						<div class="meta">
+							<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- End Blog Section -->	

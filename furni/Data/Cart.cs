@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace furni.Data
@@ -20,8 +19,5 @@ namespace furni.Data
 
         // Collection of items within the cart.
         public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
-        // Constructor is not needed if only used to initialize navigation properties
-        // as this is handled by the property initializer above.
     }
 }

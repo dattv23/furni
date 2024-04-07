@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace furni.Data
@@ -17,12 +15,12 @@ namespace furni.Data
         public string Name { get; set; } // Category name, up to 255 characters.
 
         [StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
-        public string? Description { get; set; } // Optional longer description of the category.
+        public string Description { get; set; } // Optional longer description of the category.
 
         // Nullable foreign key to enable hierarchical categorization (self-referencing).
         [ForeignKey("Parent")]
         public int? ParentId { get; set; }
-        public virtual Category? Parent { get; set; } // Navigation property for the parent category.
+        public virtual Category Parent { get; set; } // Navigation property for the parent category.
 
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Timestamp of category creation in UTC.

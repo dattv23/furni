@@ -17,13 +17,13 @@ namespace furni.Data
         [ForeignKey(nameof(ProductId))]
         public virtual Product Product { get; set; }
 
+        // Direct association with a user is assumed. Replace with CartId if using a separate Cart entity.
         [Required]
         public string UserId { get; set; }
-        // Direct association with a user is assumed. Replace with CartId if using a separate Cart entity.
 
+        // The required quantity of the product, with a minimum value of 1.
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
         public int Quantity { get; set; }
-        // The required quantity of the product, with a minimum value of 1.
     }
 }

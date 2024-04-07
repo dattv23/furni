@@ -118,9 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
+
     <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats.</value>
   </data>
   <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện" xml:space="preserve">
+
+    <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats</value>
+  </data>
+  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
+
     <value>We are committed to a flexible and hassle-free return policy for customers. If there are any problems with the product you receive, you can safely return it to get the product back or get a refund quickly and conveniently.</value>
   </data>
   <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
@@ -163,7 +169,11 @@
     <value>Hello, thank you for your interest in the creators of this store.</value>
   </data>
   <data name="Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng" xml:space="preserve">
+
     <value>Build a solid, flexible and easily scalable Firmware backend system to support sustainable Firmware development for the project. Will always improve interoperability and system integration to meet increasingly complex customer needs.</value>
+
+    <value>Build a solid, flexible and easily scalable backend system to support the sustainable development of the project. Will always improve the system's interoperability and integration capabilities to meet the increasingly complex needs of customers</value>
+
   </data>
   <data name="Đổi trả dễ dàng, không phiền toái" xml:space="preserve">
     <value>Easy return and exchange, no hassle</value>

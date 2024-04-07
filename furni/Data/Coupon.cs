@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace furni.Data
@@ -31,7 +30,5 @@ namespace furni.Data
         // Minimum order amount required for the coupon to be applicable, if any.
         [Column(TypeName = "decimal(18, 2)")]
         public decimal? MinimumOrderAmount { get; set; }
-
-        // Additional properties and business rules can be implemented as needed.
     }
 }

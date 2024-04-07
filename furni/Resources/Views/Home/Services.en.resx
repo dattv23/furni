@@ -121,10 +121,16 @@
     <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats.</value>
   </data>
   <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện" xml:space="preserve">
+    <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats</value>
+  </data>
+  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
     <value>We are committed to a flexible and hassle-free return policy for customers. If there are any problems with the product you receive, you can safely return it to get the product back or get a refund quickly and conveniently.</value>
   </data>
   <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
     <value>We are committed to providing a fast delivery service, ensuring your order arrives safely and promptly. In particular, free shipping helps you save on shopping costs.</value>
+  </data>
+  <data name="Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.Chúng tôi cam kết cung cấp sản phẩm chất lượng, đa dạng và giá cả cạnh tranh để mang lại sự hài lòng tối đa cho khách hàng." xml:space="preserve">
+    <value>Choose us because we provide an easy, convenient and safe online shopping experience for customers. We are committed to providing quality products, variety and competitive prices to bring satisfaction maximum for customers.</value>
   </data>
   <data name="Dịch Vụ" xml:space="preserve">
     <value>Services</value>
@@ -171,6 +177,9 @@
   <data name="Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể" xml:space="preserve">
     <value>Adhering to leading design and user experience standards for maximum end-user satisfaction. Will continuously test and optimize features to deliver the best possible user experience</value>
   </data>
+  <data name="Tại sao chọn chúng tôi" xml:space="preserve">
+    <value>Why choose us</value>
+  </data>
   <data name="Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng" xml:space="preserve">
     <value>Create a user-friendly, efficient and compatible user interface on all devices, helping to improve the customer shopping experience. There will be a focus on designing flexible, easy-to-use and highly interactive websites to attract and retain users</value>
   </data>
@@ -185,6 +194,7 @@
   </data>
   <data name="Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng" xml:space="preserve">
     <value>Build a solid, flexible and easily scalable Firmware backend system to support sustainable Firmware development for the project. Will always improve interoperability and system integration to meet increasingly complex customer needs.</value>
+    <value>Build a solid, flexible and easily scalable backend system to support the sustainable development of the project. Will always improve the system's interoperability and integration capabilities to meet the increasingly complex needs of customers</value>
   </data>
   <data name="Đăng ký" xml:space="preserve">
     <value>Register</value>

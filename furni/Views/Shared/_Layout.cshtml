@@ -1,6 +1,16 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Security.Claims
+@using furni.Data
+@inject IViewLocalizer Localizer
+@inject furni.Data.ApplicationDbContext ApplicationDbContext
+@{
+    var userId = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var cartItemCount = 0;
+    if (userId != null)
+    {
+        cartItemCount = ApplicationDbContext.CartItems.Where(c => c.UserId == userId).Sum(c => c.Quantity);
+    }
+}
 <!doctype html>
 <html lang="zxx">
 
@@ -15,202 +25,250 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/aranoz.css">
+    <link href="/lib//bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+ 
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/bootstrap.min.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/owl.carousel.min.css">
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/nice-select.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/all.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/flaticon.css">
-    <link rel="stylesheet" href="/assets/css/css_aranzo/themify-icons.css">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/magnific-popup.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/slick.css">
-    <link rel="stylesheet" href="/assets/css/css_aranzo/price_rangs.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="/assets/css/css_aranzo/style.css">
-
-    <link href="/css/tiny-slider.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/detail.css">
-    <link href="/css/style.css" rel="stylesheet">
-    <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
-
+    <script src="/lib/jquery/dist/jquery-1.12.1.min.js"></script>
+    <script src="/lib/jquery/dist/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/furni.css"/>
 </head>
 
 <body>
-    <!--::header part start::-->
-    <!-- Start Header/Navigation -->
-    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+    
+    <div class="layout">
+        <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Furni<span>.</span></a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsFurni">
-                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                    <li>@Html.ActionLink("Home", "index", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Shop", "ShowProduct", "Product", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About us", "AboutUs", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Services", "Service", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
-                </ul>
-
-                <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><img src="/images/user.svg"></a></li>
-                    <li><a class="nav-link" href="cart.html"><img src="/images/cart.svg"></a></li>
-                </ul>
-            </div>
-        </div>
-
-    </nav>
-    @RenderBody()
-    <!-- product_list part end-->
-    <!--::footer_part start::-->
-    <footer class="footer_part">
-        <div class="container">
-            <div class="row justify-content-around">
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>Top Products</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="">Managed Website</a></li>
-                            <li><a href="">Manage Reputation</a></li>
-                            <li><a href="">Power Tools</a></li>
-                            <li><a href="">Marketing Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>Quick Links</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="">Jobs</a></li>
-                            <li><a href="">Brand Assets</a></li>
-                            <li><a href="">Investor Relations</a></li>
-                            <li><a href="">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>Features</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="">Jobs</a></li>
-                            <li><a href="">Brand Assets</a></li>
-                            <li><a href="">Investor Relations</a></li>
-                            <li><a href="">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>Resources</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="">Guides</a></li>
-                            <li><a href="">Research</a></li>
-                            <li><a href="">Experts</a></li>
-                            <li><a href="">Agencies</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="single_footer_part">
-                        <h4>Newsletter</h4>
-                        <p>
-                            Heaven fruitful doesn't over lesser in days. Appear creeping
-                        </p>
-                        <div id="mc_embed_signup">
-                            <form target="_blank"
-                                  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                  method="get" class="subscribe_form relative mail_part">
-                                <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                       class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = ' Email Address '">
-                                <button type="submit" name="submit" id="newsletter-submit"
-                                        class="email_icon newsletter-submit button-contactForm">
-                                    subscribe
-                                </button>
-                                <div class="mt-10 info"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="copyright_part">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="copyright_text">
-                            <P>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </P>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="footer_icon social_icon">
+                <a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsFurni">
+                    <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                        <li>@Html.ActionLink("Home", "index", "Home", null, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Shop", "ShowProduct", "Shop", null, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("About us", "AboutUs", "Home", null, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Services", "Service", "Home", null, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    </ul>
+
+                    <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            var userName = User.Identity.Name;
+                            if (!string.IsNullOrEmpty(userName) && userName.EndsWith("@gmail.com"))
+                            {
+                                userName = userName.Substring(0, userName.Length - "@gmail.com".Length);
+                            }
+                            <li><a class="nav-link">Xin chào, @userName!</a></li>
+                            string firstLetter = "";
+                            <li class="layout-cart-parent"  style="margin-right: 20px; position: relative;">
+                                <div class="layout-cart" id="cart-item"style="height: 18px; width: 18px; background: #b5a980; position: absolute; border-radius: 999px;line-height: 1.5;text-align: center;color: #f2f2f2;top: 0;right: 0px;font-size: 12px;">
+                                    @cartItemCount
+                                </div>
+                                <a class="nav-link" href="cart.html">
+                                    <img src="/images/cart.svg">
+                                </a>
+                            </li>
+                            if (!string.IsNullOrEmpty(userName) && userName.Trim().Length > 0)
+                            {
+                                firstLetter = char.ToUpper(userName.Trim()[0]).ToString();
+                            }
+                            <li class="user-infor">
+                                <a class="nav-link image-user" style="color: #fff;">@firstLetter</a>
+                                <div class="more--infor__user">
+                                    <div class="more--infor__support"></div>
+                                    <a style="display: block">Tài khoản của tôi</a>
+                                    <a style="display: block">Đơn mua</a>
+                                    <a href="/Identity/Account/Logout?returnUrl=%2F" style="display: block">Đăng xuất</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                           
+                            <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><img src="/images/user.svg"></a></li>
+                            <li class="layout-cart-parent" style="margin-right: 20px; position: relative;">
+                                <a class="nav-link" href="cart.html">
+                                    <img src="/images/cart.svg">
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+        @RenderBody()
+        <!-- product_list part end-->
+        <!--::footer_part start::-->
+        <footer class="footer_part">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="single_footer_part">
+                            <h4>Top sản phẩm</h4>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
-                                <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="">Bán chạy trong tuần</a></li>
+                                <li><a href="">Sản phẩm mới nhất</a></li>
+                                <li><a href="">Xu hướng</a></li>
+                                <li><a href="">Sản phẩm phong cách</a></li>
                             </ul>
                         </div>
                     </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="single_footer_part">
+                            <h4>Chính sách</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Chính sách vận chuyển</a></li>
+                                <li><a href="">Quy chết hoạt động</a></li>
+                                <li><a href="">Chính sách bảo mật</a></li>
+                                <li><a href="">Chính sách hoàn trả</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="single_footer_part">
+                            <h4>Hỗ trợ </h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Gửi yêu cầu hỗ trợ</a></li>
+                                <li><a href="">Hướng dẫn đặt hàng</a></li>
+                                <li><a href="">Chính sách đổi trả</a></li>
+                                <li><a href="">Báo lỗi bảo mật</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-2">
+                        <div class="single_footer_part">
+                            <h4>Về Furni</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Giới thiệu Furni</a></li>
+                                <li><a href="">Furni Blog</a></li>
+                                <li><a href="">Điều khoản sử dụng</a></li>
+                                <li><a href="">Giải quyết khiếu nại</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="single_footer_part">
+                            <h4>Liên hệ</h4>
+                            <a>
+                                Mọi thắc mắc xin liên hệ tại hòm thư <span style="color: red">gheTinhYeu@gmail.com</span>
+                            </a>
+                            <div id="mc_embed_signup">
+                                <form target="_blank"
+                                      action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                      method="get" class="subscribe_form relative mail_part">
+                                    <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                           class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = ' name@gmail.com '">
+                                    <button type="submit" name="submit" id="newsletter-submit"
+                                            class="email_icon newsletter-submit button-contactForm">
+                                        Đăng ký
+                                    </button>
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="copyright_part">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="copyright_text">
+                                <P>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Bản Quyền &copy;<script>document.write(new Date().getFullYear());</script> Thuộc về nhóm 9 | Không sao chép dưới bất kì hình thức nào!
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </P>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="footer_icon social_icon">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
+                                    <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!--::footer_part end::-->
-    <!-- jquery plugins here-->
-    <script src="/js/js_aranzo/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="/js/js_aranzo/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="/js/js_aranzo/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="/js/js_aranzo/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="/js/js_aranzo/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="/js/js_aranzo/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="/js/js_aranzo/owl.carousel.min.js"></script>
-    <script src="/js/js_aranzo/jquery.nice-select.min.js"></script>
-    <!-- slick js -->
-    <script src="/js/js_aranzo/slick.min.js"></script>
-    <script src="/js/js_aranzo/jquery.counterup.min.js"></script>
-    <script src="/js/js_aranzo/waypoints.min.js"></script>
-    <script src="/js/js_aranzo/contact.js"></script>
-    <script src="/js/js_aranzo/jquery.ajaxchimp.min.js"></script>
-    <script src="/js/js_aranzo/jquery.form.js"></script>
-    <script src="/js/js_aranzo/jquery.validate.min.js"></script>
-    <script src="/js/js_aranzo/mail-script.js"></script>
-    <script src="/js/js_aranzo/stellar.js"></script>
-    <script src="/js/js_aranzo/price_rangs.js"></script>
-    <!-- custom js -->
-    <script src="/js/js_aranzo/custom.js"></script>
+        </footer>
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("Nguyen ngoc tiep");
+                var userInfor = document.querySelector(".user-infor");
+                var moreInforUser = document.querySelector(".more--infor__user");
+
+                userInfor.addEventListener("click", function (event) {
+                    moreInforUser.style.display = moreInforUser.style.display === 'none' ? 'block' : 'none';
+                    event.stopPropagation();
+                });
+
+                document.addEventListener("click", function (event) {
+                    if (!userInfor.contains(event.target)) {
+                        moreInforUser.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+        
+        <script>
+            const dropdowns = document.querySelectorAll('.dropdown--show__product');
+
+            dropdowns.forEach(dropdown => {
+                const select = dropdown.querySelector('.dropdown--show__product .select');
+                const caret = dropdown.querySelector('.dropdown--show__product .caret');
+                const menu = dropdown.querySelector('.dropdown--show__product .menu');
+                const options = dropdown.querySelectorAll('.dropdown--show__product .menu li');
+                const selected = dropdown.querySelector('.dropdown--show__product .selected');
+
+                select.addEventListener('click', () => {
+                    select.classList.toggle('select-clicked');
+                    caret.classList.toggle('caret-rotate');
+                    menu.classList.toggle('menu-open');
+                });
+
+                // options.forEach(option => {
+                //     option.addEventListener('click', () => {
+                //         selected.innerText = option.innerText;
+
+                //         select.classList.remove('select-clicked');
+                //         caret.classList.remove('caret-rotate');
+                //         menu.classList.remove('menu-open');
+
+                //         options.forEach(opt => {
+                //             opt.classList.remove('active');
+                //         });
+                //         option.classList.add('active');
+                //     });
+                // });
+                document.addEventListener('click', (event) => {
+                    if (!dropdown.contains(event.target)) {
+                        select.classList.remove('select-clicked');
+                        caret.classList.remove('caret-rotate');
+                        menu.classList.remove('menu-open');
+                    }
+                });
+            });
+
+
+        </script>
+    </div>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
+    <value>Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa</value>
+  </data>
+  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
+    <value>Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện.</value>
+  </data>
+  <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
+    <value>Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm.</value>
+  </data>
+  <data name="Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.Chúng tôi cam kết cung cấp sản phẩm chất lượng, đa dạng và giá cả cạnh tranh để mang lại sự hài lòng tối đa cho khách hàng." xml:space="preserve">
+    <value>Chọn chúng tôi vì chúng tôi cung cấp trải nghiệm mua sắm trực tuyến dễ dàng, tiện lợi và an toàn cho khách hàng.Chúng tôi cam kết cung cấp sản phẩm chất lượng, đa dạng và giá cả cạnh tranh để mang lại sự hài lòng tối đa cho khách hàng.</value>
+  </data>
+  <data name="Dịch Vụ" xml:space="preserve">
+    <value>Dịch Vụ</value>
+  </data>
+  <data name="Ghế bar" xml:space="preserve">
+    <value>Ghế bar</value>
+  </data>
+  <data name="Ghế băng" xml:space="preserve">
+    <value>Ghế băng</value>
+  </data>
+  <data name="Ghế ăn" xml:space="preserve">
+    <value>Ghế ăn</value>
+  </data>
+  <data name="Giao hàng nhanh chóng và miễn phí" xml:space="preserve">
+    <value>Giao hàng nhanh chóng và miễn phí</value>
+  </data>
+  <data name="Gợi ý cho bạn." xml:space="preserve">
+    <value>Gợi ý cho bạn.</value>
+  </data>
+  <data name="Hỗ trợ 24/7" xml:space="preserve">
+    <value>Hỗ trợ 24/7</value>
+  </data>
+  <data name="Khám phá" xml:space="preserve">
+    <value>Khám phá</value>
+  </data>
+  <data name="Mua ngay" xml:space="preserve">
+    <value>Mua ngay</value>
+  </data>
+  <data name="Mua sắm dễ dàng và thuận tiện" xml:space="preserve">
+    <value>Mua sắm dễ dàng và thuận tiện</value>
+  </data>
+  <data name="Nhập tên của bạn" xml:space="preserve">
+    <value>Nhập tên của bạn</value>
+  </data>
+  <data name="Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu." xml:space="preserve">
+    <value>Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu.</value>
+  </data>
+  <data name="Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể" xml:space="preserve">
+    <value>Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể</value>
+  </data>
+  <data name="Tại sao chọn chúng tôi" xml:space="preserve">
+    <value>Tại sao chọn chúng tôi</value>
+  </data>
+  <data name="Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng" xml:space="preserve">
+    <value>Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng</value>
+  </data>
+  <data name="v" xml:space="preserve">
+    <value>Nhập Email của bạn</value>
+  </data>
+  <data name="Về chúng tôi" xml:space="preserve">
+    <value>Về chúng tôi</value>
+  </data>
+  <data name="Xin chào, cảm ơn bạn đã tin dùng. Chúng tôi cung cấp các dịch vụ tiện lợi và nhanh chóng cho người dùng." xml:space="preserve">
+    <value>Xin chào, cảm ơn bạn đã tin dùng. Chúng tôi cung cấp các dịch vụ tiện lợi và nhanh chóng cho người dùng.</value>
+  </data>
+  <data name="Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng" xml:space="preserve">
+    <value>Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng</value>
+  </data>
+  <data name="Đăng ký" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Đổi trả dễ dàng, không phiền toái" xml:space="preserve">
+    <value>Đổi trả dễ dàng, không phiền toái</value>
+  </data>
+  <data name="Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn" xml:space="preserve">
+    <value>Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn</value>
+  </data>
+</root>

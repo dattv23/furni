@@ -1,0 +1,41 @@
+﻿@model furni.Data.Category
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-3">
+    <h2 class="mb-4">Cập Nhật Danh Mục</h2>
+
+    <form asp-action="Update" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3">
+            <label asp-for="Name" class="form-label">Tên Danh Mục</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Description" class="form-label">Mô Tả</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ParentId">Parent Id</label>
+            <select asp-for="ParentId" class="form-control">
+                <option value="">-- Select Parent Category --</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.Value">@category.Text</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        </div>
+    </form>
+</div>

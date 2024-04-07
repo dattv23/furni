@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using furni.Data; // Adjust this using directive to the actual namespace where your entities are defined.
 
 namespace furni.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -17,10 +16,24 @@ namespace furni.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Category> Coupons { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            var admin = new IdentityRole("admin");
+            admin.NormalizedName = "admin";
+
+            var client = new IdentityRole("client");
+            client.NormalizedName = "client";
+
+            builder.Entity<IdentityRole>().HasData(admin, client);
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace furni.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
+    [Area("Admin")]
     public class HomeController : Controller
     {
-        [Area("Admin")]
         public IActionResult Index()
         {
             return View();
