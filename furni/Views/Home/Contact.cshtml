@@ -3,13 +3,15 @@
 *@
 @{
 }
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 <div class="hero">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h1>@Localizer["Liên hệ"]</h1>
+                    <h1>@Localizer</h1>
                     <p class="mb-4">@Localizer["Xin chào, nếu bạn có thắc mắc thì hãy liên hệ hoặc nhập ở bên dưới."]</p>
                     <p><a href="" class="btn btn-secondary me-2">@Localizer["Mua ngay"]</a><a href="#" class="btn btn-white-outline">@Localizer["Khám phá"]</a></p>
                 </div>
