@@ -159,6 +159,9 @@
   <data name="Mua sắm dễ dàng và thuận tiện" xml:space="preserve">
     <value>Mua sắm dễ dàng và thuận tiện</value>
   </data>
+  <data name="Nhập Email của bạn" xml:space="preserve">
+    <value>Nhập Email của bạn</value>
+  </data>
   <data name="Nhập tên của bạn" xml:space="preserve">
     <value>Nhập tên của bạn</value>
   </data>
@@ -173,9 +176,6 @@
   </data>
   <data name="Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng" xml:space="preserve">
     <value>Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng</value>
-  </data>
-  <data name="v" xml:space="preserve">
-    <value>Nhập Email của bạn</value>
   </data>
   <data name="Về chúng tôi" xml:space="preserve">
     <value>Về chúng tôi</value>

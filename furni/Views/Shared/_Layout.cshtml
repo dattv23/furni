@@ -56,6 +56,16 @@
                         <li>@Html.ActionLink("Services", "Service", "Home", null, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                @Thread.CurrentThread.CurrentUICulture.Name
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="?ui-culture=en">En</a></li>
+                                <li><a class="dropdown-item" href="?ui-culture=vi">Vi</a></li>
+                            </ul>
+                        </div>
                     </ul>
 
                     <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
