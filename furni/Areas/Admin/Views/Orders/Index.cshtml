@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h2 class="h3 mb-2 text-gray-800">Quản Lý Đơn Hàng</h2>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-center align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách đơn hàng</h6>
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Id người dùng</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tổng số tiền đơn hàng</th>
+                            <th>Trạng thái của đơn hàng</th>
+                            <th>Id phiếu giảm</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var orders in Model)
+                        {
+                            <tr>
+                                <td>@orders.Id</td>
+                                <td>@orders.UserId</td>
+                                <td>@orders.OrderDate</td>
+                                <td>@orders.TotalAmount</td>
+                                <td>@orders.Status</td>
+                                <td>@orders.CouponId</td>
+
+                            </tr>
+                        }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

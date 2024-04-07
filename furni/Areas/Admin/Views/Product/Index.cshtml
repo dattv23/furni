@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+}
+
+
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ SẢN PHẨM</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-center align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary mr-auto  v ">Danh sách sản phẩm</h6>
+           
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên sản phẩm</th>
+                            <th>image</th>
+                            <th>Mô tả</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>loại</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.Id</td>
+                                <td>@product.Name</td>
+                                <td>@product.ImageUrl</td>
+                                <td>@product.Description</td>
+                                <td>@product.Price</td>
+                                <td>@product.StockQuantity</td>
+                                <td>@product.CategoryId</td>
+
+                            </tr>
+                        }
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
