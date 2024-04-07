@@ -18,7 +18,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sản phẩm</title>
+    <title>@ViewBag.Title</title>
     <link rel="icon" href="img/favicon.png">
 
     <!-- Bootstrap CSS -->
@@ -86,7 +86,9 @@
                                     <div class="more--infor__support"></div>
                                     <a style="display: block">Tài khoản của tôi</a>
                                     <a style="display: block">Đơn mua</a>
-                                    <a href="/Identity/Account/Logout?returnUrl=%2F" style="display: block">Đăng xuất</a>
+                                    <form class="w-100 bg-body" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                        <button type="submit" class="d-block">Đăng xuất</button>
+                                    </form>
                                 </div>
                             </li>
                         }
