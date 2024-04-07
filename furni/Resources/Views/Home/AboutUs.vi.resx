@@ -117,19 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <data name="Chúng Tôi" xml:space="preserve">
     <value>Chúng Tôi</value>
   </data>
-  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện" xml:space="preserve">
-    <value>Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện</value>
-
   <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
     <value>Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa</value>
-  </data>
-  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
-    <value>Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện.</value>
-
   </data>
   <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
     <value>Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm.</value>
@@ -146,7 +138,6 @@
   <data name="Khám phá" xml:space="preserve">
     <value>Khám phá</value>
   </data>
-
   <data name="Our support team is happy to assist you anytime, anywhere, 24/7. Whether you need questions answered, technical support or an order-related issue resolved, we're here to help." xml:space="preserve">
     <value>Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn</value>
   </data>
@@ -162,14 +153,12 @@
   <data name="String15" xml:space="preserve">
     <value>Về chúng tôi</value>
   </data>
-
   <data name="Mua ngay" xml:space="preserve">
     <value>Mua ngay</value>
   </data>
   <data name="Mua sắm dễ dàng và thuận tiện" xml:space="preserve">
     <value>Mua sắm dễ dàng và thuận tiện</value>
   </data>
-
   <data name="Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu." xml:space="preserve">
     <value>Trải nghiệm mua sắm của bạn sẽ trở nên dễ dàng và thuận tiện hơn bao giờ hết với giao diện thân thiện, hệ thống thanh toán linh hoạt và đa dạng sản phẩm chất lượng. Chúng tôi luôn đặt sự tiện lợi của khách hàng lên hàng đầu.</value>
   </data>
@@ -182,11 +171,9 @@
   <data name="Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng" xml:space="preserve">
     <value>Tạo ra giao diện người dùng thân thiện, hiệu quả và tương thích trên mọi thiết bị, giúp cải thiện trải nghiệm mua sắm của khách hàng. Sẽ tập trung vào việc thiết kế các trang web linh hoạt, dễ sử dụng và có khả năng tương tác cao để thu hút và giữ chân người dùng</value>
   </data>
-
   <data name="Về chúng tôi" xml:space="preserve">
     <value>Về chúng tôi</value>
   </data>
-
   <data name="Xin chào, cảm ơn bạn đã quan tâm về những người tạo ra cửa hàng này." xml:space="preserve">
     <value>Xin chào, cảm ơn bạn đã quan tâm về những người tạo ra cửa hàng này.</value>
   </data>
@@ -196,9 +183,7 @@
   <data name="Đổi trả dễ dàng, không phiền toái" xml:space="preserve">
     <value>Đổi trả dễ dàng, không phiền toái</value>
   </data>
-
   <data name="Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn" xml:space="preserve">
     <value>Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn</value>
   </data>
-
 </root>

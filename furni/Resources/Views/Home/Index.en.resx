@@ -121,8 +121,6 @@
   <data name="Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ." xml:space="preserve">
     <value>Dining tables are indispensable furniture in homes or places specializing in food service businesses. This product must be aesthetically pleasing when used.</value>
   </data>
-  <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
-    <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats.</value>
 
   <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
     <value>Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats</value>
@@ -131,14 +129,8 @@
   <data name="Chào mừng bạn đến với cửa hàng của chúng tôi." xml:space="preserve">
     <value>Welcome to our store.</value>
   </data>
-  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
-    <value>We are committed to a flexible and hassle-free return policy for customers. If there are any problems with the product you receive, you can safely return it to get the product back or get a refund quickly and conveniently.</value>
-  </data>
   <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
-
     <value>We are committed to providing fast delivery services, ensuring your orders are delivered safely and promptly. In particular, free operation helps you save on shopping costs.</value>
-
-    <value>We are committed to providing a fast delivery service, ensuring your order arrives safely and promptly. In particular, free shipping helps you save on shopping costs.</value>
   </data>
   <data name="Chúng tôi chuyên tư vấn và thiết kế nội thất hiện đại để mang đến không gian sống đẳng cấp và tinh tế cho bạn. Được trải nghiệm và chăm sóc tỉ mỉ, chúng tôi cam kết tạo ra những không gian sống ấn tượng và đáng yêu nhất." xml:space="preserve">
     <value>We specialize in consulting and designing modern interiors to bring you a classy and sophisticated living space. Experienced and meticulously cared for, we are committed to creating the most impressive and lovely living spaces.</value>
@@ -183,7 +175,6 @@
   <data name="Gợi ý cho bạn." xml:space="preserve">
     <value>Suggestions for you.</value>
   </data>
-  <data name="hiện đại và đầy chất lượng cho mọi khách hàng." xml:space="preserve">
   <data name="Hiện đại và đầy chất lượng cho mọi khách hàng." xml:space="preserve">
     <value>Modern and full of quality for all customers.</value>
   </data>
@@ -219,13 +210,11 @@
   </data>
   <data name="Xem thêm" xml:space="preserve">
     <value>Lean more</value>
-    <value>Lear more</value>
   </data>
   <data name="Xin chào" xml:space="preserve">
     <value>Hello</value>
   </data>
   <data name="Xây dựng hệ thống backend vững chắc, linh hoạt và dễ dàng mở rộng để hỗ trợ sự phát triển bền vững của dự án. Sẽ luôn nâng cao khả năng tương tác và tích hợp của hệ thống để đáp ứng nhu cầu ngày càng phức tạp của khách hàng" xml:space="preserve">
-    <value>Build a solid, flexible and easily scalable Firmware backend system to support sustainable Firmware development for the project. Will always improve interoperability and system integration to meet increasingly complex customer needs.</value>
     <value>Build a solid, flexible and easily scalable backend system to support the sustainable development of the project. Will always improve the system's interoperability and integration capabilities to meet the increasingly complex needs of customers</value>
 
   </data>
