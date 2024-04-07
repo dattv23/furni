@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Chúng Tôi" xml:space="preserve">
+    <value>Chúng Tôi</value>
+  </data>
   <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
     <value>Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa</value>
-  </data>
-  <data name="Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện." xml:space="preserve">
-    <value>Chúng tôi cam kết chính sách đổi trả linh hoạt và không gây phiền toái cho khách hàng. Nếu có bất kỳ vấn đề nào với sản phẩm nhận được, bạn có thể yên tâm đổi trả để nhận lại sản phẩm hoặc được hoàn tiền một cách nhanh chóng và thuận tiện.</value>
   </data>
   <data name="Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm." xml:space="preserve">
     <value>Chúng tôi cam kết cung cấp dịch vụ giao hàng nhanh chóng, đảm bảo đơn hàng của bạn đến tay một cách an toàn và kịp thời. Đặc biệt, việc miễn phí vận chuyển giúp bạn tiết kiệm chi phí mua sắm.</value>
@@ -137,6 +137,21 @@
   </data>
   <data name="Khám phá" xml:space="preserve">
     <value>Khám phá</value>
+  </data>
+  <data name="Our support team is happy to assist you anytime, anywhere, 24/7. Whether you need questions answered, technical support or an order-related issue resolved, we're here to help." xml:space="preserve">
+    <value>Đội ngũ hỗ trợ của chúng tôi sẵn lòng hỗ trợ bạn mọi lúc, mọi nơi, 24/7. Bất kể bạn cần giải đáp thắc mắc, hỗ trợ kỹ thuật hay giải quyết vấn đề liên quan đến đơn hàng, chúng tôi luôn ở đây để giúp bạn</value>
+  </data>
+  <data name="Secure customer information and data, apply leading information security measures to ensure security and reliability. Will continuously update and test security systems to prevent any threats." xml:space="preserve">
+    <value>Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa</value>
+  </data>
+  <data name="Shop now" xml:space="preserve">
+    <value>Mua ngay</value>
+  </data>
+  <data name="Shopping is easy and convenient" xml:space="preserve">
+    <value>Mua sắm dễ dàng và thuận tiện</value>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>Về chúng tôi</value>
   </data>
   <data name="Mua ngay" xml:space="preserve">
     <value>Mua ngay</value>
