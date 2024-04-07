@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ." xml:space="preserve">
+    <value>Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ.</value>
+  </data>
   <data name="Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa" xml:space="preserve">
     <value>Bảo mật thông tin và dữ liệu của khách hàng, áp dụng các biện pháp an ninh thông tin hàng đầu để đảm bảo tính bảo mật và tin cậy. Sẽ liên tục cập nhật và kiểm tra các hệ thống bảo mật để ngăn chặn mọi nguy cơ đe dọa</value>
   </data>
@@ -132,6 +135,8 @@
   <data name="Chúng tôi chuyên tư vấn và thiết kế nội thất hiện đại để mang đến không gian sống đẳng cấp và tinh tế cho bạn. Được trải nghiệm và chăm sóc tỉ mỉ, chúng tôi cam kết tạo ra những không gian sống ấn tượng và đáng yêu nhất." xml:space="preserve">
     <value>Chúng tôi chuyên tư vấn và thiết kế nội thất hiện đại để mang đến không gian sống đẳng cấp và tinh tế cho bạn. Được trải nghiệm và chăm sóc tỉ mỉ, chúng tôi cam kết tạo ra những không gian sống ấn tượng và đáng yêu nhất.</value>
   </data>
+  <data name="Chúng tôi giúp bạn thiết kế nội thất hiện đại" xml:space="preserve">
+    <value>Chúng tôi giúp bạn thiết kế nội thất hiện đại</value>
   <data name="Chúng tôi giúp bạn thiết kế nội thất hiện đại." xml:space="preserve">
     <value>Chúng tôi giúp bạn thiết kế nội thất hiện đại.</value>
   </data>
@@ -143,6 +148,9 @@
   </data>
   <data name="Ghế bar" xml:space="preserve">
     <value>Ghế bar</value>
+  </data>
+  <data name="Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ, thị hiếu và hơn hết là đúng kinh tế và nhu cầu sử dụng." xml:space="preserve">
+    <value>Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ, thị hiếu và hơn hết là đúng kinh tế và nhu cầu sử dụng.</value>
   </data>
   <data name="Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ." xml:space="preserve">
     <value>Ghế bar là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ.</value>
@@ -165,6 +173,8 @@
   <data name="Gợi ý cho bạn." xml:space="preserve">
     <value>Gợi ý cho bạn.</value>
   </data>
+  <data name="hiện đại và đầy chất lượng cho mọi khách hàng." xml:space="preserve">
+    <value>hiện đại và đầy chất lượng cho mọi khách hàng.</value>
   <data name="Hiện đại và đầy chất lượng cho mọi khách hàng." xml:space="preserve">
     <value>Hiện đại và đầy chất lượng cho mọi khách hàng.</value>
   </data>

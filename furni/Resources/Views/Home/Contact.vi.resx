@@ -126,6 +126,9 @@
   <data name="Liên hệ" xml:space="preserve">
     <value>Liên hệ</value>
   </data>
+  <data name="Liên lạc" xml:space="preserve">
+    <value>Liên lạc</value>
+  </data>
   <data name="Mua ngay" xml:space="preserve">
     <value>Mua ngay</value>
   </data>

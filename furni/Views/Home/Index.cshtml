@@ -5,6 +5,11 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
 <!-- Start Hero Section -->
 <div class="hero">
 	<div class="container">
@@ -26,7 +31,11 @@
 </div>
 <!-- End Hero Section -->
 <!-- Start Product Section -->
+
+<div class="product-section" style="margin-top:30px">
+
 <div class="product-section">
+
 	<div class="container">
 		<div class="row">
 
@@ -164,6 +173,7 @@
 					<li>@Localizer["Đáp ứng mọi nhu cầu và mong muốn của bạn để tạo ra không gian sống hoàn hảo nhất."]</li>
 					<li>@Localizer["Chất lượng dịch vụ và sự hài lòng của khách hàng là ưu tiên hàng đầu của chúng tôi."]</li>
 					<li>@Localizer["Đảm bảo mang lại không gian sống và làm việc thoải mái."]</li>
+					<li>@Localizer["hiện đại và đầy chất lượng cho mọi khách hàng."]</li>
 					<li>@Localizer["Hiện đại và đầy chất lượng cho mọi khách hàng."]</li>
 				</ul>
 				<p><a herf="#" class="btn">@Localizer["Khám phá"]</a></p>
@@ -184,6 +194,7 @@
 					</div>
 					<div class="pt-3">
 						<h3>@Localizer["Ghế ăn"]</h3>
+						<p>@Localizer["Bàn ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ."]</p>
 						<p>@Localizer["Ghế ăn là nội thất không thể thiếu trong các căn nhà hay những nơi chuyên kinh doanh dịch vụ ăn uống. Sản phẩm này khi sử dụng phải hợp thẩm mỹ."]</p>
 						<p><a href="#">@Localizer["Xem thêm"]</a></p>
 					</div>
@@ -329,6 +340,31 @@
 							</div>
 						</div>
 						<!-- END item -->
+
+									<div class="testimonial-block text-center">
+										<blockquote class="mb-5">
+											<p>&ldquo;Tuân thủ các tiêu chuẩn thiết kế và trải nghiệm người dùng hàng đầu để đem lại sự hài lòng tối đa cho người dùng cuối. Sẽ không ngừng thử nghiệm và tối ưu hóa các tính năng để mang lại trải nghiệm người dùng tốt nhất có thể.&rdquo;</p>
+										</blockquote>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Testimonial Slider -->
+<!-- Start Blog Section -->
+<div class="blog-section">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md-6">
+				<h2 class="section-title">Recent Blog</h2>
+			</div>
+			<div class="col-md-6 text-start text-md-end">
+				<a href="#" class="more">View All Posts</a>
+			</div>
+		</div>
+
+		<div class="row">
 
 					</div>
 

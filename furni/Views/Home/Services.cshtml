@@ -1,5 +1,15 @@
+
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
+
 
 <!-- Start Hero Section -->
 <div class="hero">
@@ -25,6 +35,8 @@
 <div class="why-choose-section">
 	<div class="container">
 
+		<div class="row my-5">
+			<div class="col-6 col-md-6">
 
 		<div class="row my-5">
 			<div class="col-6 col-md-6 col-lg-3 mb-4">
@@ -37,6 +49,7 @@
 				</div>
 			</div>
 
+			<div class="col-6 col-md-6">
 			<div class="col-6 col-md-6 col-lg-3 mb-4">
 				<div class="feature">
 					<div class="icon">
@@ -47,6 +60,7 @@
 				</div>
 			</div>
 
+			<div class="col-6 col-md-6">
 			<div class="col-6 col-md-6 col-lg-3 mb-4">
 				<div class="feature">
 					<div class="icon">
@@ -57,6 +71,7 @@
 				</div>
 			</div>
 
+			<div class="col-6 col-md-6">
 			<div class="col-6 col-md-6 col-lg-3 mb-4">
 				<div class="feature">
 					<div class="icon">
@@ -68,11 +83,12 @@
 			</div>
 
 		</div>
-
 	</div>
 </div>
 <!-- End Why Choose Us Section -->
 <!-- Start Product Section -->
+
+<div class="product-section" style="margin-top:30px">
 <div class="product-section pt-0">
 	<div class="container">
 		<div class="row">
@@ -86,7 +102,9 @@
 			<!-- End Column 1 -->
 			<!-- Start Column 2 -->
 			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" href="cart.html">
 				<a class="product-item" href="#">
+
 					<img src="/images/product-1.png" class="img-fluid product-thumbnail">
 					<h3 class="product-title">@Localizer["Ghế ăn"]</h3>
 					<strong class="product-price">$50.00</strong>
@@ -99,6 +117,7 @@
 			<!-- End Column 2 -->
 			<!-- Start Column 3 -->
 			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" href="cart.html">
 				<a class="product-item" href="#">
 					<img src="/images/product-2.png" class="img-fluid product-thumbnail">
 					<h3 class="product-title">@Localizer["Ghế bar"]</h3>
@@ -112,6 +131,7 @@
 			<!-- End Column 3 -->
 			<!-- Start Column 4 -->
 			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" href="cart.html">
 				<a class="product-item" href="#">
 					<img src="/images/product-3.png" class="img-fluid product-thumbnail">
 					<h3 class="product-title">@Localizer["Ghế băng"]</h3>
@@ -245,6 +265,15 @@
 		</div>
 	</div>
 </div>
+<!-- End Testimonial Slider -->
+<!-- Start Footer Section -->
+<footer class="footer-section">
+	<div class="container relative">
+
+		<div class="sofa-img">
+			<img src="/images/sofa.png" alt="Image" class="img-fluid">
+		</div>
+
 <div class="ft-section">
 	<div class="container relative">
 		<div class="row">
@@ -269,5 +298,82 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row g-5 mb-5">
+			<div class="col-lg-4">
+				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+				<p class="mb-4"> @Localizer["Web chuyên về bán nội thất uy tín hàng đầu Việt Nam"]</p>
+
+				<ul class="list-unstyled custom-social">
+					<li><a href="#"><span <i class="fa-brands fa-facebook-f"></i></span></a></li>
+					<li><a href="#"><span <i class="fa-brands fa-google"></i></span></a></li>
+					<li><a href="#"><span <i class="fa-brands fa-twitter"></i></span></a></li>
+					<li><a href="#"><span <i class="fa-brands fa-instagram"></i></span></a></li>
+				</ul>
+			</div>
+
+			<div class="col-lg-8">
+				<div class="row links-wrap">
+					<div class="col-6 col-sm-6 col-md-3">
+						<ul class="list-unstyled">
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Contact us</a></li>
+						</ul>
+					</div>
+
+					<div class="col-6 col-sm-6 col-md-3">
+						<ul class="list-unstyled">
+							<li><a href="#">Support</a></li>
+							<li><a href="#">Knowledge base</a></li>
+							<li><a href="#">Live chat</a></li>
+						</ul>
+					</div>
+
+					<div class="col-6 col-sm-6 col-md-3">
+						<ul class="list-unstyled">
+							<li><a href="#">Jobs</a></li>
+							<li><a href="#">Our team</a></li>
+							<li><a href="#">Leadership</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+
+					<div class="col-6 col-sm-6 col-md-3">
+						<ul class="list-unstyled">
+							<li><a href="#">Nordic Chair</a></li>
+							<li><a href="#">Kruzo Aero</a></li>
+							<li><a href="#">Ergonomic Chair</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="border-top copyright">
+			<div class="row pt-4">
+				<div class="col-lg-6">
+					<p class="mb-2 text-center text-lg-start">
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">ThemeWagon</a> <!-- License information: https://untree.co/license/ -->
+					</p>
+				</div>
+
+				<div class="col-lg-6 text-center text-lg-end">
+					<ul class="list-unstyled d-inline-flex ms-auto">
+						<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+<!-- End Footer Section -->
+
 </div>
+
 
