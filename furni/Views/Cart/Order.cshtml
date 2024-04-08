@@ -1,0 +1,462 @@
+﻿<head>
+    <style>
+
+        img {
+            max-width: 20%;
+        }
+
+        .nav-link > img {
+            max-width: 100%;
+        }
+
+        .order .all-check th:first-child label:hover, .list-check1 label:hover {
+            cursor: pointer !important;
+        }
+
+        .order .all-check th:first-child label {
+            user-select: none;
+        }
+
+        .order .custom-checkbox-label::before,
+        .order .custom-checkbox-label::after,
+        .order .all-check label::before,
+        .order .all-check label::after {
+            content: "";
+            display: inline-block;
+        }
+
+        .order .all-check label, .list-check1 label {
+            position: relative;
+            padding-left: 25px;
+        }
+
+            .order .custom-checkbox-label::before,
+            .order .all-check label::before {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                left: 0;
+                top: 2.5px;
+            }
+
+        .order .custom-checkbox-label::before {
+            top: 0px;
+        }
+
+        .order .media1 [type='checkbox']:checked ~ label::after,
+        .order .all-check [type='checkbox']:checked ~ label::after {
+            position: absolute;
+            width: 12px;
+            height: 7px;
+            border-left: 3px solid red;
+            border-bottom: 3px solid red;
+            rotate: -45deg;
+            left: 4px;
+            top: 7.4px;
+        }
+
+        .order .media1 [type='checkbox']:checked ~ label::after {
+            top: -10px;
+        }
+
+        .order .media1 [type='checkbox']:checked ~ label::before {
+            top: -14px;
+        }
+
+        .order .custom-checkbox-label::before,
+        .order .custom-checkbox-label::after {
+            content: "";
+            display: inline-block;
+        }
+
+        tbody tr {
+            background: #fff;
+            border-top: 20px solid rgba(245, 245, 251, 1);
+        }
+
+        /*        .order td {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }*/
+
+        .order .tang {
+            --main-color: #808089;
+            position: absolute;
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-top: 3px solid var(--main-color);
+            border-left: 3px solid var(--main-color);
+            /* background: red; */
+            rotate: 45deg;
+            top: 7px;
+            left: 72px;
+        }
+
+        .order .giam {
+            --main-color: #808089;
+            position: absolute;
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-top: 3px solid var(--main-color);
+            border-left: 3px solid var(--main-color);
+            /* background: red; */
+            rotate: 225deg;
+            top: 21px;
+            left: 72px;
+        }
+
+        order .tang:hover, order .giam:hover {
+            cursor: pointer !important;
+        }
+
+        order .tang::before:hover, order .giam::before:hover {
+            cursor: pointer !important;
+        }
+
+        .table th:first-child, .table td:first-child {
+            width: 500px;
+            max-width: 20%; /* Giới hạn chiều rộng tối đa */
+            overflow: hidden; /* Ẩn nội dung vượt quá giới hạn */
+            text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung bị cắt */
+            white-space: nowrap; /* Giữ nội dung trong một dòng */
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+
+
+        .order .address-head {
+            margin-top: 10px;
+        }
+
+        .order .name-address {
+            padding-top: 20px;
+        }
+
+            .order .name-address p {
+                color: #38383d;
+                font-family: "Inter", sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+        .order .rigth-oder {
+            padding-left: 25px;
+            padding-right: 12px;
+        }
+
+        .order .btn-mua-hang {
+            margin-top: 0px !important;
+            user-select: none;
+            background: rgb(255, 66, 78);
+            color: rgb(255, 255, 255);
+            padding: 13px 10px;
+            text-align: center;
+            border-radius: 4px;
+            border: none;
+            width: 100%;
+            display: block;
+            cursor: pointer;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+            .order .btn-mua-hang:hover {
+                outline: 1px solid #6b5abe;
+            }
+
+        .order .order-mess {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            font-size: 54px;
+            color: #5b5bc2;
+        }
+    </style>
+</head>
+
+@model IEnumerable<furni.Data.CartItem>
+
+<div class="order">
+
+
+
+
+    <section id="cart-header" class="breadcrumb breadcrumb_bg" style="background: #abc9ec; padding-top: 15px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" style="padding-left: 43px">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item d-flex" style="align-items: baseline">
+                            <i class="fa-solid fa-bag-shopping" style="font-size: 60px; color: #3b5d50"></i>
+                            <h2 style="display: inline-block; padding: 10px 20px; color: #0b74e5;">Giỏ hàng</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+    <!--================Cart Area =================-->
+    <section class="cart_area" style="padding-top: 20px; background: rgba(245, 245, 251, 1);">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="container-fluid d-flex justify-content-center">
+                    <table class="table col-9" style="width: auto">
+                        <thead style="background: #fff">
+                            <tr class="all-check">
+                                <th scope="col">
+                                    <input name="fake-check" type="checkbox" id="selectAll" hidden />
+                                    <label for="selectAll">Tất cả(@Model.Count() sản phẩm)</label>
+
+                                </th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số Lượng</th>
+                                <th scope="col">Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int index = 0; }
+                            @foreach (var item in Model)
+                            {
+                                <tr data-product-id="@item.Product.Id">
+
+                                    <td>
+                                        <div class="media1 d-flex">
+                                            <div class="d-flex list-check1 align-items-center">
+                                                <input type="checkbox" id="check-@index" class="custom-checkbox-input itemCheckbox" hidden />
+                                                <label for="check-@index" class="custom-checkbox-label"></label>
+                                                <img src="/images/product-3.png" alt="" style="border: none;" />
+                                                <p style="min-width: 220px" class="product-name">@item.Product.Name</p>
+                                            </div>
+                                            @*<div class="media-body">
+                                                    <p style="margin-left: -390px" class="product-name">@item.Product.Name</p>
+                                                </div>*@
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@item.Product.Price.ToString("#,##0 đ")</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <a class="input-number-increment1"> <i class="fa-solid fa-angle-up1 tang"></i></a>
+                                            <input class="input-number quantity" type="text" value="@item.Quantity" min="0">
+                                            <a class="input-number-decrement1"> <i class="fa-solid fa-angle-down1 giam"></i></a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 class="sum-col" style="white-space: nowrap; min-width: 90px; color: #ff424e">@((item.Product.Price * item.Quantity).ToString("#,##0 đ"))</h5>
+                                    </td>
+                                </tr>
+                                index++;
+                            }
+
+
+                            <tr class="bottom_button">
+                                <td>
+                                    <a class="btn_1" href="#">Cập nhật thẻ</a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="cupon_text float-right">
+                                        <a class="btn_1" href="#">Close Coupon</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h5>Tổng số tiền</h5>
+                                </td>
+                                <td>
+                                    <h5 class="totalAmount">0</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="order-infor-address col-4" style="background:#fff; height: 450px !important; border-left: 20px solid rgba(245, 245, 251, 1);">
+                        <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder">
+                            <a style="font-size: 19px; font-weight: 400; color: #808089">Giao tới</a>
+                            <a style="font-weight: 400; color: #0b74e5">Thay đổi</a>
+                        </div>
+                        <div class="name-address d-flex rigth-oder">
+                            <p style="padding-right: 10px; border-right: 1px solid #ccc">Nguyễn Ngọc Tiệp</p>
+                            <p style="padding-left: 10px;">0375623446</p>
+                        </div>
+                        <div class="rigth-oder">
+                            <p style="color: #808089; font-size: 14px" ; font-weight: 400><span style="font-size: 13px; color: #ab0056; background-color: rgb(232 239 201); padding: 0px 10px ">Nhà</span> nhà trọ số 4 hẻm 20 đường 16, Phường Lê Lai, Thành phố Califonia, Ngọc Trinh</p>
+                        </div>
+                        <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder" style="border-top: 20px solid rgba(245, 245, 251, 1);">
+                            <p style="font-size: 14px; font-weight: 400; color: #333; margin-bottom: 0px">Tạm tính</p>
+                            <p class="totalAmount" style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
+                        </div>
+                        <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder">
+                            <p style="font-size: 14px; font-weight: 400; color: #333">Giảm giá</p>
+                            <p style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
+                        </div>
+                        <hr style="width: 90%; margin-left: 5%; height: 2px; background-color: rgb(184 58 14)" />
+                        <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder" style="border-bottom: 20px solid rgb(245, 245, 251)">
+                            <p style="font-size: 14px; font-weight: 400; color: #333">Tổng tiền</p>
+                            <p class="totalAmount totalAmount-final" id="" style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
+                        </div>
+                        <div class="address-head d-flex justify-content-center align-items-center rigth-oder btn-mua-hang">
+                            Mua Hàng
+                        </div>
+                        <div class="order-mess">
+                            <i class="fa-solid fa-comment"></i>
+                            <p>Nhắn tin cho chúng tôi</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+</div>
+<script>document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('selectAll').addEventListener('change', function (event) {
+            var isChecked = event.target.checked;
+            var checkboxes = document.querySelectorAll('.itemCheckbox');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = isChecked;
+            });
+        });
+    });
+
+
+    // cập nhật số lượng tăng giảm và tổng số tiền
+    $(document).ready(function () {
+        $('.input-number-increment1').off('click').on('click', function () {
+            updateQuantity(this, true); // true để tăng
+        });
+
+        $('.input-number-decrement1').off('click').on('click', function () {
+            updateQuantity(this, false); // false để giảm
+        });
+        // Hàm cập nhật số lượng và tổng tiền
+        function updateQuantity(element, isIncrement) {
+            var row = $(element).closest('tr'); // Tìm dòng sản phẩm
+            var quantityInput = row.find('.input-number'); // Tìm input số lượng
+            var currentQuantity = parseInt(quantityInput.val());
+            if (isIncrement) {
+                currentQuantity++;
+            }
+            else if (currentQuantity > 0) {
+                currentQuantity--;
+            }
+
+            quantityInput.val(currentQuantity);
+            updateTotalPrice(row)
+        }
+
+        // Hàm cập nhật tổng tiền
+        function updateTotalPrice(row) {
+            var price = parseFloat(row.find('td:nth-child(2) h5').text().replace('đ', '').replace(',', '').replace(/\s/g, ''));
+            var quantity = parseInt(row.find('.input-number').val()); // Lấy số lượng mới
+            var totalPrice = price * quantity; // Tính tổng tiền mới
+            row.find('td:nth-child(4) h5').text(totalPrice.toLocaleString('vi-VN') + ' đ');
+        }
+    });
+
+    //tỉnh tổng tất cả tiền giỏ hàng checkbox
+    document.addEventListener('DOMContentLoaded', function () {
+
+        function updateTotalAmount() {
+            // Logic để tính toán và cập nhật tổng số tiền
+        }
+
+        // Thiết lập MutationObserver để theo dõi sự thay đổi nội dung trong .sum-col
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.type === "characterData" || mutation.type === "childList") {
+                    updateTotalAmount();
+                }
+            });
+        });
+
+        // Lấy tất cả các phần tử có class 'sum-col' và áp dụng observer
+        let sumColElements = document.querySelectorAll('.sum-col');
+        sumColElements.forEach(function (elem) {
+            observer.observe(elem, { childList: true, characterData: true, subtree: true });
+        });
+
+        // Bắt sự kiện thay đổi của tất cả checkboxes và gọi updateTotalAmount
+        document.querySelectorAll('.itemCheckbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', updateTotalAmount);
+        });
+
+        document.getElementById('selectAll').addEventListener('change', function () {
+            // Khi checkbox 'selectAll' thay đổi trạng thái, thực hiện updateTotalAmount
+            updateTotalAmount();
+        });
+        // Bắt sự kiện thay đổi của tất cả checkboxes
+        //document.querySelectorAll('.itemCheckbox').forEach(function (checkbox) {
+
+        //    checkbox.addEventListener('change', updateTotalAmount);
+        //});
+
+        // Hàm cập nhật tổng số tiền
+        function updateTotalAmount() {
+            let totalAmount = 0;
+            document.querySelectorAll('.itemCheckbox:checked').forEach(function (checkbox) {
+                let tr = checkbox.closest('tr');
+                let totalPriceElement = tr.querySelector('.sum-col');
+                if (totalPriceElement) {
+                    console.log(totalPriceElement); // Kiểm tra xem có lấy đúng phần tử không
+
+                    let totalPriceText = totalPriceElement.textContent.replace(/đ|,/g, '').replace(/\./g, '');
+
+
+                    let totalPrice = parseInt(totalPriceText, 10);
+
+                    totalAmount += totalPrice;
+                }
+            });
+            // Cập nhật số tiền vào totalAmount
+            let formattedTotalAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalAmount);
+
+            // Lấy tất cả các phần tử có class 'totalAmount'
+            let totalAmountElements = document.querySelectorAll('.totalAmount');
+
+            // Lặp qua mỗi phần tử và cập nhật nội dung văn bản của chúng với số tiền đã được định dạng
+            totalAmountElements.forEach(function (element) {
+                element.textContent = formattedTotalAmount;
+            });
+
+
+        }
+    });</script>
+
+
+//Xử lý chuyển sản phẩm sang controller
+<script type="text/javascript">$(document).ready(function () {
+        $('.btn-mua-hang').click(function () {
+            var selectedProducts = [];
+            $('.itemCheckbox:checked').each(function () {
+                var row = $(this).closest('tr'); // Tìm hàng gần nhất chứa checkbox
+                var productId = row.data('product-id'); // Lấy product ID
+                var quantity = row.find('.quantity').val(); // Lấy số lượng
+
+                selectedProducts.push({ productId: productId, quantity: quantity });
+            });
+
+            if (selectedProducts.length === 0) {
+                alert('Vui lòng chọn ít nhất một sản phẩm!');
+                return;
+            }
+
+            // Gửi dữ liệu đến server
+            $.post('/Payment/StoreProductSession', { selectedProducts: selectedProducts }, function (data) {
+                if (data.success) {
+                    // Chuyển hướng đến trang thanh toán
+                    window.location.href = '/Payment/Payment';
+                }
+            });
+        });
+    });</script>
