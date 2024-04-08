@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using furni.Areas.Admin.Models;
 
 namespace furni.Data
 {
@@ -35,5 +36,9 @@ namespace furni.Data
 
             builder.Entity<IdentityRole>().HasData(admin, client);
         }
+
+        public DbSet<furni.Areas.Admin.Models.UserModel> UserModel { get; set; }
+
+        // public DbSet<furni.Areas.Admin.Models.UserModel> UserModel { get; set; }
     }
 }

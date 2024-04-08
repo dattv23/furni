@@ -1,4 +1,7 @@
+using furni.Areas.Admin.Models;
+using furni.Areas.Admin.Repositories;
 using furni.Data;
+using furni.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -33,6 +36,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
 
 builder.Services.AddRazorPages();
 

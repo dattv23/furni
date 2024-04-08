@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using furni.Data;
 
@@ -11,9 +12,10 @@ using furni.Data;
 namespace furni.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240408043403_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,31 @@ namespace furni.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("furni.Areas.Admin.Models.UserModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserModel");
+                });
 
             modelBuilder.Entity("furni.Data.ApplicationUser", b =>
                 {
@@ -468,15 +495,15 @@ namespace furni.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "209a384d-423f-41bb-b049-c24606bff637",
-                            ConcurrencyStamp = "fda69d40-ae54-4ea4-a11c-6910e8bf710e",
+                            Id = "f89a7134-bb29-42d7-98ec-3c71bb40bf3f",
+                            ConcurrencyStamp = "48d3af78-547c-44bf-a896-3201604fb2e4",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "3caea8fd-f428-4237-9476-10632d02a0d8",
-                            ConcurrencyStamp = "a8117de7-5dac-47cf-bb3a-6d3353f34ec7",
+                            Id = "6f33f34d-0d19-4fc7-9fd5-3513ec7fd233",
+                            ConcurrencyStamp = "9a4d5997-d65a-450c-8802-b25b16f6531e",
                             Name = "client",
                             NormalizedName = "client"
                         });

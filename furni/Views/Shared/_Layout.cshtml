@@ -58,17 +58,18 @@
                         <li>@Html.ActionLink("Services", "Services", "Home", null, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                @Thread.CurrentThread.CurrentUICulture.Name
-                            </a>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="?ui-culture=en">En</a></li>
-                                <li><a class="dropdown-item" href="?ui-culture=vi">Vi</a></li>
-                            </ul>
-                        </div>
                     </ul>
+
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            @Thread.CurrentThread.CurrentUICulture.Name
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="?ui-culture=en">En</a></li>
+                            <li><a class="dropdown-item" href="?ui-culture=vi">Vi</a></li>
+                        </ul>
+                    </div>
 
                     <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                         @if (User.Identity.IsAuthenticated)
@@ -79,17 +80,6 @@
                                 userName = userName.Substring(0, userName.Length - "@gmail.com".Length);
                             }
                             <li><a class="nav-link">Xin chào, @userName!</a></li>
-                            <li>
-                                <div class="dropdown">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        @Thread.CurrentThread.CurrentUICulture.Name
-                                    </a>
-                                    <ul class="dropdown-menu change-language" aria-labelledby="dropdownMenuLink" style="top: 55px; padding: 0px">
-                                        <li style="padding: 0px"><a class="dropdown-item" href="?ui-culture=en">English</a></li>
-                                        <li style="padding: 0px"><a class="dropdown-item" href="?ui-culture=vi">VietNamese</a></li>
-                                    </ul>
-                                </div>
-                            </li>
                             string firstLetter = "";
                             <li class="layout-cart-parent" style="margin-right: 20px; position: relative;">
                                 <div class="layout-cart" id="cart-item" style="height: 18px; width: 18px; background: #b5a980; position: absolute; border-radius: 999px;line-height: 1.5;text-align: center;color: #f2f2f2;top: 0;right: 0px;font-size: 12px;">
@@ -119,17 +109,6 @@
                         {
 
                             <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><img src="/images/user.svg"></a></li>
-                            <li>
-                                <div class="dropdown">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        @Thread.CurrentThread.CurrentUICulture.Name
-                                    </a>
-                                    <ul class="dropdown-menu change-language" aria-labelledby="dropdownMenuLink" style="top: 55px">
-                                        <li><a class="dropdown-item" href="?ui-culture=en">English</a></li>
-                                        <li><a class="dropdown-item" href="?ui-culture=vi">VietNamese</a></li>
-                                    </ul>
-                                </div>
-                            </li>
                             <li class="layout-cart-parent" style="margin-right: 20px; position: relative;">
                                 <a class="nav-link" href="cart.html">
                                     <img src="/images/cart.svg">
@@ -196,7 +175,7 @@
                         <div class="single_footer_part">
                             <h4>Liên hệ</h4>
                             <a>
-                                Mọi thắc mắc xin liên hệ tại hòm thư <span style="color: red">gheTinhYeu@gmail.com</span>
+                                Mọi thắc mắc xin liên hệ tại hòm thư <span style="color: red">=furni@gmail.com</span>
                             </a>
                             <div id="mc_embed_signup">
                                 <form target="_blank"
