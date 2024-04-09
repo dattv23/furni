@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using furni.Models;
 
 namespace furni.Areas.Identity.Pages.Account
 {
@@ -121,7 +122,7 @@ namespace furni.Areas.Identity.Pages.Account
                     var roles = await _userManager.GetRolesAsync(user);
                     foreach (var item in roles)
                     {
-                        if (item == "admin")
+                        if (item == SystemDefinications.Role_Admin)
                         {
                             return LocalRedirect("/admin");
                         }

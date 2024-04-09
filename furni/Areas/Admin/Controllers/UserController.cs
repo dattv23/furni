@@ -1,6 +1,7 @@
 ﻿using furni.Areas.Admin.Models;
 using furni.Data;
 using furni.Interfaces;
+using furni.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = SystemDefinications.Role_Admin)]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -30,8 +31,8 @@ namespace furni.Areas.Admin.Controllers
         {
             try
             {
-                var user = await _userRepo.GetAllAsync();
-                return View(user);
+                var users = await _userRepo.GetAllAsync();
+                return View(users);
             }
             catch (Exception ex)
             {

@@ -30,6 +30,9 @@ namespace furni.Data
         [Range(0, int.MaxValue, ErrorMessage = "Stock Quantity cannot be negative.")]
         public int StockQuantity { get; set; } // Available stock quantity.
 
+        // IsDeleted is a property that holds the product's status deleted product.
+        public bool? IsDeleted { get; set; } = false;
+
         // Category relationship
         [ForeignKey("Category")]
         public int CategoryId { get; set; }

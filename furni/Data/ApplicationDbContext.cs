@@ -27,18 +27,6 @@ namespace furni.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-            var admin = new IdentityRole("admin");
-            admin.NormalizedName = "admin";
-
-            var client = new IdentityRole("client");
-            client.NormalizedName = "client";
-
-            builder.Entity<IdentityRole>().HasData(admin, client);
         }
-
-        public DbSet<furni.Areas.Admin.Models.UserModel> UserModel { get; set; }
-
-        // public DbSet<furni.Areas.Admin.Models.UserModel> UserModel { get; set; }
     }
 }
