@@ -1,60 +1,37 @@
-﻿using furni.Data;
+﻿using furni.Areas.Admin.Models;
+using furni.Data;
+using furni.Interfaces;
+using furni.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = SystemDefinications.Role_Admin)]
     [Area("Admin")]
     public class ProductController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public ProductController(ApplicationDbContext context)
+        private readonly IGenericRepository<ProductModel, int> _productRepo;
+        private readonly ILogger<UserController> _logger;
+        public ProductController(IGenericRepository<ProductModel, int> productRepo, ILogger<UserController> logger)
         {
-            _context = context;
-
+            _productRepo = productRepo;
+            _logger = logger;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var product = _context.Products.ToList();
-            return View(product);
-        }
-        public IActionResult Create()
-        {
-            var categories = _context.Categories
-                         .Where(c => c.ParentId != null) 
-                         .Select(c => new { Id = c.Id, Name = c.Name })
-                         .ToList();
-            ViewBag.Categories = categories;
-            return View();
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromForm] Product product)
-        {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return Json(new { success = true, message = "Product added successfully." });
+                var products = await _productRepo.GetAllAsync();
+                return View(products);
             }
-
-            // Trả về lỗi validation dưới dạng JSON nếu ModelState không hợp lệ
-            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-            return Json(new { success = false, message = "Validation failed.", errors });
-        }
-
-        public IActionResult Delete()
-        {
-            var product = _context.Products.ToList();
-            return View(product);
-        }
-        public IActionResult Update()
-        {
-            var product = _context.Products.ToList();
-            return View(product);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving users.");
+                // Consider returning an appropriate error view or a response
+                return View("Error"); // Make sure to have an Error view to show error details or messages.
+            }
         }
     }
 }

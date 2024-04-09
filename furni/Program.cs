@@ -2,6 +2,7 @@ using furni.Areas.Admin.Models;
 using furni.Areas.Admin.Repositories;
 using furni.Data;
 using furni.Interfaces;
+using furni.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -9,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -38,8 +39,13 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
+builder.Services.AddScoped<IGenericRepository<ProductModel, int>, ProductRepository>();
 
 builder.Services.AddRazorPages();
+
+//builder.Services.AddSingleton<ImgurService>(new ImgurService(configuration["imgur:clientId"]));
+builder.Services.AddSingleton<ImgurService>(new ImgurService("e1cfa4e34f0abc1"));
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

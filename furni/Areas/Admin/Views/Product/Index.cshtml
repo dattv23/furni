@@ -1,25 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model IEnumerable<furni.Areas.Admin.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
-<!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ SẢN PHẨM</h1>
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-center align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary mr-auto  v ">Danh sách sản phẩm</h6>
-           
+            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách sản phẩm</h6>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataProductTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -28,7 +22,7 @@
                             <th>Mô tả</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
-                            <th>loại</th>
+                            @*<th>Loại</th>*@
 
                         </tr>
                     </thead>
@@ -39,20 +33,23 @@
                             <tr>
                                 <td>@product.Id</td>
                                 <td>@product.Name</td>
-                                <td>@product.ImageUrl</td>
+                                <td><img src="https://i.imgur.com/@(product.ImageUrl.Split('/').Last()).jpg" loading="lazy" width="200" height="150" /></td>
                                 <td>@product.Description</td>
                                 <td>@product.Price</td>
                                 <td>@product.StockQuantity</td>
-                                <td>@product.CategoryId</td>
-
                             </tr>
                         }
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#dataProductTable").DataTable();
+        })
+    </script>
+}

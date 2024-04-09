@@ -9,6 +9,7 @@ namespace furni.Areas.Admin.Helpers
         public ApplicationMapper()
         {
             CreateMap<ApplicationUser, UserModel>().ReverseMap();
+            CreateMap<Product, ProductModel>().ReverseMap();
         }
     }
 }
