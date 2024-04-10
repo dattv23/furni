@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using furni.Models.Services;
+using furni.Areas.Admin.Models;
+using furni.Areas.Admin.Repositories;
+using furni.Interfaces;
+using furni.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +39,15 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
+builder.Services.AddScoped<IGenericRepository<ProductModel, int>, ProductRepository>();
+builder.Services.AddScoped<IGenericRepository<CategoryModel, int>, CategoryRepository>();
+
+builder.Services.AddRazorPages();
+
+//builder.Services.AddSingleton<ImgurService>(new ImgurService(configuration["imgur:clientId"]));
+builder.Services.AddSingleton<ImgurService>(new ImgurService("e1cfa4e34f0abc1"));
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
