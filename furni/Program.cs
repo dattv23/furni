@@ -40,6 +40,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
 builder.Services.AddScoped<IGenericRepository<ProductModel, int>, ProductRepository>();
+builder.Services.AddScoped<IGenericRepository<CategoryModel, int>, CategoryRepository>();
 
 builder.Services.AddRazorPages();
 

@@ -5,6 +5,16 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @Html.Raw(TempData["SuccessMessage"].ToString())
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-center align-items-center">
@@ -18,12 +28,12 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên sản phẩm</th>
-                            <th>image</th>
+                            <th>Loại</th>
+                            <th>Ảnh</th>
                             <th>Mô tả</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
-                            @*<th>Loại</th>*@
-
+                            <td></td>
                         </tr>
                     </thead>
 
@@ -32,11 +42,40 @@
                         {
                             <tr>
                                 <td>@product.Id</td>
-                                <td>@product.Name</td>
-                                <td><img src="https://i.imgur.com/@(product.ImageUrl.Split('/').Last()).jpg" loading="lazy" width="200" height="150" /></td>
-                                <td>@product.Description</td>
+                                <td><a asp-area="Admin" asp-controller="Product" asp-action="Display" asp-route-id="@product.Id" class="mr-2">@product.Name</a></td>
+                                <td>
+                                    @{
+                                        string categoryName = null;
+                                        if (ViewBag.Categories != null)
+                                        {
+                                            foreach (var category in ViewBag.Categories)
+                                            {
+                                                if (category.Id == product.CategoryId)
+                                                {
+                                                    categoryName = category.Name;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        @categoryName
+                                    }
+                                </td>
+                                <td><img src="@(product.ImageUrl)" loading="lazy" width="200" height="150" /></td>
+                                <td>
+                                    <span data-toggle="tooltip" title="@Html.Raw(product.Description)">
+                                        @Html.Raw(product.Description.Substring(0, Math.Min(50, product.Description.Length)))
+                                        @if (product.Description.Length > 50)
+                                        {
+                                            <span class="text-primary"><a asp-area="Admin" asp-controller="Product" asp-action="Display" asp-route-id="@product.Id" class="mr-2">...</a></span>
+                                        }
+                                    </span>
+                                </td>
                                 <td>@product.Price</td>
                                 <td>@product.StockQuantity</td>
+                                <td class="d-inline-block">
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -45,6 +84,8 @@
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     <script>

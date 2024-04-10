@@ -26,9 +26,14 @@ namespace furni.Areas.Admin.Repositories
             return _mapper.Map<List<ProductModel>>(products);
         }
 
-        public Task<ProductModel> GetByIdAsync(int id)
+        public async Task<ProductModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var productEntity = await _context.Products.FindAsync(id);
+            if (productEntity == null || productEntity.IsDeleted == true)
+            {
+                return null; // or handle as appropriate
+            }
+            return _mapper.Map<ProductModel>(productEntity);
         }
 
         public Task<ProductModel> GetByIdWithIncludesAsync(int id)
@@ -36,24 +41,48 @@ namespace furni.Areas.Admin.Repositories
             throw new NotImplementedException();
         }
 
-        public Task RemoveAsync(int id)
+        public async Task RemoveAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
+            {
+                product.IsDeleted = true;
+
+                _context.Entry(product).State = EntityState.Modified;
+
+                await SaveAsync();
+            }
         }
 
-        public Task<int> AddAsync(ProductModel entity)
+        public async Task<int> AddAsync(ProductModel model)
         {
-            throw new NotImplementedException();
+            var productEntity = _mapper.Map<Product>(model);
+            await _context.Products.AddAsync(productEntity);
+            return await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(int id, ProductModel entity)
+        public async Task UpdateAsync(int id, ProductModel entity)
         {
-            throw new NotImplementedException();
+            var existingProduct = await _context.Products.FindAsync(id);
+            if (entity.ImageUrl == null)
+            {
+                entity.ImageUrl = existingProduct.ImageUrl;
+            }
+            if (existingProduct == null)
+            {
+                throw new InvalidOperationException("Product not found.");
+            }
+
+            // Map the properties from the provided entity to the existing product entity
+            _mapper.Map(entity, existingProduct);
+
+            // Save the changes to the database
+            await _context.SaveChangesAsync();
         }
 
-        public Task<int> SaveAsync()
+        public async Task<int> SaveAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
 
         public Task<ProductModel> SelectAsync(Expression<Func<ProductModel, bool>> predicate)

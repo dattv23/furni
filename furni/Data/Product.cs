@@ -19,7 +19,6 @@ namespace furni.Data
         public string ImageUrl { get; set; } // Url Image product
 
         [Required]
-        [StringLength(1000, ErrorMessage = "The description must be 1000 characters or fewer.")]
         public string Description { get; set; } // Detailed product description.
 
         [Required]
