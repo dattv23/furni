@@ -1,18 +1,15 @@
-using furni.Areas.Admin.Models;
-using furni.Areas.Admin.Repositories;
 using furni.Data;
-using furni.Interfaces;
-using furni.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using furni.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddSingleton<IVnPayService, VnPayService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -23,8 +20,8 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddControllersWithViews()
-	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-	.AddDataAnnotationsLocalization();
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -38,15 +35,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
-builder.Services.AddScoped<IGenericRepository<ProductModel, int>, ProductRepository>();
-builder.Services.AddScoped<IGenericRepository<CategoryModel, int>, CategoryRepository>();
-
-builder.Services.AddRazorPages();
-
-//builder.Services.AddSingleton<ImgurService>(new ImgurService(configuration["imgur:clientId"]));
-builder.Services.AddSingleton<ImgurService>(new ImgurService("e1cfa4e34f0abc1"));
-builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

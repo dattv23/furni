@@ -1,8 +1,8 @@
-﻿
-@model List<ProductItem>
+﻿@model List<ProductItem>
 
 @{
     Layout = null;
+    var index = 0;
 }
 
 <!DOCTYPE html>
@@ -50,46 +50,66 @@
             <div class="transformer">
                 <div class="form-check">
                     <label class="radio expensive" for="trans--check">
-                        <input type="radio" name="method" id="trans--check">
-                        Giao hàng tiết kiệm <span>-25k</span>
+                        <input type="radio" name="giao-hang-method" id="trans--check" checked>
+                        Giao hàng hoả tốc <span>50k</span>
                     </label>
                 </div>
             </div>
             <div class="list-product" style="margin-left: 20px;">
                 <div class="head-time d-flex align-items-baseline">
                     <i class="fa-solid fa-box" style="margin-right: 10px;"></i>
-                    <p>Gói: Giao đúng sáng mai, 8h - 12h, 08/04</p>
+                    <p>Gói: Giao đúng ngày mai, 10h - 16h, @DateTime.Now.AddDays(1).ToString("dd/MM")</p>
                 </div>
                 <p>Giao hàng tiết kiệm</p>
+
+                @foreach (var item in Model)
+                {
+                    <div class="d-flex align-items-center" style="width: 60%">
+                        <div class="col-3">
+                            <figure>
+                                <img class="image-product" src="@item.ImageUrl" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-9" style="margin-left: -10px;">
+                            <p style="margin-bottom: 5px; color: #808089;">@item.Name</p>
+                            <div class="d-flex justify-content-between">
+                                <p style="color: #808089;">SL: x @item.Quantity</p>
+                                <p class="total-price">@item.TotalPrice</p>
+                            </div>
+                        </div>
+                    </div>
+                    index++;
+                }
+
             </div>
             <div class="hr-th">
             </div>
             <div class="thanh-toan">
                 <p style="margin-top: 20px; font-size: 18px; font-weight: 600; color: #38383d;">Chọn hình thức thanh toán</p>
                 <div class="list-thanh-toan">
-                    <label class="radio" for="payment-1" style="display: block;">
-                        <input type="radio" name="method" id="payment-1">
+                    <label class="method-pay" for="payment-1" style="display: block;">
+                        <input type="radio" name="method" id="payment-1" checked>
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/92/b2/78/1b3b9cda5208b323eb9ec56b84c7eb87.png" width="32px" height="32px" alt="" ">
                         </span>
                         Thanh toán tiền mặt khi nhận hàng
                     </label>
-                    <label class="radio" for="payment-1" style="display: block; margin-top: 40px;">
-                        <input type="radio" name="method" id="payment-1">
+                    <label class="method-pay" for="payment-2" style="display: block; margin-top: 40px;">
+                        <input type="radio" name="method" id="payment-2" value="VN Pay">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/77/6a/df/a35cb9c62b9215dbc6d334a77cda4327.png" width="32px" height="32px" alt="">
                         </span>
                         Thanh toán bằng VNPAY
                     </label>
-                    <label class="radio" for="payment-1" style="display: block; margin-top: 40px;">
-                        <input type="radio" name="method" id="payment-1">
+                    <label class="method-pay" for="payment-3" style="display: block; margin-top: 40px;">
+                        <input type="radio" name="method" id="payment-3" value="VN Pay">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/ce/f6/e8/ea880ef285856f744e3ffb5d282d4b2d.jpg" width="32px" height="32px" alt="">
                         </span>
                         Thanh toán bằng ví MoMo
                     </label>
-                    <label class="radio" for="payment-1" style="display: block; margin-top: 40px;">
-                        <input type="radio" name="method" id="payment-1">
+                    <label class="method-pay" for="payment-4" style="display: block; margin-top: 40px; margin-bottom: 20px">
+                        <input type="radio" name="method" id="payment-4">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/2f/43/da/dd7ded6d3659036f15f95fe81ac76d93.png" width="32px" height="32px" alt="">
                         </span>
@@ -108,7 +128,7 @@
                     <p class="name infor">Nguyễn Ngọc Tiệp</p>
                     <p class="infor">037562332</p>
                 </div>
-                <p style="color: #808089;"><span>Nhà</span>nhà trọ số 4 hẻm 17 đường 28, Phường Linh Tinh, Thành phố Califonia, Mỹ</p>
+                <p style="color: #808089;"><span style="padding: 4px 8px; background: #f1f4e3; margin-right: 4px;">Nhà</span>nhà trọ số 4 hẻm 17 đường 28, Phường Linh Tinh, Thành phố Califonia, Mỹ</p>
             </div>
             <div class="coupon-left">
                 <p style="font-weight: 500; margin-top: 10px;">Furni khuyến mãi</p>
@@ -120,18 +140,21 @@
             <div class="list-payment">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <p style="margin-top: 15px; font-size: 19px;">Đơn hàng</p>
-                    <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229)">Thay đổi</p>
+                    <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229)"></p>
                 </div>
-                <p>2 sản phẩm. <span>Xem thông tin</span></p>
+                <div class="d-flex justify-content-between align-items-baseline">
+                    <p style="margin-top: 15px; font-size: 19px;">@index Sản phẩm</p>
+                    <a href="javascript:history.back()" class="more-info" style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229); text-decoration: none">Thông tin sản phẩm</a>
+                </div>
             </div>
             <div class="sum-money">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <p>Tạm tính</p>
-                    <p>0 đ</p>
+                    <p id="tam--tinh">0 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
                     <p>Phí vận chuyển</p>
-                    <p>0 đ</p>
+                    <p>50.000 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
                     <p>Khuyến mãi vẫn chuyển</p>
@@ -143,9 +166,9 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
                     <p style="margin-top: 10px">Tổng tiền</p>
-                    <p style="font-size: 25px; margin-top: 10px; color: rgb(255, 66, 78);">0 đ</p>
+                    <p id="sum--tam__tinh" style="font-size: 25px; margin-top: 10px; color: rgb(255, 66, 78);">0 đ</p>
                 </div>
-                <div class="d-flex justify-content-center align-items-center btn-dat--hang">
+                <div class="d-flex justify-content-center align-items-center btn-dat--hang" onclick="submitCheckout()">
                     Đặt hàng
                 </div>
             </div>
@@ -167,29 +190,60 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>        window.onload = function () {
+            var totalPriceElements = document.getElementsByClassName('total-price');
+            var total = 0;
+
+            for (var i = 0; i < totalPriceElements.length; i++) {
+                // Loại bỏ các ký tự không phải số và chuyển đổi chuỗi thành số
+                var priceText = totalPriceElements[i].innerText.replace(/[^\d]/g, '');
+                var price = parseFloat(priceText);
+                if (!isNaN(price)) {
+                    total += price;
+                }
+            }
+            var change = 50000;
+            var sum = total + change;
+            // Cập nhật tổng vào phần tử có ID 'tam--tinh'
+            document.getElementById('tam--tinh').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
+            document.getElementById('sum--tam__tinh').innerText = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sum);
+        }</script>
+
+
+
+
+
+
+    <script>        function submitCheckout() {
+            // Xác định phương thức thanh toán được chọn
+            var selectedPaymentMethod = document.querySelector('input[name="method"]:checked').value;
+
+            // Gửi dữ liệu đến server sử dụng AJAX
+            fetch('/Payment/checkout', { // Thay 'ControllerName' bằng tên controller thực tế của bạn
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ payment: selectedPaymentMethod })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    if (data.redirectUrl) {
+                        window.location.href = data.redirectUrl; // Chuyển hướng đến URL nhận được
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }</script>
+
 </body>
 </html>
-@*@if (Model != null && Model.Any())
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID Sản Phẩm</th>
-                    <th>Số Lượng</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.ProductId</td>
-                        <td>@item.Quantity</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>Không có sản phẩm nào trong giỏ hàng.</p>
-    }*@

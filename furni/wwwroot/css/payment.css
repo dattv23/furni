@@ -1,5 +1,6 @@
 ﻿html {
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -9,6 +10,10 @@ body {
 .payment {
     padding: 20px 0px;
     background-color: #fff;
+}
+
+label:hover {
+    cursor: pointer;
 }
 
 .contai {
@@ -93,6 +98,10 @@ body {
     align-items: center;
 }
 
+    .radio:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
     .radio::before,
     .radio::after {
         content: "";
@@ -113,8 +122,8 @@ body {
 
     .radio:has(:checked)::after {
         position: absolute;
-        top: 28px;
-        left: 16px;
+        top: 8px;
+        left: 6px;
         width: 8px;
         height: 8px;
         border-radius: 50%;
@@ -132,15 +141,20 @@ body {
         display: none;
     }
 
-.expensive {
+.form-check {
+    width: 60%;
     background-color: rgb(239, 248, 255);
     padding: 20px 300px 20px 10px;
     border-radius: 10px;
-    border: 1px solid rgb(56, 160, 239)
+    border: 1px solid rgb(56, 160, 239);
+    margin-left: 20px;
+    width: 70%;
 }
+/*------------------------------------*/
 
+
+/*---------------------------------------*/
 /* list product */
-
 .list-product {
     margin-top: 50px;
     width: 95%;
@@ -259,4 +273,16 @@ body {
 .footer-list > p {
     margin-right: 20px;
     font-size: 13px;
+}
+
+.image-product {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn-dat--hang:hover {
+    cursor: pointer !important;
+    outline: 1px solid rgb(255, 66, 78);
 }
