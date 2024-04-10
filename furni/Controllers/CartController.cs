@@ -25,11 +25,11 @@ namespace furni.Controllers
 
 
             var cartItems = await _context.CartItems
-                .Where(c => c.UserId == userId) 
-                .Include(c => c.Product) 
+                .Where(c => c.UserId == userId)
+                .Include(c => c.Product)
                 .ToListAsync();
 
-            return View(cartItems); 
+            return View(cartItems);
         }
 
         // POST: Cart/AddToCart
@@ -37,7 +37,7 @@ namespace furni.Controllers
         public async Task<IActionResult> AddToCart(int productId, int quantity = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge(); 
+            if (user == null) return Challenge();
 
             var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserId == user.Id);
             if (cart == null)

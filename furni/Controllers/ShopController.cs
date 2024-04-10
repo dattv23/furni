@@ -23,6 +23,7 @@ namespace furni.Controllers
             var product = await _context.Products
                 .Include(p => p.Specification)
                 .Include(p => p.Category)
+                .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
