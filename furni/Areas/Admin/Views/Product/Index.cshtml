@@ -5,17 +5,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        @Html.Raw(TempData["SuccessMessage"].ToString())
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-}
-
 <div class="container-fluid">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            @Html.Raw(TempData["SuccessMessage"].ToString())
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-center align-items-center">
             <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách sản phẩm</h6>
@@ -74,7 +74,10 @@
                                 <td>@product.StockQuantity</td>
                                 <td class="d-inline-block">
                                     <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
-                                    <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                    @if (ViewBag.IsAdmin)
+                                    {
+                                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                    }
                                 </td>
                             </tr>
                         }

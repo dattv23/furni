@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin)]
+    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
     [Area("Admin")]
     public class HomeController : Controller
     {

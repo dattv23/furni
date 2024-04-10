@@ -29,6 +29,5 @@ namespace furni.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<furni.Areas.Admin.Models.ProductModel> ProductModel { get; set; }
     }
 }

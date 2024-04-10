@@ -27,9 +27,10 @@ namespace furni.Areas.Admin.Repositories
         {
             // Convert UserModel to ApplicationUser
             var userEntity = _mapper.Map<ApplicationUser>(model);
-            userEntity.UserName = model.Email.Split("@")[0].ToString();
             Guid guid = Guid.NewGuid();
             userEntity.Id = guid.ToString();
+            userEntity.UserName = model.Email;
+            userEntity.NormalizedUserName = model.Email.ToUpper();
 
             // Use UserManager to create the user asynchronously
             var result = await _userManager.CreateAsync(userEntity, "Furni@2024");

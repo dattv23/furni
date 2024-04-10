@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin)]
+    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -32,6 +32,20 @@ namespace furni.Areas.Admin.Controllers
             try
             {
                 var users = await _userRepo.GetAllAsync();
+                var currentUser = await _userManager.GetUserAsync(User);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                ViewBag.IsAdmin = isAdmin;
+
+                var userRoles = new Dictionary<string, List<string>>();
+
+                foreach (var userModel in users)
+                {
+                    var user = await _userManager.FindByIdAsync(userModel.Id.ToString());
+                    var roles = await _userManager.GetRolesAsync(user);
+                    userRoles.Add(userModel.Id, roles.ToList());
+                }
+
+                ViewBag.UserRoles = userRoles;
                 return View(users);
             }
             catch (Exception ex)
@@ -46,13 +60,16 @@ namespace furni.Areas.Admin.Controllers
         public async Task<IActionResult> Add()
         {
             // Fetch the list of roles
+            var currentUser = await _userManager.GetUserAsync(User);
+            var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+            ViewBag.IsAdmin = isAdmin;
             ViewBag.Roles = new SelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken] // Protect against CSRF attacks
-        public async Task<IActionResult> Add(UserModel userModel, string SelectedRole)
+        public async Task<IActionResult> Add(UserModel userModel, string SelectedRole = SystemDefinications.Role_Customer)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +78,8 @@ namespace furni.Areas.Admin.Controllers
                     await _userRepo.AddAsync(userModel);
                     var user = await _userManager.FindByEmailAsync(userModel.Email);
                     await _userManager.AddToRoleAsync(user, SelectedRole);
+                    // Add TempData success message
+                    TempData["SuccessMessage"] = $"User '{userModel.Email}' added successfully.";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
@@ -84,6 +103,9 @@ namespace furni.Areas.Admin.Controllers
                     return NotFound();
                 }
                 ViewBag.Roles = new SelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
+                var currentUser = await _userManager.GetUserAsync(User);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                ViewBag.IsAdmin = isAdmin;
                 return View(user);
             }
             catch (Exception ex)
@@ -94,7 +116,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(string id, UserModel model, string SelectedRole)
+        public async Task<IActionResult> Update(string id, UserModel model, string SelectedRole = SystemDefinications.Role_Customer)
         {
             try
             {
@@ -115,6 +137,8 @@ namespace furni.Areas.Admin.Controllers
                             await _userManager.AddToRoleAsync(user, SelectedRole);
                         }
                     }
+                    // Add TempData success message
+                    TempData["SuccessMessage"] = $"User '{model.Email}' updated successfully.";
                     return RedirectToAction("Index");
                 }
                 return View(model);
@@ -126,7 +150,23 @@ namespace furni.Areas.Admin.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var user = await _userRepo.GetByIdAsync(id);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction("Index");
+            }
+            // Pass the user to a view which will show the confirmation dialog
+            return View(user);
+        }
+
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = SystemDefinications.Role_Admin)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
@@ -141,6 +181,10 @@ namespace furni.Areas.Admin.Controllers
 
                 await _userRepo.RemoveAsync(id); // Implement this method in your repository
                 _logger.LogInformation("User with ID {UserId} was deleted successfully.", id);
+
+                // Add a success message to TempData
+                TempData["SuccessMessage"] = $"User {user.FirstName} {user.LastName} was deleted successfully.";
+
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

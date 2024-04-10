@@ -12,18 +12,20 @@ using furni.Services;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin)]
+    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
     [Area("Admin")]
     public class ProductController : Controller
     {
         private readonly IGenericRepository<ProductModel, int> _productRepo;
         private readonly IGenericRepository<CategoryModel, int> _categoryRepo;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ImgurService _imgurService;
         private readonly ILogger<ProductController> _logger;
-        public ProductController(IGenericRepository<ProductModel, int> productRepo, IGenericRepository<CategoryModel, int> categoryRepo, ImgurService imgurService, ILogger<ProductController> logger)
+        public ProductController(IGenericRepository<ProductModel, int> productRepo, IGenericRepository<CategoryModel, int> categoryRepo, UserManager<ApplicationUser> userManager, ImgurService imgurService, ILogger<ProductController> logger)
         {
             _productRepo = productRepo;
             _categoryRepo = categoryRepo;
+            _userManager = userManager;
             _imgurService = imgurService;
             _logger = logger;
         }
@@ -34,6 +36,9 @@ namespace furni.Areas.Admin.Controllers
             {
                 var products = await _productRepo.GetAllAsync();
                 ViewBag.Categories = await _categoryRepo.GetAllAsync();
+                var currentUser = await _userManager.GetUserAsync(User);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                ViewBag.IsAdmin = isAdmin;
                 return View(products);
             }
             catch (Exception ex)
@@ -229,6 +234,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = SystemDefinications.Role_Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productRepo.GetByIdAsync(id);
@@ -243,6 +249,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = SystemDefinications.Role_Admin)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
