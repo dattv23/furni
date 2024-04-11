@@ -6,20 +6,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
+    [Authorize(Roles = SystemDefinitions.Role_Admin + "," + SystemDefinitions.Role_Employee)]
     [Area("Admin")]
     public class CategoryController : Controller
     {
-
-
         private readonly ApplicationDbContext _context;
         private readonly IGenericRepository<CategoryModel, int> _categoryRepo;
         private readonly ILogger<CategoryController> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
+
         public CategoryController(ApplicationDbContext context, ILogger<CategoryController> logger, IGenericRepository<CategoryModel, int> categoryrepo, UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -27,6 +25,7 @@ namespace furni.Areas.Admin.Controllers
             _logger = logger;
             _categoryRepo = categoryrepo;
         }
+
         public async Task<IActionResult> Index()
         {
             try
@@ -34,7 +33,7 @@ namespace furni.Areas.Admin.Controllers
                 var category = await _categoryRepo.GetAllAsync();
                 ViewBag.Categories = await _categoryRepo.GetAllAsync();
                 var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
                 ViewBag.IsAdmin = isAdmin;
                 //ViewBag.Categories =category;
                 return View(category);
@@ -46,6 +45,7 @@ namespace furni.Areas.Admin.Controllers
                 return View("Error"); // Make sure to have an Error view to show error details or messages.
             }
         }
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -55,6 +55,7 @@ namespace furni.Areas.Admin.Controllers
    
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(CategoryModel categoryModel)
         {
@@ -133,6 +134,7 @@ namespace furni.Areas.Admin.Controllers
             }
 
         }
+
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -146,8 +148,9 @@ namespace furni.Areas.Admin.Controllers
             // Pass the category to a view which will show the confirmation dialog
             return View(category);
         }
+
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

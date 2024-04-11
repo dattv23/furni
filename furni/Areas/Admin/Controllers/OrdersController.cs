@@ -5,43 +5,38 @@ using furni.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using static NuGet.Packaging.PackagingConstants;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
+    [Authorize(Roles = SystemDefinitions.Role_Admin + "," + SystemDefinitions.Role_Employee)]
     [Area("Admin")]
     public class OrdersController : Controller
     {
         private readonly IGenericRepository<OrdersModel, int> _orderRepo;
+        private readonly IGenericRepository<UserModel, string> _userRepo;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<OrdersController> _logger;
-        private readonly RoleManager<IdentityRole> _roleManager;
         public readonly UserManager<ApplicationUser> _userManager;
-        private readonly IGenericRepository<UserModel, string> _userRepo;
-        public OrdersController( RoleManager<IdentityRole> roleManager,ApplicationDbContext context, IGenericRepository<OrdersModel,int >orderRepo, UserManager<ApplicationUser> userManager, ILogger<OrdersController> logger, IGenericRepository<UserModel, String> userRepo)
+
+        public OrdersController(ApplicationDbContext context, IGenericRepository<OrdersModel,int> orderRepo, UserManager<ApplicationUser> userManager, ILogger<OrdersController> logger, IGenericRepository<UserModel, String> userRepo)
         {
             _orderRepo = orderRepo;
             _context = context;
             _logger = logger;
             _userManager = userManager;
             _userRepo = userRepo;
-            _roleManager = roleManager;
-
         }
         public async Task<IActionResult> Index()
         {
-            
             try
             {
                 var order = await _orderRepo.GetAllAsync();
                 ViewBag.orders = await _orderRepo.GetAllAsync();
 
                 var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
                 ViewBag.IsAdmin = isAdmin;
 
-                //ViewBag.Categories =category;
                 return View(order);
             }
             catch (Exception ex)
@@ -65,7 +60,7 @@ namespace furni.Areas.Admin.Controllers
             return View(order);
         }
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         [ValidateAntiForgeryToken]
         virtual
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -93,6 +88,7 @@ namespace furni.Areas.Admin.Controllers
                 return View("Error"); // Or, consider a more specific error handling approach
             }
         }
+
         public IActionResult Create()
         {
             var Order = _context.Orders.ToList();
