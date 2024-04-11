@@ -1,52 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Xóa Đơn Hàng";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model furni.Areas.Admin.Models.OrdersModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<h1>Delete</h1>
 
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Xóa Đơn Hàng</h1>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-center align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách danh mục</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" id="selectAll" /></th>
-                            <th>Id</th>
-                            <th>Id người dùng</th>
-                            <th>Ngày đặt hàng</th>
-                            <th>Tổng số tiền đơn hàng</th>
-                            <th>Trạng thái của đơn hàng</th>
-                            <th>Id phiếu giảm</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach (var orders in Model)
-                        {
-                            <tr>
-                                <td><input type="checkbox" class="product-checkbox" value="@orders.Id" /></td>
-                                <td>@orders.Id</td>
-                                <td>@orders.UserId</td>
-                                <td>@orders.OrderDate</td>
-                                <td>@orders.TotalAmount</td>
-                                <td>@orders.Status</td>
-                                <td>@orders.CouponId</td>
-
-                            </tr>
-                        }
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" id="delete-selected">Xóa Đã Chọn</button>
-    </div>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OrdersModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CouponId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CouponId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>

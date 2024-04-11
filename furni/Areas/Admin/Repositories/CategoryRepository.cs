@@ -18,9 +18,11 @@ namespace furni.Areas.Admin.Repositories
             _mapper = mapper;
         }
 
-        public Task<int> AddAsync(CategoryModel entity)
+        public async Task<int> AddAsync(CategoryModel model)
         {
-            throw new NotImplementedException();
+            var CategoryEntity = _mapper.Map<Category>(model);
+            await _context.Categories.AddAsync(CategoryEntity);
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<List<CategoryModel>> GetAllAsync()
@@ -31,9 +33,14 @@ namespace furni.Areas.Admin.Repositories
             return _mapper.Map<List<CategoryModel>>(categories);
         }
 
-        public Task<CategoryModel> GetByIdAsync(int id)
+        public async Task<CategoryModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var CategoryEntity = await _context.Categories.FindAsync(id);
+            if (CategoryEntity == null || CategoryEntity.IsDeleted == true)
+            {
+                return null; // or handle as appropriate
+            }
+            return _mapper.Map<CategoryModel>(CategoryEntity);
         }
 
         public Task<CategoryModel> GetByIdWithIncludesAsync(int id)
@@ -41,14 +48,22 @@ namespace furni.Areas.Admin.Repositories
             throw new NotImplementedException();
         }
 
-        public Task RemoveAsync(int id)
+        public async Task RemoveAsync(int id)
         {
-            throw new NotImplementedException();
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
+            {
+                category.IsDeleted = true;
+
+                _context.Entry(category).State = EntityState.Modified;
+
+                await SaveAsync();
+            }
         }
 
-        public Task<int> SaveAsync()
+        public async Task<int> SaveAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
 
         public Task<CategoryModel> SelectAsync(Expression<Func<CategoryModel, bool>> predicate)
@@ -56,9 +71,21 @@ namespace furni.Areas.Admin.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, CategoryModel entity)
+        public async Task UpdateAsync(int id, CategoryModel model)
         {
-            throw new NotImplementedException();
+            var existingCategory = await _context.Categories.FindAsync(id);
+            if (existingCategory != null)
+            {
+                // Map the updated values onto the retrieved Category entity
+                _mapper.Map(model, existingCategory);
+
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("Category not found.");
+            }
+            
         }
 
         // Dispose Methods

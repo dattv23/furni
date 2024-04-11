@@ -1,76 +1,49 @@
-﻿@using System.Collections
-@model furni.Data.Category
+﻿@model furni.Areas.Admin.Models.CategoryModel
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Tải thư viện DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
 
-    <div class="container mt-3">
-    <h2 class="mb-4">Thêm Danh Mục</h2>
-<form asp-action="Create" id="createForm">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h1>Create</h1>
 
-    <div class="form-group">
-        <label asp-for="Name" class="control-label">Tên danh mục</label>
-        <input id="Name" name="Name" asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+<h4>CategoryModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input id="Name" name="Name" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input id="Description" name="Description" asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentId" class="control-label">Parent Id</label>
+                <select asp-for="ParentId" class="form-control" asp-items="ViewBag.CategoriesId">
+                    <option value="">-- Select Parent Category --</option>
+                </select>
+                <span asp-validation-for="ParentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Description" class="control-label">Mô tả</label>
-        <input id="Description" name="Description" asp-for="Description" class="form-control" />
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ParentId">Parent Id</label>
-        <select asp-for="ParentId" class="form-control">
-            <option value="">-- Select Parent Category --</option>
-            @foreach (var category in ViewBag.Categories)
-            {
-                <option value="@category.Value">@category.Text</option>
-            }
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-</form>
-    
 </div>
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#createForm').submit(function (event) {
-                event.preventDefault(); // Prevent traditional form submission
-                var formData = new FormData($(this)[0]); // Create FormData object from form
-                $.ajax({
-                    url: '/Admin/Category/Create', // Path to the Create action in the Category controller
-                    type: 'POST',
-                    data: formData, // Send data as form data
-                    contentType: false, // Don't set contentType when using FormData
-                    processData: false, // Don't process data before sending when using FormData
 
-                    success: function (response) {
-                        if (response.success) {
-                            alert("Category added successfully: " + response.message); // Success message
-                            // Additional success handling, like refreshing the page
-                        } else {
-                            // Display error message
-                            alert("Đã xảy ra lỗi " + response.message);
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        // Error handling
-                        alert("An error occurred: " + error);
-                    }
-                });
-            });
-        });
-    </script>
+
+<div class="text-center">
+    <a asp-action="Index" class="text-center">Trở về danh mục chính</a>
+</div>>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

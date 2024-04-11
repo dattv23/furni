@@ -1,114 +1,178 @@
-﻿//using furni.Data;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc.Rendering;
-//using Microsoft.EntityFrameworkCore;
+﻿using furni.Areas.Admin.Models;
+using furni.Data;
+using furni.Interfaces;
+using furni.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
-//namespace furni.Areas.Admin.Controllers
-//{
-//    [Authorize(Roles = "admin")]
-//    [Area("Admin")]
-//    public class CategoryController : Controller
-//    {
-       
-//        private readonly ApplicationDbContext _context;
-//        public CategoryController(ApplicationDbContext context )
-//        {
-//            _context = context;
-           
-//        }
-//        public IActionResult Index()
-//        {
-//            var category = _context.Categories.ToList();
-//            return View(category);
-//        }
-
-//        public IActionResult Create()
-//        {
-//            var categories = _context.Categories
-//            .Where(c => c.Id >= 1 && c.Id <= 4)
-//            .Select(c => new SelectListItem
-//            {
-//                 Value = c.Id.ToString(), 
-//                Text = c.Name
-//            })
-//                .ToList();
-//            ViewBag.Categories = categories;
+namespace furni.Areas.Admin.Controllers
+{
+    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
+    [Area("Admin")]
+    public class CategoryController : Controller
+    {
 
 
-//            return View();
-//        }
+        private readonly ApplicationDbContext _context;
+        private readonly IGenericRepository<CategoryModel, int> _categoryRepo;
+        private readonly ILogger<CategoryController> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
+        public CategoryController(ApplicationDbContext context, ILogger<CategoryController> logger, IGenericRepository<CategoryModel, int> categoryrepo, UserManager<ApplicationUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+            _logger = logger;
+            _categoryRepo = categoryrepo;
+        }
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                var category = await _categoryRepo.GetAllAsync();
+                ViewBag.Categories = await _categoryRepo.GetAllAsync();
+                var currentUser = await _userManager.GetUserAsync(User);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                ViewBag.IsAdmin = isAdmin;
+                //ViewBag.Categories =category;
+                return View(category);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving users.");
+                // Consider returning an appropriate error view or a response
+                return View("Error"); // Make sure to have an Error view to show error details or messages.
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            var categories = await _categoryRepo.GetAllAsync();
+            var filteredCategories = categories.Where(c => c.ParentId == null).ToList();
+            ViewBag.CategoriesId = new SelectList(filteredCategories, "Id", "Name");
+   
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(CategoryModel categoryModel)
+        {
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _categoryRepo.AddAsync(categoryModel);
+                    TempData["SuccessMessage"] = $"Category {categoryModel.Name} was created successfully.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception with context information
+                    _logger.LogError(ex, "An error occurred while adding a new Category: {CategoryName}", categoryModel.Name);
 
-//        [HttpPost]
-//        public async Task<IActionResult> Create([FromForm] Category category)
-//        {
-//            // Kiểm tra xem dữ liệu đầu vào có hợp lệ không
-//            if (!ModelState.IsValid)
-//            {
-//                // Lấy thông tin lỗi từ ModelState và trả về cho client
-//                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-//                return BadRequest(new { success = false, message = errors });
-//            }
+                    // Add a more descriptive error message for users
+                    ModelState.AddModelError("", "An unexpected error occurred while adding the Category. Please try again.");
+                }
+            }
+            return View();
 
-//            // Nếu dữ liệu hợp lệ, tiếp tục xử lý
-//            _context.Categories.Add(category);
-//            await _context.SaveChangesAsync();
+        }
 
-//            // Trả về phản hồi thành công
-//            return Ok(new { success = true, message = "Category added successfully" });
-//        }
-//        public IActionResult Update()
-//        {
-//            var categories = _context.Categories
-//           .Where(c => c.Id >= 1 && c.Id <= 4)
-//           .Select(c => new SelectListItem
-//           {
-//               Value = c.Id.ToString(),
-//               Text = c.Name
-//           })
-//               .ToList();
-//            ViewBag.Categories = categories;
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            try
+            {
+                var category = await _categoryRepo.GetByIdAsync(id);
+                if (category == null)
+                {
+                    TempData["ErrorMessage"] = "category not found.";
+                    return RedirectToAction("Index");
+                }
 
+                // Fetch the list of categories
+                ViewBag.Categories = new SelectList(await _categoryRepo.GetAllAsync(), "ParentId", "Name");
+                return View(category);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving category details for ID {CategoryId}", id);
+                TempData["ErrorMessage"] = "An error occurred while retrieving category details. Please try again.";
+                return RedirectToAction("Index");
+            }
+        }
 
-//            return View();
-//        }
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, CategoryModel model)
+        {
+            try
+            {
+                if (id != model.Id)
+                {
+                    TempData["ErrorMessage"] = "Category ID mismatch.";
+                    return RedirectToAction("Index");
+                }
 
-//        //[HttpPost]
-//        //[ValidateAntiForgeryToken]
-//        //public async Task<IActionResult> Delete(int id)
-//        //{
-//        //    var category = await _context.Categories.FindAsync(id);
-//        //    if (category == null)
-//        //    {
-//        //        return NotFound();
-//        //    }
+                if (ModelState.IsValid)
+                {
+                    await _categoryRepo.UpdateAsync(id, model);
+                    TempData["SuccessMessage"] = "Category updated successfully.";
+                    // Add a success message to TempData
+                    TempData["SuccessMessage"] = $"Category {model.Name} was updated successfully.";
+                    return RedirectToAction("Index"); 
+                }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating Category with ID {CategoryId}", id);
+                TempData["ErrorMessage"] = "An error occurred while updating the Category. Please try again.";
+                return RedirectToAction("Index");
+            }
 
-//        //    // Đánh dấu danh mục là đã bị xóa mềm
-//        //    category.IsDeleted = true;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var category = await _categoryRepo.GetByIdAsync(id);
+            if (category == null)
+            {
+                TempData["ErrorMessage"] = "category not found.";
+                return RedirectToAction("Index");
+            }
 
-//        //    // Lưu thay đổi vào cơ sở dữ liệu
-//        //    await _context.SaveChangesAsync();
+            // Pass the category to a view which will show the confirmation dialog
+            return View(category);
+        }
+        [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            try
+            {
+                var category = await _categoryRepo.GetByIdAsync(id);
+                if (category == null)
+                {
+                    _logger.LogWarning("Attempted to delete a category with ID {CategoryId} that does not exist.", id);
+                    return NotFound();
+                }
 
-//        //    return Ok(new { success = true, message = "Danh mục đã được xóa mềm thành công." });
-//        //}
+                await _categoryRepo.RemoveAsync(id); // Implement this method in your repository
+                _logger.LogInformation("Category with ID {CategoryId} was deleted successfully.", id);
 
-//        //[ValidateAntiForgeryToken]
-//        //[HttpPost("DeleteSelected")]
-//        //public async Task<IActionResult> DeleteSelected([FromBody] List<int> ids)
-//        //{
-//        //    var categories = await _context.Categories.Where(c => ids.Contains(c.Id)).ToListAsync();
-//        //    foreach (var category in categories)
-//        //    {
-//        //        category.IsDeleted = true; // Đánh dấu xóa mềm
-//        //    }
-//        //    await _context.SaveChangesAsync();
-//        //    return Ok(new { success = true, message = "Các danh mục đã được xóa mềm thành công." });
-//        //}
-//        public IActionResult Delete()
-//        {
-//            var category = _context.Categories.ToList();
-//            return View(category);
-//        }
-//    }
-//}
+                // Add a success message to TempData
+                TempData["SuccessMessage"] = $"Category {category.Name} was deleted successfully.";
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while deleting a category with ID {CategoryId}.", id);
+                return View("Error"); // Or, consider a more specific error handling approach
+            }
+        }
+    }
+}
