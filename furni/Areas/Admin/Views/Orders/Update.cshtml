@@ -1,0 +1,43 @@
+﻿@* @{
+    ViewData["Title"] = "Cập Nhật Đơn Hàng";
+    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    <h2 class="mb-4">Cập Nhật Đơn Hàng</h2>
+
+    <form asp-action="Update" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3">
+            <label asp-for="UserId" class="form-label">ID Người Dùng</label>
+            <input asp-for="UserId" class="form-control" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group mb-3">
+            <label asp-for="TotalAmount" class="form-label">Tổng Tiền</label>
+            <input asp-for="TotalAmount" class="form-control" />
+            <span asp-validation-for="TotalAmount" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Status" class="form-label">Trạng Thái</label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group mb-4">
+            <label asp-for="CouponId" class="form-label">ID Coupon</label>
+            <select asp-for="CouponId" class="form-select" asp-items="ViewBag.CouponId"></select>
+            <span asp-validation-for="CouponId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Cập Nhật</button>
+        </div>
+    </form>
+</div>
+ *@

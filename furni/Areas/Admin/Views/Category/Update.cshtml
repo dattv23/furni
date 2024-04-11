@@ -1,41 +1,30 @@
-﻿@model furni.Data.Category
+﻿@model furni.Areas.Admin.Models.CategoryModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<h2 class="mb-4">Cập Nhật Danh Mục</h2>
 
-<div class="container mt-3">
-    <h2 class="mb-4">Cập Nhật Danh Mục</h2>
-
-    <form asp-action="Update" method="post">
-        <input type="hidden" asp-for="Id" />
-
-        <div class="form-group mb-3">
-            <label asp-for="Name" class="form-label">Tên Danh Mục</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-3">
-            <label asp-for="Description" class="form-label">Mô Tả</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ParentId">Parent Id</label>
-            <select asp-for="ParentId" class="form-control">
-                <option value="">-- Select Parent Category --</option>
-                @foreach (var category in ViewBag.Categories)
-                {
-                    <option value="@category.Value">@category.Text</option>
-                }
-            </select>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Cập Nhật</button>
-        </div>
-    </form>
-</div>
+<form asp-action="Update" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group col-12 col-md-6">
+        <label asp-for="ParentId" class="control-label">Category</label>
+        <select asp-for="ParentId" asp-items="@ViewBag.Categories" class="form-control"></select>
+        <span asp-validation-for="ParentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

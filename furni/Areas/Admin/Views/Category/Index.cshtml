@@ -1,6 +1,7 @@
-﻿@{
+﻿@model IEnumerable<furni.Areas.Admin.Models.CategoryModel>
+@{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -24,7 +25,7 @@
                             <th>Name</th>
                             <th>Mô tả</th>
                             <th>Id danh mục cha</th>
-                            <th>Ngày tạo danh mục</th>
+                            <td></td>
                         </tr>
                     </thead>
 
@@ -34,9 +35,34 @@
                             <tr>
                                 <td>@category.Id</td>
                                 <td>@category.Name</td>
-                                <td>@category.Description</td>
+                            <td>
+                                @if(category.Description != null)
+                                {
+                                    
+                
+                                <span data-toggle="tooltip" title="@Html.Raw(category.Description)">
+                                    @Html.Raw(category.Description.Substring(0, Math.Min(10, category.Description.Length)))
+                                    @if (category.Description.Length > 10)
+                                    {
+                                        <span class="text-primary"><a asp-area="Admin" asp-controller="Product" asp-action="Display" asp-route-id="@category.Id" class="mr-2">...</a></span>
+                                    }
+                                    </span>
+                                }
+                                else
+                                {
+                                    @("Không có");
+                                }
+                            </td>
+
                                 <td>@category.ParentId</td>
-                                <td>@category.CreatedAt</td>
+                               @*  <td>@category.CreatedAt</td> *@
+                            <td class="d-inline-block">
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
+                                @if (ViewBag.IsAdmin)
+                                {
+                                    <a asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                }
+                            </td>
                             </tr>
                         }
                         </tr>
