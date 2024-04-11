@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Bình luận" xml:space="preserve">
+    <value>Bình luận</value>
+  </data>
+  <data name="Bảo hành" xml:space="preserve">
+    <value>Bảo hành</value>
+  </data>
+  <data name="Chi tiết" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="Chiếc" xml:space="preserve">
+    <value>Chiếc</value>
+  </data>
+  <data name="Chiều cao" xml:space="preserve">
+    <value>Chiều cao</value>
+  </data>
+  <data name="Chiều sâu" xml:space="preserve">
+    <value>Chiều sâu</value>
+  </data>
+  <data name="Chất lượng" xml:space="preserve">
+    <value>Chất lượng</value>
+  </data>
+  <data name="Cảm ơn bạn đã luôn ủng hộ chúng tôi, ở đây bạn có thể xem thông tin chi tiết các sản phẩm của cửa hàng chúng tôi." xml:space="preserve">
+    <value>Cảm ơn bạn đã luôn ủng hộ chúng tôi, ở đây bạn có thể xem thông tin chi tiết các sản phẩm của cửa hàng chúng tôi.</value>
+  </data>
+  <data name="Dựa trên 3 đánh giá" xml:space="preserve">
+    <value>Dựa trên 3 đánh giá</value>
+  </data>
+  <data name="Giới thiệu" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="Hồi đáp" xml:space="preserve">
+    <value>Hồi đáp</value>
+  </data>
+  <data name="Khám phá" xml:space="preserve">
+    <value>Khám phá</value>
+  </data>
+  <data name="Khả dụng" xml:space="preserve">
+    <value>Khả dụng</value>
+  </data>
+  <data name="Khối lượng" xml:space="preserve">
+    <value>Khối lượng</value>
+  </data>
+  <data name="Loại" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn." xml:space="preserve">
+    <value>mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn.</value>
+  </data>
+  <data name="mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện ích. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó." xml:space="preserve">
+    <value>mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện ích. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó.</value>
+  </data>
+  <data name="Mua ngay" xml:space="preserve">
+    <value>Mua ngay</value>
+  </data>
+  <data name="Mô tả" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="Năm" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="Nổi bật" xml:space="preserve">
+    <value>Nổi bật</value>
+  </data>
+  <data name="Nội thất hiện đại" xml:space="preserve">
+    <value>Nội thất hiện đại</value>
+  </data>
+  <data name="String17" xml:space="preserve">
+    <value>Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn.</value>
+  </data>
+  <data name="Studio thiết kế" xml:space="preserve">
+    <value>Studio thiết kế</value>
+  </data>
+  <data name="Sản phẩm này rất tốt với túi tiền của tôi" xml:space="preserve">
+    <value>Sản phẩm này rất tốt với túi tiền của tôi</value>
+  </data>
+  <data name="Sản phẩm này thật sự tuyệt" xml:space="preserve">
+    <value>Sản phẩm này thật sự tuyệt</value>
+  </data>
+  <data name="Sản phẩn đẹp và chất lượng" xml:space="preserve">
+    <value>Sản phẩn đẹp và chất lượng</value>
+  </data>
+  <data name="Số điện thoại" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="Thêm 1 đánh giá" xml:space="preserve">
+    <value>Thêm 1 đánh giá</value>
+  </data>
+  <data name="Thêm vào giỏ hàng" xml:space="preserve">
+    <value>Thêm vào giỏ hàng</value>
+  </data>
+  <data name="Thêm vào giỏ hàng thành công!" xml:space="preserve">
+    <value>Thêm vào giỏ hàng thành công!</value>
+  </data>
+  <data name="Thông báo" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="Tin nhắn" xml:space="preserve">
+    <value>Tin nhắn</value>
+  </data>
+  <data name="Trong kho" xml:space="preserve">
+    <value>Trong kho</value>
+  </data>
+  <data name="Tên của bạn" xml:space="preserve">
+    <value>Tên của bạn</value>
+  </data>
+  <data name="Tận hưởng những phút giây bên gia đình bằng những chiếc ghế êm ái, đầy sang trọng trong tổ ấm của bạn." xml:space="preserve">
+    <value>Tận hưởng những phút giây bên gia đình bằng những chiếc ghế êm ái, đầy sang trọng trong tổ ấm của bạn.</value>
+  </data>
+  <data name="Tổng quan" xml:space="preserve">
+    <value>Tổng quan</value>
+  </data>
+  <data name="Xác nhận" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="Địa chỉ email" xml:space="preserve">
+    <value>Địa chỉ email</value>
+  </data>
+  <data name="Đánh giá của bạn:" xml:space="preserve">
+    <value>Đánh giá của bạn:</value>
+  </data>
+  <data name="Đánh giá ngay" xml:space="preserve">
+    <value>Đánh giá ngay</value>
+  </data>
+  <data name="Đánh giá sản phẩm" xml:space="preserve">
+    <value>Đánh giá sản phẩm</value>
+  </data>
+  <data name="Đã xảy ra lỗi:" xml:space="preserve">
+    <value>Đã xảy ra lỗi:</value>
+  </data>
+  <data name="Độ rộng" xml:space="preserve">
+    <value>Độ rộng</value>
+  </data>
+</root>

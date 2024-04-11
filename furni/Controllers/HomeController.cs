@@ -25,7 +25,7 @@ namespace furni.Controllers
             {
                 return View();
             }
-            var isCustomer = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Customer);
+            var isCustomer = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Customer);
             if (isCustomer)
             {
                 return View();

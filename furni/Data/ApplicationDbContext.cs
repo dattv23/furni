@@ -16,7 +16,7 @@ namespace furni.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
-        public DbSet<Category> Coupons { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
