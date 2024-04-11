@@ -99,9 +99,7 @@
                                     <div class="more--infor__support"></div>
                                     <a style="display: block">Tài khoản của tôi</a>
                                     <a style="display: block">Đơn mua</a>
-                                    <form class="w-100 bg-body" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                                        <button type="submit" class="d-block">Đăng xuất</button>
-                                    </form>
+                                    <a href="/Identity/Account/Logout?returnUrl=%2F" style="display: block">Đăng xuất</a>
                                 </div>
                             </li>
                         }
@@ -278,6 +276,7 @@
                 });
             });</script>
     </div>
+    <script src=""></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
