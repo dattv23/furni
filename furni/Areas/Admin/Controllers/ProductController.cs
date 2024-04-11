@@ -12,7 +12,7 @@ using furni.Services;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
+    [Authorize(Roles = SystemDefinitions.Role_Admin + "," + SystemDefinitions.Role_Employee)]
     [Area("Admin")]
     public class ProductController : Controller
     {
@@ -37,7 +37,7 @@ namespace furni.Areas.Admin.Controllers
                 var products = await _productRepo.GetAllAsync();
                 ViewBag.Categories = await _categoryRepo.GetAllAsync();
                 var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
                 ViewBag.IsAdmin = isAdmin;
                 return View(products);
             }
@@ -234,7 +234,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productRepo.GetByIdAsync(id);
@@ -249,7 +249,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

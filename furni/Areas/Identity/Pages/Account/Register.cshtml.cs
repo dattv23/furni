@@ -145,15 +145,15 @@ namespace furni.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    if (!_roleManager.RoleExistsAsync(SystemDefinications.Role_Customer).GetAwaiter().GetResult())
+                    if (!_roleManager.RoleExistsAsync(SystemDefinitions.Role_Customer).GetAwaiter().GetResult())
                     {
-                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Customer)).GetAwaiter().GetResult();
-                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Employee)).GetAwaiter().GetResult();
-                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Admin)).GetAwaiter().GetResult();
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinitions.Role_Customer)).GetAwaiter().GetResult();
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinitions.Role_Employee)).GetAwaiter().GetResult();
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinitions.Role_Admin)).GetAwaiter().GetResult();
                     }
 
                     // set the user role
-                    await _userManager.AddToRoleAsync(user, SystemDefinications.Role_Customer);
+                    await _userManager.AddToRoleAsync(user, SystemDefinitions.Role_Customer);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

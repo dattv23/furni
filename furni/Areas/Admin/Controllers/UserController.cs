@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace furni.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemDefinications.Role_Admin + "," + SystemDefinications.Role_Employee)]
+    [Authorize(Roles = SystemDefinitions.Role_Admin + "," + SystemDefinitions.Role_Employee)]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -33,7 +33,7 @@ namespace furni.Areas.Admin.Controllers
             {
                 var users = await _userRepo.GetAllAsync();
                 var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
                 ViewBag.IsAdmin = isAdmin;
 
                 var userRoles = new Dictionary<string, List<string>>();
@@ -61,7 +61,7 @@ namespace furni.Areas.Admin.Controllers
         {
             // Fetch the list of roles
             var currentUser = await _userManager.GetUserAsync(User);
-            var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+            var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
             ViewBag.IsAdmin = isAdmin;
             ViewBag.Roles = new SelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
             return View();
@@ -69,7 +69,7 @@ namespace furni.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // Protect against CSRF attacks
-        public async Task<IActionResult> Add(UserModel userModel, string SelectedRole = SystemDefinications.Role_Customer)
+        public async Task<IActionResult> Add(UserModel userModel, string SelectedRole = SystemDefinitions.Role_Customer)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace furni.Areas.Admin.Controllers
                 }
                 ViewBag.Roles = new SelectList(await _roleManager.Roles.ToListAsync(), "Name", "Name");
                 var currentUser = await _userManager.GetUserAsync(User);
-                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Admin);
+                var isAdmin = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Admin);
                 ViewBag.IsAdmin = isAdmin;
                 return View(user);
             }
@@ -116,7 +116,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(string id, UserModel model, string SelectedRole = SystemDefinications.Role_Customer)
+        public async Task<IActionResult> Update(string id, UserModel model, string SelectedRole = SystemDefinitions.Role_Customer)
         {
             try
             {
@@ -152,7 +152,7 @@ namespace furni.Areas.Admin.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         public async Task<IActionResult> Delete(string id)
         {
             var user = await _userRepo.GetByIdAsync(id);
@@ -166,7 +166,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = SystemDefinications.Role_Admin)]
+        [Authorize(Roles = SystemDefinitions.Role_Admin)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
