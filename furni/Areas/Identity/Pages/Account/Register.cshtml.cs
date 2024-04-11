@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using furni.Models;
 
 namespace furni.Areas.Identity.Pages.Account
 {
@@ -26,6 +27,7 @@ namespace furni.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -33,12 +35,14 @@ namespace furni.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
@@ -141,8 +145,15 @@ namespace furni.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    if (!_roleManager.RoleExistsAsync(SystemDefinications.Role_Customer).GetAwaiter().GetResult())
+                    {
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Customer)).GetAwaiter().GetResult();
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Employee)).GetAwaiter().GetResult();
+                        _roleManager.CreateAsync(new IdentityRole(SystemDefinications.Role_Admin)).GetAwaiter().GetResult();
+                    }
+
                     // set the user role
-                    await _userManager.AddToRoleAsync(user, "client");
+                    await _userManager.AddToRoleAsync(user, SystemDefinications.Role_Customer);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

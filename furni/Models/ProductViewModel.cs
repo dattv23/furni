@@ -16,5 +16,5 @@ namespace furni.Models
         public List<CategoryViewModel> ParentCategory { get; set; }
         public string SortBy { get; set; }
     }
-    
+
 }

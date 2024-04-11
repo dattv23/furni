@@ -15,6 +15,12 @@ namespace furni.Data
         // It is initialized to a non-null value to satisfy the compiler's nullability checks.
         public string LastName { get; set; } = null!;
 
+        // Address is a required property that holds the user's address.
+        public string Address { get; set; } = null!;
+
+        // IsDeleted is a property that holds the user's status deleted user.
+        public bool? IsDeleted { get; set; } = false;
+
         // Navigation property for the one-to-many relationship with Orders.
         // A user can place multiple orders.
         public virtual ICollection<Order> Orders { get; set; }

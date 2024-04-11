@@ -19,12 +19,25 @@ namespace furni.Controllers
             _userManager = userManager;
         }
 
+        public async Task<IActionResult> Order()
+        {
+            var userId = _userManager.GetUserId(User);
+
+
+            var cartItems = await _context.CartItems
+                .Where(c => c.UserId == userId)
+                .Include(c => c.Product)
+                .ToListAsync();
+
+            return View(cartItems);
+        }
+
         // POST: Cart/AddToCart
         [HttpPost]
         public async Task<IActionResult> AddToCart(int productId, int quantity = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge(); 
+            if (user == null) return Challenge();
 
             var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserId == user.Id);
             if (cart == null)
@@ -55,6 +68,19 @@ namespace furni.Controllers
 
             await _context.SaveChangesAsync();
             return Ok();
+        }
+
+
+        public async Task<IActionResult> Index()
+        {
+            string currentUserId = User.Identity.Name; // Hoặc một phương thức khác để lấy UserId, tùy vào cách bạn quản lý người dùng
+
+            var cartItems = await _context.CartItems
+                .Where(c => c.UserId == currentUserId) // Lọc cart items dựa trên UserId
+                .Include(c => c.Product) // Đảm bảo thông tin sản phẩm được nạp cùng
+                .ToListAsync();
+
+            return View(cartItems); // Truyền danh sách cartItems vào view
         }
     }
 

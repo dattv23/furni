@@ -1,39 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model IEnumerable<furni.Areas.Admin.Models.UserModel>
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            @Html.Raw(TempData["SuccessMessage"].ToString())
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
-    <!-- Page Heading -->
-    <h2 class="mt-3">Quản Lý Người Dùng</h2>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-center align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách danh mục</h6>
-           
+            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách người dùng</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataUserTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>TênNgườiDùng</th>
-                            <th>TênNgườiDùngChuẩnHóa</th>
-                            <th>Số điện thoại</th>
+                            <th>Họ Tên</th>
                             <th>Email</th>
-                            <th>Email Chuẩn Hóa</th>
-                            <th>Mật Khẩu Băm</th>
-                            <th>Dấu Bảo Mậtl</th>
-                            <th>Dấu Thời Gian Đồng Thời</th>
-                            <th>Số Điện Thoại</th>
-                            <th>Xác Nhận Số Điện Thoại</th>
-                            <th>Kích Hoạt Hai Yếu Tố</th>
-                            <th>Kết Thúc Khoá</th>
-                            <th>Khoá Cho Phép</th>
-                            <th>Số Lần Truy Cập Thất Bại</th>
-                            <th>Họ</th>
-                            <th>Tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            @if (ViewBag.IsAdmin)
+                            {
+                                <th>Roles</th>
+                            }
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -42,30 +43,39 @@
                         {
                             <tr>
                                 <td>@user.Id</td>
-                                <td>@user.UserName</td>
-                                <td>@user.NormalizedUserName</td>
+                                <td>@(user.FirstName + " " + user.LastName)</td>
                                 <td>@user.Email</td>
-                                <td>@user.NormalizedEmail</td>
-                                <td>@user.EmailConfirmed</td>
-                                <td>@user.PasswordHash</td>
-                                <td>@user.SecurityStamp</td>
-                                <td>@user.ConcurrencyStamp</td>
                                 <td>@user.PhoneNumber</td>
-                                <td>@user.PhoneNumberConfirmed</td>
-                                <td>@user.TwoFactorEnabled</td>
-                                <td>@user.LockoutEnd</td>
-                                <td>@user.LockoutEnabled</td>
-                                <td>@user.AccessFailedCount</td>
-                                <td>@user.FirstName</td>
-                                <td>@user.LastName</td>
-
+                                <td>@user.Address</td>
+                                @if (ViewBag.IsAdmin)
+                                {
+                                    <td>
+                                        @{
+                                            var userRole = ViewBag.UserRoles[user.Id];
+                                        }
+                                        @string.Join(", ", userRole)
+                                    </td>
+                                }
+                                <td>
+                                    <a asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-id="@user.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
+                                    @if (ViewBag.IsAdmin)
+                                    {
+                                        <a asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" data-user-email="@user.Email"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                    }
+                                </td>
                             </tr>
                         }
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#dataUserTable").DataTable();
+        })
+    </script>
+}

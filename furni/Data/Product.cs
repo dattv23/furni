@@ -19,7 +19,6 @@ namespace furni.Data
         public string ImageUrl { get; set; } // Url Image product
 
         [Required]
-        [StringLength(1000, ErrorMessage = "The description must be 1000 characters or fewer.")]
         public string Description { get; set; } // Detailed product description.
 
         [Required]
@@ -29,6 +28,9 @@ namespace furni.Data
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Stock Quantity cannot be negative.")]
         public int StockQuantity { get; set; } // Available stock quantity.
+
+        // IsDeleted is a property that holds the product's status deleted product.
+        public bool? IsDeleted { get; set; } = false;
 
         // Category relationship
         [ForeignKey("Category")]

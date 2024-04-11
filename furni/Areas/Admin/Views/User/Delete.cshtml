@@ -1,82 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model furni.Areas.Admin.Models.UserModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ NGƯỜI DÙNG</h1>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-center align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary mr-auto">Danh sách danh mục</h6>
-            <div>
-                <!-- Nút thêm -->
-                <button type="button" class="btn btn-secondary">Thêm</button>
-                <!-- Nút sửa -->
-                <button type="button" class="btn btn-secondary">Xóa</button>
-                <!-- Nút xóa -->
-                <button type="button" class="btn btn-secondary">Sửa</button>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" id="selectAll" /></th>
-                            <th>Id</th>
-                            <th>TênNgườiDùng</th>
-                            <th>TênNgườiDùngChuẩnHóa</th>
-                            <th>Số điện thoại</th>
-                            <th>Email</th>
-                            <th>Email Chuẩn Hóa</th>
-                            <th>Mật Khẩu Băm</th>
-                            <th>Dấu Bảo Mậtl</th>
-                            <th>Dấu Thời Gian Đồng Thời</th>
-                            <th>Số Điện Thoại</th>
-                            <th>Xác Nhận Số Điện Thoại</th>
-                            <th>Kích Hoạt Hai Yếu Tố</th>
-                            <th>Kết Thúc Khoá</th>
-                            <th>Khoá Cho Phép</th>
-                            <th>Số Lần Truy Cập Thất Bại</th>
-                            <th>Họ</th>
-                            <th>Tên</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach (var user in Model)
-                        {
-                            <tr>
-                                <td><input type="checkbox" class="product-checkbox" value="@user.Id" /></td>
-                                <td>@user.Id</td>
-                                <td>@user.UserName</td>
-                                <td>@user.NormalizedUserName</td>
-                                <td>@user.Email</td>
-                                <td>@user.NormalizedEmail</td>
-                                <td>@user.EmailConfirmed</td>
-                                <td>@user.PasswordHash</td>
-                                <td>@user.SecurityStamp</td>
-                                <td>@user.ConcurrencyStamp</td>
-                                <td>@user.PhoneNumber</td>
-                                <td>@user.PhoneNumberConfirmed</td>
-                                <td>@user.TwoFactorEnabled</td>
-                                <td>@user.LockoutEnd</td>
-                                <td>@user.LockoutEnabled</td>
-                                <td>@user.AccessFailedCount</td>
-                                <td>@user.FirstName</td>
-                                <td>@user.LastName</td>
-
-                            </tr>
-                        }
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" id="delete-selected">Xóa Đã Chọn</button>
-    </div>
-
+<h3>Bạn có chắc là muốn xóa người dùng này không?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Họ Tên
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.FirstName + " " + Model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Trở về danh sách</a>
+    </form>
 </div>

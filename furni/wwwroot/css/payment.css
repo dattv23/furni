@@ -1,0 +1,288 @@
+﻿html {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: rgb(245, 245, 250);
+}
+
+.payment {
+    padding: 20px 0px;
+    background-color: #fff;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+.contai {
+    min-width: 1270px;
+}
+
+.logo > p {
+    padding-top: 5px;
+    color: #1AA7FF;
+    font-size: 25px;
+}
+
+.logo > h1 {
+    position: relative;
+    padding-right: 20px;
+    font-size: 40px;
+    font-weight: 800;
+    color: #3b3d50;
+}
+
+    .logo > h1::after {
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 35px;
+        position: absolute;
+        background-color: #9477e9;
+        top: 11px;
+        right: 10px;
+    }
+
+.mess {
+    padding: 5px 15px;
+    border: 1px solid rgb(48, 225, 225);
+    border-radius: 50px;
+    background-color: rgb(239, 248, 255);
+}
+
+.fa-solid.fa-phone {
+    background-color: rgb(23, 167, 255);
+    border: 8px solid rgb(23, 167, 255);
+    color: #fff;
+    border-radius: 999px;
+}
+
+.phone > p {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+    .phone > p:first-child {
+        color: rgb(23, 167, 255);
+        font-weight: 600;
+    }
+
+    .phone > p:last-child {
+        color: rgb(128, 128, 137)
+    }
+
+.content-right {
+    background-color: #fff;
+    border-right: 20px solid rgb(245, 245, 250);
+}
+
+    .content-right > h2 {
+        padding-top: 15px;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+
+.content-left {
+    background: #fff;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+.radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+    .radio:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    .radio::before,
+    .radio::after {
+        content: "";
+        display: inline-block;
+    }
+
+    .radio::before {
+        margin-right: 15px;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+    }
+
+    .radio:has(:checked)::before {
+        border-color: rgb(11, 116, 229);
+    }
+
+    .radio:has(:checked)::after {
+        position: absolute;
+        top: 8px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgb(11, 116, 229);
+    }
+
+    .radio > span {
+        background-color: #f6efef;
+        padding: 0px 8px;
+        margin-left: 4px;
+        color: rgb(1, 171, 86);
+    }
+
+    .radio [type='radio'] {
+        display: none;
+    }
+
+.form-check {
+    width: 60%;
+    background-color: rgb(239, 248, 255);
+    padding: 20px 300px 20px 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(56, 160, 239);
+    margin-left: 20px;
+    width: 70%;
+}
+/*------------------------------------*/
+
+
+/*---------------------------------------*/
+/* list product */
+.list-product {
+    margin-top: 50px;
+    width: 95%;
+    border: 1px solid rgb(56, 160, 239);
+    margin-left: 2%;
+    padding: 10px;
+    padding-bottom: 25px;
+    border-radius: 15px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+    .list-product > p:nth-child(2) {
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+.head-time p {
+    margin: 0px;
+}
+
+.head-time {
+    color: #079449;
+    padding: 0px 10px;
+    position: absolute;
+    top: -15px;
+    background-color: #fff;
+}
+
+.content-left .name {
+    position: relative;
+    margin-right: 20px;
+}
+
+    .content-left .name::after {
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background-color: red;
+        display: inline-block;
+        content: "";
+        top: 2px;
+        right: -11px;
+    }
+
+.content-left .infor {
+    font-weight: 600;
+}
+
+.hr-th {
+    height: 20px;
+    background-color: rgb(245, 245, 250);
+}
+
+
+
+
+
+.head-left {
+    padding-left: 20px;
+    border-bottom: 20px solid rgb(245, 245, 250);
+}
+
+.coupon-left {
+    padding-left: 20px;
+    border-bottom: 20px solid rgb(245, 245, 250);
+}
+
+.list-payment {
+    padding-left: 20px;
+    border-bottom: 1px solid rgb(245, 245, 250);
+    margin-bottom: 15px;
+}
+
+.sum-money {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+    .sum-money p {
+        margin-bottom: 10px;
+    }
+
+    .sum-money > div p:first-child {
+        color: #808089;
+    }
+
+.thanh-toan {
+    padding-left: 20px;
+}
+
+.btn-dat--hang {
+    background-color: rgb(255, 66, 78);
+    padding: 13px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.footer {
+    background-color: rgb(235, 235, 240);
+}
+
+.footer-payment {
+    margin-top: 50px;
+    padding: 20px 0px 10px;
+}
+
+    .footer-payment > p:first-child {
+        color: #808089;
+        font-size: 13px;
+    }
+
+.footer-list > p {
+    margin-right: 20px;
+    font-size: 13px;
+}
+
+.image-product {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn-dat--hang:hover {
+    cursor: pointer !important;
+    outline: 1px solid rgb(255, 66, 78);
+}
