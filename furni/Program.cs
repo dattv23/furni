@@ -9,6 +9,8 @@ using furni.Areas.Admin.Models;
 using furni.Areas.Admin.Repositories;
 using furni.Interfaces;
 using furni.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,17 @@ builder.Services.AddSession(options =>
 builder.Services.AddControllersWithViews()
     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
     .AddDataAnnotationsLocalization();
+
+builder.Services.AddAuthentication().AddGoogle(options =>
+                                      {
+                                          options.ClientId = "1022495641683-82pto6eboauvum4ua67am2frec33io2a.apps.googleusercontent.com";
+                                          options.ClientSecret = "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";
+                                      })
+                                      .AddFacebook(options =>
+                                      {
+                                          options.AppId = "YOUR_FACEBOOK_APP_ID";
+                                          options.AppSecret = "YOUR_FACEBOOK_APP_SECRET";
+                                      });
 
 builder.Services.AddAutoMapper(typeof(Program));
 

@@ -75,16 +75,16 @@ namespace furni.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required(ErrorMessage = "Please enter your first name")]
+            [Required(ErrorMessage = "Vui lòng nhập tên")]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Please enter your last name")]
+            [Required(ErrorMessage = "Vui lòng nhập họ")]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
-            [Required(ErrorMessage = "Please enter your phone number")]
-            [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be 10 digits")]
+            [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
+            [RegularExpression(@"^\d{10}$", ErrorMessage = "Nhập đúng số điện thoại của bạn")]
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
 
@@ -92,7 +92,7 @@ namespace furni.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Vui lòng nhập Email")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -101,7 +101,7 @@ namespace furni.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -113,7 +113,7 @@ namespace furni.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp.")]
             public string ConfirmPassword { get; set; }
         }
 

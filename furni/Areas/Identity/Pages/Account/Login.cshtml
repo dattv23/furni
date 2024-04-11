@@ -18,7 +18,7 @@
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <div class="main-login">
-                <h1>Sign in</h1>
+                <h1 style="background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%); background-clip: text; color: transparent;">Đăng nhập</h1>
                 @{
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                         <div>
@@ -56,7 +56,7 @@
                     <input asp-for="Input.Password" type="password" placeholder="Password" autocomplete="current-password" aria-required="true" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
 
-                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword" style="color: #7777e0;">Forgot your password?</a>
                     <button id="login-submit" type="submit" class="btn">Log in</button>
                 </form>
             </div>
