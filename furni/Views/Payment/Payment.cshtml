@@ -13,7 +13,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sản phẩm</title>
+    <title>@Localizer["Sản phẩm"]</title>
     <link rel="icon" href="img/favicon.png">
 
     <!-- Bootstrap CSS -->
@@ -32,7 +32,7 @@
         <div class="contai container d-flex justify-content-between">
             <div class="logo d-flex align-items-center">
                 <h1 style="margin: 0px;">Furni</h1>
-                <p style="margin: 0px;">Thanh toán</p>
+                <p style="margin: 0px;">@Localizer["Thanh toán"]</p>
             </div>
             <div class="mess d-flex align-items-center">
                 <i class="fa-solid fa-phone"></i>
@@ -46,21 +46,21 @@
     </div>
     <div class="contai container d-flex justify-content-between main">
         <div class="content-right col-9">
-            <h2 style="padding-left: 25px;">Chọn hình thức giao hàng</h2>
+            <h2 style="padding-left: 25px;">@Localizer["Chọn hình thức giao hàng"]</h2>
             <div class="transformer">
                 <div class="form-check">
                     <label class="radio expensive" for="trans--check">
                         <input type="radio" name="giao-hang-method" id="trans--check" checked>
-                        Giao hàng hoả tốc <span>50k</span>
+                        @Localizer["Giao hàng hoả tốc"] <span>50k</span>
                     </label>
                 </div>
             </div>
             <div class="list-product" style="margin-left: 20px;">
                 <div class="head-time d-flex align-items-baseline">
                     <i class="fa-solid fa-box" style="margin-right: 10px;"></i>
-                    <p>Gói: Giao đúng ngày mai, 10h - 16h, @DateTime.Now.AddDays(1).ToString("dd/MM")</p>
+                    <p>@Localizer["Gói: Giao đúng ngày mai"], 10h - 16h, @DateTime.Now.AddDays(1).ToString("dd/MM")</p>
                 </div>
-                <p>Giao hàng tiết kiệm</p>
+                <p>@Localizer["Giao hàng tiết kiệm"]</p>
 
                 @foreach (var item in Model)
                 {
@@ -85,35 +85,35 @@
             <div class="hr-th">
             </div>
             <div class="thanh-toan">
-                <p style="margin-top: 20px; font-size: 18px; font-weight: 600; color: #38383d;">Chọn hình thức thanh toán</p>
+                <p style="margin-top: 20px; font-size: 18px; font-weight: 600; color: #38383d;">@Localizer["Chọn hình thức thanh toán"]</p>
                 <div class="list-thanh-toan">
                     <label class="method-pay" for="payment-1" style="display: block;">
                         <input type="radio" name="method" id="payment-1" checked>
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/92/b2/78/1b3b9cda5208b323eb9ec56b84c7eb87.png" width="32px" height="32px" alt="" ">
                         </span>
-                        Thanh toán tiền mặt khi nhận hàng
+                            @Localizer["Thanh toán tiền mặt khi nhận hàng"]
                     </label>
                     <label class="method-pay" for="payment-2" style="display: block; margin-top: 40px;">
                         <input type="radio" name="method" id="payment-2" value="VN Pay">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/77/6a/df/a35cb9c62b9215dbc6d334a77cda4327.png" width="32px" height="32px" alt="">
                         </span>
-                        Thanh toán bằng VNPAY
+                        @Localizer["Thanh toán bằng VNPAY"]
                     </label>
                     <label class="method-pay" for="payment-3" style="display: block; margin-top: 40px;">
                         <input type="radio" name="method" id="payment-3" value="VN Pay">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/ce/f6/e8/ea880ef285856f744e3ffb5d282d4b2d.jpg" width="32px" height="32px" alt="">
                         </span>
-                        Thanh toán bằng ví MoMo
+                        @Localizer["Thanh toán bằng ví MoMo"]
                     </label>
                     <label class="method-pay" for="payment-4" style="display: block; margin-top: 40px; margin-bottom: 20px">
                         <input type="radio" name="method" id="payment-4">
                         <span style="margin-right: 10px; background-color: transparent;">
                             <img src="https://salt.tikicdn.com/ts/upload/2f/43/da/dd7ded6d3659036f15f95fe81ac76d93.png" width="32px" height="32px" alt="">
                         </span>
-                        Ví ZaloPay
+                        @Localizer["Ví ZaloPay"]
                     </label>
                 </div>
             </div>
@@ -121,55 +121,55 @@
         <div class="col-3 content-left">
             <div class="head-left">
                 <di class="d-flex justify-content-between align-items-baseline">
-                    <p style="margin-top: 15px; font-size: 19px; color: #808089;">Giao tới</p>
-                    <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color: #4d4dec;">Thay đổi</p>
+                    <p style="margin-top: 15px; font-size: 19px; color: #808089;">@Localizer["Giao tới"]</p>
+                    <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color: #4d4dec;">@Localizer["Thay đổi"]</p>
                 </di>
                 <div class="address d-flex">
                     <p class="name infor">Nguyễn Ngọc Tiệp</p>
                     <p class="infor">037562332</p>
                 </div>
-                <p style="color: #808089;"><span style="padding: 4px 8px; background: #f1f4e3; margin-right: 4px;">Nhà</span>nhà trọ số 4 hẻm 17 đường 28, Phường Linh Tinh, Thành phố Califonia, Mỹ</p>
+                <p style="color: #808089;"><span style="padding: 4px 8px; background: #f1f4e3; margin-right: 4px;">@Localizer["Nhà"]</span>nhà trọ số 4 hẻm 17 đường 28, Phường Linh Tinh, Thành phố Califonia, Mỹ</p>
             </div>
             <div class="coupon-left">
-                <p style="font-weight: 500; margin-top: 10px;">Furni khuyến mãi</p>
+                <p style="font-weight: 500; margin-top: 10px;">@Localizer["Furni khuyến mãi"]</p>
                 <div class="d-flex align-items-baseline" style="color: rgb(11, 116, 229);">
                     <i class="fa-solid fa-ticket" style="margin-right: 10px;"></i>
-                    <p>Chọn hoặc nhập mã giảm giá</p>
+                    <p>@Localizer["Chọn hoặc nhập mã giảm giá"]</p>
                 </div>
             </div>
             <div class="list-payment">
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p style="margin-top: 15px; font-size: 19px;">Đơn hàng</p>
+                    <p style="margin-top: 15px; font-size: 19px;">@Localizer["Đơn hàng"]</p>
                     <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229)"></p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p style="margin-top: 15px; font-size: 19px;">@index Sản phẩm</p>
-                    <a href="javascript:history.back()" class="more-info" style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229); text-decoration: none">Thông tin sản phẩm</a>
+                    <p style="margin-top: 15px; font-size: 19px;">@index @Localizer["Sản phẩm"]</p>
+                    <a href="javascript:history.back()" class="more-info" style="margin-top: 15px; padding-right: 20px; font-size: 16px; color:rgb(11, 116, 229); text-decoration: none">@Localizer["Thông tin sản phẩm"]</a>
                 </div>
             </div>
             <div class="sum-money">
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p>Tạm tính</p>
+                    <p>@Localizer["Tạm tính"]</p>
                     <p id="tam--tinh">0 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p>Phí vận chuyển</p>
+                    <p>@Localizer["Phí vận chuyển"]</p>
                     <p>50.000 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p>Khuyến mãi vẫn chuyển</p>
+                    <p>@Localizer["Khuyến mãi vẫn chuyển"]</p>
                     <p style="color: #00ab56;">0 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline" style="border-bottom: 1px solid rgb(235, 235, 240);">
-                    <p>Giảm giá</p>
+                    <p>@Localizer["Giảm giá"]</p>
                     <p style="color: #00ab56;">0 đ</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <p style="margin-top: 10px">Tổng tiền</p>
+                    <p style="margin-top: 10px">@Localizer["Tổng tiền"]</p>
                     <p id="sum--tam__tinh" style="font-size: 25px; margin-top: 10px; color: rgb(255, 66, 78);">0 đ</p>
                 </div>
                 <div class="d-flex justify-content-center align-items-center btn-dat--hang" onclick="submitCheckout()">
-                    Đặt hàng
+                    @Localizer["Đặt hàng"]
                 </div>
             </div>
         </div>
@@ -177,13 +177,13 @@
     <div class="footer">
         <div class="contai container">
             <div class="footer-payment">
-                <p style="margin-bottom: 5px;">Bằng việc tiến hành Đặt Mua, bạn đồng ý với các Điều kiện Giao dịch chung:</p>
+                <p style="margin-bottom: 5px;">@Localizer["Bằng việc tiến hành Đặt Mua, bạn đồng ý với các Điều kiện Giao dịch chung:"]</p>
                 <div class="d-flex footer-list">
-                    <p>Quy chế hoạt động</p>
-                    <p>Chính sách giải quyết khiếu nại</p>
-                    <p>Chính sách bảo hành</p>
-                    <p>Chính sách bảo mật thanh toán</p>
-                    <p>Chính sách bảo mật thông tin cá nhân</p>
+                    <p>@Localizer["Quy chế hoạt động"]</p>
+                    <p>@Localizer["Chính sách giải quyết khiếu nại"]</p>
+                    <p>@Localizer["Chính sách bảo hành"]</p>
+                    <p>@Localizer["Chính sách bảo mật thanh toán"]</p>
+                    <p>@Localizer["Chính sách bảo mật thông tin cá nhân"]</p>
                 </div>
                 <p style="color: #808089; font-size: 13px;">&copy; 2024 bản quyền của Nhóm 9 Lập trình Web (Nguyễn Mạnh Hùng)</p>
             </div>
