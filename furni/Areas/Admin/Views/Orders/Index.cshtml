@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    // int i = 0;
 }
 
 
@@ -22,11 +21,11 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Id người dùng</th>
+                            <th>Họ tên</th>
+                            <th>Địa chỉ</th>
                             <th>Ngày đặt hàng</th>
                             <th>Tổng số tiền đơn hàng</th>
                             <th>Trạng thái của đơn hàng</th>
-                            <th>Id phiếu giảm</th>
                             <td></td>
                         </tr>
                     </thead>
@@ -36,18 +35,11 @@
                         {
                             <tr>
                                 <td>@order.Id</td>
-                                <td>@order.UserId</td>
+                                <td>@(order.User.FirstName + " " + order.User.LastName)</td>
+                                <td>@order.User.Address</td>
+                                <td>@order.OrderDate</td>
                                 <td>@order.TotalAmount</td>
                                 <td>@order.Status</td>
-                                <td>@order.CouponId</td>
-                                @* @for(int j = 0; j < Model.Users.Count(); j++)
-                                {
-                                    if (j == i)
-                                    {
-                                        <td>@Model.Users[j].Email</td>
-                                        @(i++)
-                                    }
-                                } *@
                                 <td class="d-inline-block">
                                     <a asp-area="Admin" asp-controller="Orders" asp-action="Update" asp-route-id="@order.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
                                     @if (ViewBag.IsAdmin)
@@ -58,7 +50,6 @@
 
                             </tr>
                         }
-                        </tr>
                     </tbody>
                 </table>
             </div>

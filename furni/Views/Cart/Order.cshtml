@@ -179,12 +179,15 @@
 </head>
 
 @model IEnumerable<furni.Data.CartItem>
+@using furni.Data
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 <div class="order">
-
-
-
-
     <section id="cart-header" class="breadcrumb breadcrumb_bg" style="background: #abc9ec; padding-top: 15px; display: none">
         <div class="container">
             <div class="row">
@@ -235,8 +238,8 @@
                                                 <p style="min-width: 220px" class="product-name">@item.Product.Name</p>
                                             </div>
                                             @*<div class="media-body">
-                                        <p style="margin-left: -390px" class="product-name">@item.Product.Name</p>
-                                        </div>*@
+                                                <p style="margin-left: -390px" class="product-name">@item.Product.Name</p>
+                                                </div>*@
                                         </div>
                                     </td>
                                     <td>
@@ -287,11 +290,11 @@
                             <a style="font-weight: 400; color: #0b74e5">@Localizer["Thay đổi "]</a>
                         </div>
                         <div class="name-address d-flex rigth-oder">
-                            <p style="padding-right: 10px; border-right: 1px solid #ccc">Nguyễn Ngọc Tiệp</p>
-                            <p style="padding-left: 10px;">0375623446</p>
+                            <p style="padding-right: 10px; border-right: 1px solid #ccc">@(user.FirstName + user.LastName)</p>
+                            <p style="padding-left: 10px;">@(user.PhoneNumber)</p>
                         </div>
                         <div class="rigth-oder">
-                            <p style="color: #808089; font-size: 14px" ; font-weight: 400><span style="font-size: 13px; color: #ab0056; background-color: rgb(232 239 201); padding: 0px 10px ">@Localizer["Nhà"]</span> nhà trọ số 4 hẻm 20 đường 16, Phường Lê Lai, Thành phố Califonia, Ngọc Trinh</p>
+                            <p style="color: #808089; font-size: 14px" ; font-weight: 400><span style="font-size: 13px; color: #ab0056; background-color: rgb(232 239 201); padding: 0px 10px ">@Localizer["Nhà"]</span> @user.Address</p>
                         </div>
                         <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder" style="border-top: 20px solid rgba(245, 245, 251, 1);">
                             <p style="font-size: 14px; font-weight: 400; color: #333; margin-bottom: 0px">@Localizer["Tạm tính"]</p>
@@ -317,6 +320,7 @@
 
                 </div>
             </div>
+        </div>
     </section>
 </div>
 <script>
@@ -442,7 +446,7 @@
                 var imageUrl = row.find('.product-image').attr('src');
                 var quantity = row.find('.quantity').val(); // Lấy số lượng
                 var totalPriceText = row.find('td:nth-child(4) h5').text();
-                selectedProducts.push({ productId: productId, Name: productName, ImageUrl: imageUrl , quantity: quantity, totalPrice: totalPriceText });
+                selectedProducts.push({ productId: productId, Name: productName, ImageUrl: imageUrl, quantity: quantity, totalPrice: totalPriceText });
             });
 
             if (selectedProducts.length === 0) {

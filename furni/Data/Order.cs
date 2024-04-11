@@ -15,6 +15,9 @@ namespace furni.Data
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } // Navigation property linking to the user who owns this order.
 
+        [StringLength(500)]
+        public string Address { get; set; }
+
         public DateTime OrderDate { get; set; } = DateTime.UtcNow; // Timestamp when the order was placed, in UTC.
 
         [Required]

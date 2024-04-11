@@ -141,13 +141,13 @@
                                         <li>
                                             <div class="dropdown--show__product">
                                                 <div class="select">
-                                                    <span class="selected">@category.Name</span>
+                                                    <span class="selected"><a style="display: block; width: 100%" href="@Url.Action("ShowProduct", "Shop", new { categoryId = category.Id })">@category.Name</a></span>@**@
                                                     <div class="caret"></div>
                                                 </div>
                                                 <ul class="menu">
                                                     @foreach (var child in Model.ChildCategories.Where(c => c.ParentId == category.Id))
                                                     {
-                                                        <li><a style="display: block; width: 100%" href="@Url.Action("ShowProduct", "Shop", new { categoryId = child.Id })#para-show">@child.Name</a></li>
+                                                        <li><a style="display: block; width: 100%" href="@Url.Action("ShowProduct", "Shop", new { categoryId = child.Id })">@child.Name</a></li>
                                                     }
                                                 </ul>
                                             </div>
@@ -372,7 +372,7 @@
                                         <ul style="padding-bottom: 0px; margin-bottom: 0px; padding-left: 10px;margin-left: 0px">
                                             @for (int i = 1; i <= Model.TotalPages; i++)
                                             {
-                                                <li><a href="@Url.Action("ShowProduct", new { pageNumber = i })#para-show">@i</a></li>
+                                                <li><a href="@Url.Action("ShowProduct", new { pageNumber = i })">@i</a></li>
                                             }
                                         </ul>
                                     </div>
@@ -398,7 +398,7 @@
                             @foreach (var product in Model.Products)
                             {
                                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" style="padding-top: 30px">
-                                    <a class="product-item" href="@Url.Action("Detail", "Shop", new { id = product.Id })#para-detail">
+                                    <a class="product-item" href="@Url.Action("Detail", "Shop", new { id = product.Id })">
                                         <img src="@product.ImageUrl" class="img-fluid product-thumbnail" style="min-height: 185.25px">
                                         <h3 class="product-title" style="min-height: 40px">@product.Name</h3>
                                         <strong class="product-price" style="color: #c72e2e;">@product.Price.ToString("#,##0 đ")</strong>

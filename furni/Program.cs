@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddSingleton<IVnPayService, VnPayService>();
@@ -31,13 +32,13 @@ builder.Services.AddControllersWithViews()
 
 builder.Services.AddAuthentication().AddGoogle(options =>
                                       {
-                                          options.ClientId = "1022495641683-82pto6eboauvum4ua67am2frec33io2a.apps.googleusercontent.com";
-                                          options.ClientSecret = "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";
+                                          options.ClientId = configuration["Authentication:Google:ClientId"];
+                                          options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
                                       })
                                       .AddFacebook(options =>
                                       {
-                                          options.AppId = "YOUR_FACEBOOK_APP_ID";
-                                          options.AppSecret = "YOUR_FACEBOOK_APP_SECRET";
+                                          options.AppId = configuration["Authentication:Facebook:AppId"];
+                                          options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
                                       });
 
 builder.Services.AddAutoMapper(typeof(Program));
@@ -55,7 +56,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddScoped<IGenericRepository<UserModel, string>, UserRepository>();
 builder.Services.AddScoped<IGenericRepository<ProductModel, int>, ProductRepository>();
 builder.Services.AddScoped<IGenericRepository<CategoryModel, int>, CategoryRepository>();
-builder.Services.AddScoped<IGenericRepository<OrdersModel, int>, OrdersRepository>();
+builder.Services.AddScoped<IGenericRepository<OrdersModel, int>, OrderRepository>();
 builder.Services.AddScoped<IGenericRepository<CouponModel, int>, CouponRepository>();
 
 builder.Services.AddRazorPages();

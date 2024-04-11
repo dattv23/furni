@@ -1,4 +1,5 @@
 ﻿using furni.Data;
+using furni.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 namespace furni.Controllers
 {
     // Trong CartController.cs
-
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;

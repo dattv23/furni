@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace furni.Areas.Admin.Repositories
 {
-    public class OrdersRepository : IGenericRepository<OrdersModel, int>, IDisposable
+    public class OrderRepository : IGenericRepository<OrdersModel, int>, IDisposable
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
         private readonly IGenericRepository<UserModel, string> _userRepo;
         private readonly UserManager<ApplicationUser> _userManager;
-        public OrdersRepository(ApplicationDbContext context, IMapper mapper, IGenericRepository<UserModel, string> userRepo, UserManager<ApplicationUser> userManager)
+        public OrderRepository(ApplicationDbContext context, IMapper mapper, IGenericRepository<UserModel, string> userRepo, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _mapper = mapper;
@@ -26,16 +26,18 @@ namespace furni.Areas.Admin.Repositories
         {
             var OrdersEntity = _mapper.Map<Order>(model);
             await _context.Orders.AddAsync(OrdersEntity);
-            return await _context.SaveChangesAsync();
+            return await SaveAsync();
 
         }
 
         public async Task<List<OrdersModel>> GetAllAsync()
         {
-            var Order = await _context.Orders
-                                     .Where(Order => !Order.IsDeleted)
-                                     .ToListAsync();
-            return _mapper.Map<List<OrdersModel>>(Order);
+            var ordersWithUsers = await _context.Orders
+                                        .Where(order => !order.IsDeleted)
+                                        .Include(order => order.User) 
+                                        .ToListAsync();
+
+            return _mapper.Map<List<OrdersModel>>(ordersWithUsers);
         }
 
         public async Task<OrdersModel> GetByIdAsync(int id)
@@ -84,7 +86,7 @@ namespace furni.Areas.Admin.Repositories
                 // Map the updated values onto the retrieved user entity
                 _mapper.Map(model, existingOrder);
 
-                await _context.SaveChangesAsync();
+                await SaveAsync();
             }
             else
             {
