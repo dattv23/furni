@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using furni.Data
+@using furni.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var isAdmin = await UserManager.IsInRoleAsync(user, SystemDefinitions.Role_Admin);
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -53,7 +63,7 @@
             <div class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Quản lý người dùng</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -70,7 +80,7 @@
             <div class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Quản lý danh mục</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -93,7 +103,7 @@
             <div class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-bed"></i>
                     <span>Quản lý sản phẩm</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -114,7 +124,7 @@
             <div class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities3"
                    aria-expanded="true" aria-controls="collapseUtilities3">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-shopping-cart"></i>
                     <span>Quản lý đơn hàng</span>
                 </a>
                 <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities3"
@@ -129,6 +139,29 @@
                 </div>
             </div>
 
+            @if (isAdmin)
+            {
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block bg-" />
+
+                <div class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities4"
+                       aria-expanded="true" aria-controls="collapseUtilities4">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Quản lý coupon</span>
+                    </a>
+                    <div id="collapseUtilities4" class="collapse" aria-labelledby="headingUtilities4"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Utilities:</h6>
+                            <ul>
+                                <li>@Html.ActionLink("Danh sách", "Index", "Coupon", null, new { @class = "collapse-item" })</li>
+                                <li>@Html.ActionLink("Thêm mã", "Add", "Coupon", null, new { @class = "collapse-item" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
 
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
@@ -397,7 +430,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Identity/Account/Login" method="post">
-                        <button type="submit" class="btn btn-secondary">Logout</button>
+                        <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </div>
             </div>

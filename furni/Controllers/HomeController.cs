@@ -21,7 +21,11 @@ namespace furni.Controllers
         public async Task<IActionResult> Index()
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            var isCustomer = await _userManager.IsInRoleAsync(currentUser, SystemDefinications.Role_Customer);
+            if (currentUser == null)
+            {
+                return View();
+            }
+            var isCustomer = await _userManager.IsInRoleAsync(currentUser, SystemDefinitions.Role_Customer);
             if (isCustomer)
             {
                 return View();

@@ -1,83 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model furni.Areas.Admin.Models.CategoryModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<form id="deleteForm" method="post">
-    @Html.AntiForgeryToken()
+<h1>Delete</h1>
 
-    <h1 class="h3 mb-2 text-gray-800">XÓA DANH MỤC</h1>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" id="selectAll" /></th>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Mô tả</th>
-                            <th>Id danh mục cha</th>
-                            <th>Ngày tạo danh mục</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var category in Model)
-                        {
-                            <tr>
-                                <td><input type="checkbox" class="product-checkbox" value="@category.Id" /></td>
-                                <td>@category.Id</td>
-                                <td>@category.Name</td>
-                                <td>@category.Description</td>
-                                <td>@category.ParentId</td>
-                                <td>@category.CreatedAt</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" id="delete-selected">Xóa Đã Chọn</button>
-    </div>
-   
-</form>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#delete-selected").click(function (e) {
-            e.preventDefault();
-
-            var selectedIds = $('.product-checkbox:checked').map(function () {
-                return parseInt($(this).val());
-            }).get();
-
-            if (selectedIds.length === 0) {
-                alert("Vui lòng chọn ít nhất một danh mục để xóa.");
-                return;
-            }
-
-            if (confirm("Bạn có chắc chắn muốn xóa các danh mục đã chọn?")) {
-                $.ajax({
-                    url: '/Admin/Category/Delete', // Đảm bảo URL này khớp với routing của bạn
-                    type: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(selectedIds),
-                    headers: {
-                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
-                    },
-                    success: function (result) {
-                        alert(result.message);
-                        location.reload();
-                    },
-                    error: function (err) {
-                        alert("Có lỗi xảy ra khi xóa danh mục.");
-                    }
-                });
-            }
-        });
-    });
-</script>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CategoryModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ParentId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ParentId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Trở về danh mục chính</a>
+    </form>
+</div>

@@ -23,9 +23,9 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+                        <h1>@Localizer["Studio thiết kế"]<span clsas="d-block"> @Localizer["Nội thất hiện đại"]</span></h1>
+                        <p class="mb-4">@Localizer["Cảm ơn bạn đã luôn ủng hộ chúng tôi, ở đây bạn có thể xem thông tin chi tiết các sản phẩm của cửa hàng chúng tôi."]</p>
+                        <p><a href="" class="btn btn-secondary me-2">@Localizer["Mua ngay"]</a><a href="#" class="btn btn-white-outline">@Localizer["Khám phá"]</a></p>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -71,25 +71,23 @@
                         <ul class="list">
                             <li>
                                 <a class="active" href="#" style="text-decoration: none; font-weight: 500; font-size: 16px">
-                                    <span style="font-size: 16px; font-weight: 500">Loại</span> : @Model.Category.Name
+                                    <span style="font-size: 16px; font-weight: 500">@Localizer["Loại"]</span> : @Model.Category.Name
                                 </a>
                             </li>
                             <li>
                                 <a class="active" href="#" style="text-decoration: none; font-weight: 500; font-size: 16px">
-                                    <span style="font-size: 16px; font-weight: 500">Khả dụng</span> : Trong kho
+                                    <span style="font-size: 16px; font-weight: 500">@Localizer["Khả dụng"]</span> : @Localizer["Trong kho"]
                                 </a>
                             </li>
                             <li>
 
                                 <a class="active" href="#" style="text-decoration: none; font-weight: 500" ; font-size: 16px>
-                                    <span style="font-size: 16px; font-weight: 500">Bảo hành</span> : @Model.Specification.FreshnessDuration Năm
+                                    <span style="font-size: 16px; font-weight: 500">@Localizer["Bảo hành"]</span> : @Model.Specification.FreshnessDuration @Localizer["Năm"]
                                 </a>
                             </li>
                         </ul>
                         <p>
-                            Tận hưởng những phút giây bên gia đình bằng
-                            những chiếc ghế êm ái, đầy sang trọng trong
-                            tổ ấm của bạn.
+                            @Localizer["Tận hưởng những phút giây bên gia đình bằng những chiếc ghế êm ái, đầy sang trọng trong tổ ấm của bạn."]
                         </p>
                         <div class="card_area d-flex justify-content-between align-items-center">
                             <div class="product_count">
@@ -105,7 +103,7 @@
                             <form id="addToCartForm" asp-controller="Cart" asp-action="AddToCart" method="post">
                                 <input type="hidden" name="productId" value="@Model.Id" />
                                 <input id="formQuantity" type="hidden" name="quantity" value="1" min="1" />
-                                <button class="btn_3" type="submit">Thêm vào giỏ hàng</button>
+                                <button class="btn_3" type="submit">@Localizer["Thêm vào giỏ hàng"]</button>
                             </form>
 
 
@@ -131,7 +129,7 @@
                        href="#home"
                        role="tab"
                        aria-controls="home"
-                       aria-selected="true">Mô tả</a>
+                       aria-selected="true">@Localizer["Mô tả"]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
@@ -140,7 +138,7 @@
                        href="#profile"
                        role="tab"
                        aria-controls="profile"
-                       aria-selected="false">Chi tiết</a>
+                       aria-selected="false">@Localizer["Chi tiết"]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
@@ -149,7 +147,7 @@
                        href="#contact"
                        role="tab"
                        aria-controls="contact"
-                       aria-selected="false">Bình luận</a>
+                       aria-selected="false">@Localizer["Bình luận"]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active"
@@ -158,7 +156,7 @@
                        href="#review"
                        role="tab"
                        aria-controls="review"
-                       aria-selected="false">Tổng quan</a>
+                       aria-selected="false">@Localizer["Tổng quan"]</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -167,10 +165,10 @@
                      role="tabpanel"
                      aria-labelledby="home-tab">
                     <p>
-                        "Chiếc @Model.Name mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."
+                        "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
                     </p>
                     <p>
-                        Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn.
+                        @Localizer["Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]
                     </p>
                 </div>
                 <div class="tab-pane fade"
@@ -182,7 +180,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5>Độ rộng</h5>
+                                        <h5>@Localizer["Độ rộng"]</h5>
                                     </td>
                                     <td>
                                         <h5>@Model.Specification.Width</h5>
@@ -190,7 +188,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Chiều cao</h5>
+                                        <h5>@Localizer["Chiều cao"]</h5>
                                     </td>
                                     <td>
                                         <h5>@Model.Specification.Height</h5>
@@ -198,7 +196,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Chiều sâu</h5>
+                                        <h5>@Localizer["Chiều sâu"]</h5>
                                     </td>
                                     <td>
                                         <h5>@Model.Specification.Depth</h5>
@@ -206,7 +204,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Khối lượng</h5>
+                                        <h5>@Localizer["Khối lượng"]</h5>
                                     </td>
                                     <td>
                                         <h5>@Model.Specification.Weight kg</h5>
@@ -214,7 +212,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Chất lượng</h5>
+                                        <h5>@Localizer["Chất lượng"]</h5>
                                     </td>
                                     <td>
                                         <h5>@(Model.Specification.QualityChecking ? "Tốt" : "Không tốt")</h5>
@@ -222,7 +220,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5>Bảo hành</h5>
+                                        <h5>@Localizer["Bảo hành"]</h5>
                                     </td>
                                     <td>
                                         <h5>@Model.Specification.FreshnessDuration năm</h5>
@@ -250,11 +248,11 @@
                                             <h5>
                                                 12th Feb, 2017 at 05:56 pm
                                             </h5>
-                                            <a class="reply_btn" href="#">Reply</a>
+                                            <a class="reply_btn" href="#">@Localizer["Hồi đáp"]</a>
                                         </div>
                                     </div>
                                     <p>
-                                        "Chiếc @Model.Name không chỉ là một món đồ nội thất thông thường, mà còn là một tác phẩm nghệ thuật trong không gian sống của bạn. Với thiết kế tối giản nhưng vô cùng tinh tế, bàn Mowism UA đã vượt qua mọi kỳ vọng về một chiếc bàn chức năng. Không chỉ đẹp về mặt thẩm mỹ, bàn còn được làm từ chất liệu cao cấp, đảm bảo độ bền và sự ổn định trong mọi điều kiện sử dụng.
+                                        ""@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
                                     </p>
                                 </div>
                                 <div class="review_item reply">
@@ -268,11 +266,11 @@
                                             <h5>
                                                 12th Feb, 2017 at 05:56 pm
                                             </h5>
-                                            <a class="reply_btn" href="#">Reply</a>
+                                            <a class="reply_btn" href="#">@Localizer["Hồi đáp"]</a>
                                         </div>
                                     </div>
                                     <p>
-                                        "Chiếc @Model.Name không chỉ là một món đồ nội thất thông thường, mà còn là một tác phẩm nghệ thuật trong không gian sống của bạn. Với thiết kế tối giản nhưng vô cùng tinh tế, bàn Mowism UA đã vượt qua mọi kỳ vọng về một chiếc bàn chức năng. Không chỉ đẹp về mặt thẩm mỹ, bàn còn được làm từ chất liệu cao cấp, đảm bảo độ bền và sự ổn định trong mọi điều kiện sử dụng.
+                                        "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
                                     </p>
                                 </div>
                                 <div class="review_item">
@@ -286,18 +284,18 @@
                                             <h5>
                                                 12th Feb, 2017 at 05:56 pm
                                             </h5>
-                                            <a class="reply_btn" href="#">Reply</a>
+                                            <a class="reply_btn" href="#">@Localizer["Hồi đáp"]</a>
                                         </div>
                                     </div>
                                     <p>
-                                        "Chiếc @Model.Name mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó.
+                                        "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện ích. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó."]
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="review_box">
-                                <h4>Đăng một nhận xét</h4>
+                                <h4>@Localizer["Đăng một nhận xét"]</h4>
                                 <form class="row contact_form"
                                       action="contact_process.php"
                                       method="post"
@@ -309,7 +307,7 @@
                                                    class="form-control"
                                                    id="name"
                                                    name="name"
-                                                   placeholder="Your Full name" />
+                                                   placeholder="@Localizer["Tên của bạn"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -318,7 +316,7 @@
                                                    class="form-control"
                                                    id="email"
                                                    name="email"
-                                                   placeholder="Email Address" />
+                                                   placeholder="@Localizer["Địa chỉ email"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -327,7 +325,7 @@
                                                    class="form-control"
                                                    id="number"
                                                    name="number"
-                                                   placeholder="Phone Number" />
+                                                   placeholder="@Localizer["Số điện thoại"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -336,14 +334,14 @@
                                                    name="message"
                                                    id="message"
                                                    rows="1"
-                                                   placeholder="Message" />
+                                                   placeholder="@Localizer["Tin nhắn"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-right" style="margin-top: 20px;">
                                         <button type="submit"
                                                 value="submit"
                                                 class="btn_3">
-                                            Xác Nhận
+                                            @Localizer["Xác Nhận"]
                                         </button>
                                     </div>
                                 </form>
@@ -360,14 +358,14 @@
                             <div class="row total_rate">
                                 <div class="col-6">
                                     <div class="box_total">
-                                        <h5>Đánh giá sản phẩm</h5>
+                                        <h5>@Localizer["Đánh giá sản phẩm"]</h5>
                                         <h4>4.0</h4>
                                         <h6>(03 Đánh giá)</h6>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="rating_list">
-                                        <h3>Dựa trên 3 đánh giá</h3>
+                                        <h3>@Localizer["Dựa trên 3 đánh giá"]</h3>
                                         <ul class="list">
                                             <li>
                                                 <a href="#">
@@ -445,13 +443,7 @@
                                         </div>
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet,
-                                        consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore
-                                        et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut
-                                        aliquip ex ea commodo
+                                        @Localizer["Sản phẩm này rất tốt với túi tiền của tôi"]
                                     </p>
                                 </div>
                                 <div class="review_item">
@@ -470,13 +462,7 @@
                                         </div>
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet,
-                                        consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore
-                                        et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut
-                                        aliquip ex ea commodo
+                                        @Localizer["Sản phẩn đẹp và chất lượng"]
                                     </p>
                                 </div>
                                 <div class="review_item">
@@ -495,21 +481,15 @@
                                         </div>
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet,
-                                        consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore
-                                        et dolore magna aliqua. Ut enim ad
-                                        minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut
-                                        aliquip ex ea commodo
+                                        @Localizer["Sản phẩm này thật sự tuyệt"]
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="review_box">
-                                <h4>Thêm 1 đánh giá</h4>
-                                <p>Đánh giá của bạn:</p>
+                                <h4>@Localizer["Thêm 1 đánh giá"]</h4>
+                                <p>@Localizer["Đánh giá của bạn:"]</p>
                                 <ul class="list">
                                     <li>
                                         <a href="#">
@@ -537,7 +517,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <p>Nổi bật</p>
+                                <p>@Localizer["Nổi bật"]</p>
                                 <form class="row contact_form"
                                       action="contact_process.php"
                                       method="post"
@@ -547,7 +527,7 @@
                                             <input type="text"
                                                    class="form-control"
                                                    name="name"
-                                                   placeholder="Your Full name" />
+                                                   placeholder="@Localizer["Tên của bạn"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -555,7 +535,7 @@
                                             <input type="email"
                                                    class="form-control"
                                                    name="email"
-                                                   placeholder="Email Address" />
+                                                   placeholder="@Localizer["Địa chỉ email"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -563,7 +543,7 @@
                                             <input type="text"
                                                    class="form-control"
                                                    name="number"
-                                                   placeholder="Phone Number" />
+                                                   placeholder="@Localizer["Số điện thoại"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -571,14 +551,14 @@
                                             <input class="form-control"
                                                    name="message"
                                                    rows="1"
-                                                   placeholder="Review" />
+                                                   placeholder="@Localizer["Giới thiệu"]" />
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-right" style="margin-top: 20px">
                                         <button type="submit"
                                                 value="submit"
                                                 class="btn_3">
-                                            Đánh giá ngay
+                                            @Localizer["Đánh giá ngay"]
                                         </button>
                                     </div>
                                 </form>
@@ -645,12 +625,12 @@
                     var newCount = currentCount + addedQuantity;
 
                     itemCountElement.textContent = newCount; // Cập nhật UI
-                    swal("Thông báo", "Thêm vào giỏ hàng thành công!", "success");
+                    swal("@Localizer["Thông báo"]", "@Localizer["Thêm vào giỏ hàng thành công!"]", "success");
                     document.getElementById("externalQuantity").value = 1;
                     console.log("Tiệp nè hihi");
                 } else {
                     // Xử lý lỗi nếu có
-                    console.error('Đã xảy ra lỗi: ' + xhr.status);
+                    console.error('@Localizer["Đã xảy ra lỗi: "]' + xhr.status);
                 }
             }
         };

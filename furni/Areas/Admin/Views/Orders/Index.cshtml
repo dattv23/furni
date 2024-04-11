@@ -1,6 +1,8 @@
-﻿@{
+﻿@model IEnumerable<furni.Areas.Admin.Models.OrdersModel>
+@{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    // int i = 0;
 }
 
 
@@ -25,19 +27,34 @@
                             <th>Tổng số tiền đơn hàng</th>
                             <th>Trạng thái của đơn hàng</th>
                             <th>Id phiếu giảm</th>
+                            <td></td>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach (var orders in Model)
+                        @foreach (var order in Model)
                         {
                             <tr>
-                                <td>@orders.Id</td>
-                                <td>@orders.UserId</td>
-                                <td>@orders.OrderDate</td>
-                                <td>@orders.TotalAmount</td>
-                                <td>@orders.Status</td>
-                                <td>@orders.CouponId</td>
+                                <td>@order.Id</td>
+                                <td>@order.UserId</td>
+                                <td>@order.TotalAmount</td>
+                                <td>@order.Status</td>
+                                <td>@order.CouponId</td>
+                                @* @for(int j = 0; j < Model.Users.Count(); j++)
+                                {
+                                    if (j == i)
+                                    {
+                                        <td>@Model.Users[j].Email</td>
+                                        @(i++)
+                                    }
+                                } *@
+                                <td class="d-inline-block">
+                                    <a asp-area="Admin" asp-controller="Orders" asp-action="Update" asp-route-id="@order.Id" class="mr-2"><i class="fas fa-solid fa-pen text-warning"></i></a>
+                                    @if (ViewBag.IsAdmin)
+                                    {
+                                        <a asp-area="Admin" asp-controller="Orders" asp-action="Delete" asp-route-id="@order.Id"><i class="fas fa-solid fa-trash text-danger"></i></a>
+                                    }
+                                </td>
 
                             </tr>
                         }

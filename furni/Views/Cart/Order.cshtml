@@ -192,7 +192,7 @@
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item d-flex" style="align-items: baseline">
                             <i class="fa-solid fa-bag-shopping" style="font-size: 60px; color: #3b5d50"></i>
-                            <h2 style="display: inline-block; padding: 10px 20px; color: #0b74e5;">Giỏ hàng</h2>
+                            <h2 style="display: inline-block; padding: 10px 20px; color: #0b74e5;">@Localizer["Giỏ hàng"]</h2>
                         </div>
                     </div>
                 </div>
@@ -210,12 +210,12 @@
                             <tr class="all-check">
                                 <th scope="col">
                                     <input name="fake-check" type="checkbox" id="selectAll" hidden />
-                                    <label for="selectAll">Tất cả(@Model.Count() sản phẩm)</label>
+                                    <label for="selectAll">@Localizer["Tất cả"] @Model.Count() @Localizer["sản phẩm"]</label>
 
                                 </th>
-                                <th scope="col">Giá</th>
-                                <th scope="col">Số Lượng</th>
-                                <th scope="col">Tổng</th>
+                                <th scope="col">@Localizer["Giá"]</th>
+                                <th scope="col">@Localizer["Số lượng"]</th>
+                                <th scope="col">@Localizer["Tổng"]</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -259,13 +259,13 @@
 
                             <tr class="bottom_button">
                                 <td>
-                                    <a class="btn_1" href="#">Cập nhật thẻ</a>
+                                    <a class="btn_1" href="#">@Localizer["Cập nhật thẻ"]</a>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <td>
                                     <div class="cupon_text float-right">
-                                        <a class="btn_1" href="#">Close Coupon</a>
+                                        <a class="btn_1" href="#">@Localizer["Close Coupon"]</a>
                                     </div>
                                 </td>
                             </tr>
@@ -273,7 +273,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <h5>Tổng số tiền</h5>
+                                    <h5>@Localizer["Tổng số tiền"]</h5>
                                 </td>
                                 <td>
                                     <h5 class="totalAmount">0</h5>
@@ -283,35 +283,35 @@
                     </table>
                     <div class="order-infor-address col-4" style="background:#fff; height: 450px !important; border-left: 20px solid rgba(245, 245, 251, 1); position: sticky; top: 0px">
                         <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder">
-                            <a style="font-size: 19px; font-weight: 400; color: #808089">Giao tới</a>
-                            <a style="font-weight: 400; color: #0b74e5">Thay đổi</a>
+                            <a style="font-size: 19px; font-weight: 400; color: #808089">@Localizer["Giao tới"]</a>
+                            <a style="font-weight: 400; color: #0b74e5">@Localizer["Thay đổi "]</a>
                         </div>
                         <div class="name-address d-flex rigth-oder">
                             <p style="padding-right: 10px; border-right: 1px solid #ccc">Nguyễn Ngọc Tiệp</p>
                             <p style="padding-left: 10px;">0375623446</p>
                         </div>
                         <div class="rigth-oder">
-                            <p style="color: #808089; font-size: 14px" ; font-weight: 400><span style="font-size: 13px; color: #ab0056; background-color: rgb(232 239 201); padding: 0px 10px ">Nhà</span> nhà trọ số 4 hẻm 20 đường 16, Phường Lê Lai, Thành phố Califonia, Ngọc Trinh</p>
+                            <p style="color: #808089; font-size: 14px" ; font-weight: 400><span style="font-size: 13px; color: #ab0056; background-color: rgb(232 239 201); padding: 0px 10px ">@Localizer["Nhà"]</span> nhà trọ số 4 hẻm 20 đường 16, Phường Lê Lai, Thành phố Califonia, Ngọc Trinh</p>
                         </div>
                         <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder" style="border-top: 20px solid rgba(245, 245, 251, 1);">
-                            <p style="font-size: 14px; font-weight: 400; color: #333; margin-bottom: 0px">Tạm tính</p>
+                            <p style="font-size: 14px; font-weight: 400; color: #333; margin-bottom: 0px">@Localizer["Tạm tính"]</p>
                             <p class="totalAmount" style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
                         </div>
                         <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder">
-                            <p style="font-size: 14px; font-weight: 400; color: #333">Giảm giá</p>
+                            <p style="font-size: 14px; font-weight: 400; color: #333">@Localizer["Giảm giá"]</p>
                             <p style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
                         </div>
                         <hr style="width: 90%; margin-left: 5%; height: 2px; background-color: rgb(184 58 14)" />
                         <div class="address-head d-flex justify-content-between align-items-baseline rigth-oder" style="border-bottom: 20px solid rgb(245, 245, 251)">
-                            <p style="font-size: 14px; font-weight: 400; color: #333">Tổng tiền</p>
+                            <p style="font-size: 14px; font-weight: 400; color: #333">@Localizer["Tổng tiền"]n</p>
                             <p class="totalAmount totalAmount-final" id="" style="font-size: 14px; font-weight: 400; color: #333">0đ</p>
                         </div>
                         <div class="address-head d-flex justify-content-center align-items-center rigth-oder btn-mua-hang">
-                            Mua Hàng
+                            @Localizer["Mua Hàng"]
                         </div>
                         <div class="order-mess">
                             <i class="fa-solid fa-comment"></i>
-                            <p>Nhắn tin cho chúng tôi</p>
+                            <p>@Localizer["Nhắn tin cho chúng tôi"]</p>
                         </div>
                     </div>
 

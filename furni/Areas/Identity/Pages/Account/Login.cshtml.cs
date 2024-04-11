@@ -122,7 +122,7 @@ namespace furni.Areas.Identity.Pages.Account
                     var roles = await _userManager.GetRolesAsync(user);
                     foreach (var item in roles)
                     {
-                        if (item == SystemDefinications.Role_Admin)
+                        if (item == SystemDefinitions.Role_Admin)
                         {
                             return LocalRedirect("/admin");
                         }
