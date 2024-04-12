@@ -260,18 +260,7 @@
                             }
 
 
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="btn_1" href="#">@Localizer["Cập nhật thẻ"]</a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="cupon_text float-right">
-                                        <a class="btn_1" href="#">@Localizer["Close Coupon"]</a>
-                                    </div>
-                                </td>
-                            </tr>
+                           
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -290,7 +279,7 @@
                             <a style="font-weight: 400; color: #0b74e5">@Localizer["Thay đổi "]</a>
                         </div>
                         <div class="name-address d-flex rigth-oder">
-                            <p style="padding-right: 10px; border-right: 1px solid #ccc">@(user.FirstName + user.LastName)</p>
+                            <p style="padding-right: 10px; border-right: 1px solid #ccc">@(user.LastName + user.FirstName)</p>
                             <p style="padding-left: 10px;">@(user.PhoneNumber)</p>
                         </div>
                         <div class="rigth-oder">
@@ -362,7 +351,7 @@
 
         // Hàm cập nhật tổng tiền
         function updateTotalPrice(row) {
-            var price = parseFloat(row.find('td:nth-child(2) h5').text().replace('đ', '').replace(',', '').replace(/\s/g, ''));
+            var price = parseFloat(row.find('td:nth-child(2) h5').text().replace('đ', '').replace(/,/g, '').replace(/\s/g, ''));
             var quantity = parseInt(row.find('.input-number').val()); // Lấy số lượng mới
             var totalPrice = price * quantity; // Tính tổng tiền mới
             row.find('td:nth-child(4) h5').text(totalPrice.toLocaleString('vi-VN') + ' đ');
