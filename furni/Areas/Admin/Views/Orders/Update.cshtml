@@ -1,43 +1,53 @@
-﻿@* @{
-    ViewData["Title"] = "Cập Nhật Đơn Hàng";
-    Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+﻿@model furni.Areas.Admin.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Cập Nhật Trạng Thái Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-3">
-    <h2 class="mb-4">Cập Nhật Đơn Hàng</h2>
-
-    <form asp-action="Update" method="post">
-        <input type="hidden" asp-for="Id" />
-
-        <div class="form-group mb-3">
-            <label asp-for="UserId" class="form-label">ID Người Dùng</label>
-            <input asp-for="UserId" class="form-control" />
-            <span asp-validation-for="UserId" class="text-danger"></span>
-        </div>
-
-
-        <div class="form-group mb-3">
-            <label asp-for="TotalAmount" class="form-label">Tổng Tiền</label>
-            <input asp-for="TotalAmount" class="form-control" />
-            <span asp-validation-for="TotalAmount" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-3">
-            <label asp-for="Status" class="form-label">Trạng Thái</label>
-            <input asp-for="Status" class="form-control" />
-            <span asp-validation-for="Status" class="text-danger"></span>
-        </div>
-
-
-        <div class="form-group mb-4">
-            <label asp-for="CouponId" class="form-label">ID Coupon</label>
-            <select asp-for="CouponId" class="form-select" asp-items="ViewBag.CouponId"></select>
-            <span asp-validation-for="CouponId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Cập Nhật</button>
-        </div>
-    </form>
+<div class="row">
+    <div class="col-12 d-inline-flex">
+        <strong>Người đặt: </strong>
+        <p>@(Model.User.FirstName + " " + Model.User.LastName)</p>
+    </div>
+    <div class="col-12 d-inline-flex">
+        <strong>Email: </strong>
+        <p>@Model.User.Email</p>
+    </div>
+    <div class="col-12 d-inline-flex">
+        <strong>Số điện thoại: </strong>
+        <p>@Model.User.PhoneNumber</p>
+    </div>
 </div>
- *@
+
+
+<form asp-action="Update" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group" hidden>
+        <label asp-for="UserId" class="control-label"></label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group" hidden>
+        <label asp-for="TotalAmount" class="control-label"></label>
+        <input asp-for="TotalAmount" class="form-control" />
+        <span asp-validation-for="TotalAmount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Category</label>
+        <select asp-for="Status" asp-items="@ViewBag.OptionsStatus" class="form-control"></select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Cập nhật" class="btn btn-primary" />
+    </div>
+</form>
+
+<div class="text-center">
+    <a asp-action="Index" class="text-center">Trở về danh sách</a>
+</div>

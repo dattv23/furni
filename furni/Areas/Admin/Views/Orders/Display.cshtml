@@ -1,0 +1,63 @@
+﻿@model furni.Areas.Admin.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                Người đặt
+            </dt>
+            <dd class="col-sm-8">
+                @(Model.User.FirstName + " " + Model.User.LastName)
+            </dd>
+            <dt class="col-sm-4">
+                Địa chỉ giao hàng
+            </dt>
+            <dd class="col-sm-8">
+                @(Model.Address != "" ? Model.Address : "Không có")
+            </dd>
+            <dt class="col-sm-4">
+                Số điện thoại
+            </dt>
+            <dd class="col-sm-8">
+                @Model.User.PhoneNumber
+            </dd>
+            <dt class="col-sm-4">
+                Trạng thái
+            </dt>
+            <dd class="col-sm-8">
+                @Model.Status
+            </dd>
+        </dl>
+    </div>
+    <div class="col-6">
+        <h3>Chi tiết đơn hàng</h3>
+        @foreach (var item in Model.OrderItems)
+        {
+            <dl class="row">
+                <dt class="col-sm-4">Sản phẩm:</dt>
+                <dd class="col-sm-8">@item.Product.Name</dd>
+
+                <dt class="col-sm-4">Giá:</dt>
+                <dd class="col-sm-8">@item.Price.ToString("0") đ</dd>
+
+                <dt class="col-sm-4">Số lượng:</dt>
+                <dd class="col-sm-8">@item.Quantity</dd>
+
+                <dt class="col-sm-4">Tổng:</dt>
+                <dd class="col-sm-8">@item.Total.ToString("0") đ</dd>
+            </dl>
+        }
+        <hr />
+        <h4>Tổng cộng: @Model.TotalAmount.ToString("0") đ</h4>
+    </div>
+    
+</div>
+<div class="mb-4">
+    <a asp-action="Update" asp-route-id="@Model?.Id" class="btn btn-primary">Cập nhật</a> |
+    <a asp-action="Index" class="btn-outline-secondary">Trở về</a>
+</div>

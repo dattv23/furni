@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace furni.Areas.Admin.Repositories
 {
-    public class OrderRepository : IGenericRepository<OrdersModel, int>, IDisposable
+    public class OrderRepository : IGenericRepository<OrderModel, int>, IDisposable
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace furni.Areas.Admin.Repositories
             _userManager = userManager;
         }
 
-        public async Task<int> AddAsync(OrdersModel model)
+        public async Task<int> AddAsync(OrderModel model)
         {
             var OrdersEntity = _mapper.Map<Order>(model);
             await _context.Orders.AddAsync(OrdersEntity);
@@ -30,29 +30,40 @@ namespace furni.Areas.Admin.Repositories
 
         }
 
-        public async Task<List<OrdersModel>> GetAllAsync()
+        public async Task<List<OrderModel>> GetAllAsync()
         {
             var ordersWithUsers = await _context.Orders
                                         .Where(order => !order.IsDeleted)
                                         .Include(order => order.User) 
                                         .ToListAsync();
 
-            return _mapper.Map<List<OrdersModel>>(ordersWithUsers);
+            return _mapper.Map<List<OrderModel>>(ordersWithUsers);
         }
 
-        public async Task<OrdersModel> GetByIdAsync(int id)
+        public async Task<OrderModel> GetByIdAsync(int id)
         {
             var OrderEntity = await _context.Orders.FindAsync(id);
             if (OrderEntity == null || OrderEntity.IsDeleted == true)
             {
                 return null; // or handle as appropriate
             }
-            return _mapper.Map<OrdersModel>(OrderEntity);
+            return _mapper.Map<OrderModel>(OrderEntity);
         }
 
-        public Task<OrdersModel> GetByIdWithIncludesAsync(int id)
+        public async Task<OrderModel> GetByIdWithIncludesAsync(int id)
         {
-            throw new NotImplementedException();
+            var OrderEntity = await _context.Orders
+                                            .Where(order => order.Id == id && !order.IsDeleted)
+                                            .Include(order => order.User)
+                                            .Include(order => order.OrderItems)
+                                                .ThenInclude(orderItem => orderItem.Product)
+                                            .Include(order => order.Coupon) // Assuming you also want to include Coupon data if available.
+                                            .FirstOrDefaultAsync();
+            if (OrderEntity == null || OrderEntity.IsDeleted == true)
+            {
+                return null; // or handle as appropriate
+            }
+            return _mapper.Map<OrderModel>(OrderEntity);
         }
 
         public async Task RemoveAsync(int id)
@@ -73,12 +84,12 @@ namespace furni.Areas.Admin.Repositories
             return await _context.SaveChangesAsync();
         }
 
-        public Task<OrdersModel> SelectAsync(Expression<Func<OrdersModel, bool>> predicate)
+        public Task<OrderModel> SelectAsync(Expression<Func<OrderModel, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public async Task UpdateAsync(int id, OrdersModel model)
+        public async Task UpdateAsync(int id, OrderModel model)
         {
             var existingOrder = await _context.Orders.FindAsync(id);
             if (existingOrder != null)

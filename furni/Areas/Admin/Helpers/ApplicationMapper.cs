@@ -11,7 +11,7 @@ namespace furni.Areas.Admin.Helpers
             CreateMap<ApplicationUser, UserModel>().ReverseMap();
             CreateMap<Product, ProductModel>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();
-            CreateMap<Order, OrdersModel>().ReverseMap();
+            CreateMap<Order, OrderModel>().ReverseMap();
             CreateMap<Coupon, CouponModel>().ReverseMap();
         }
     }

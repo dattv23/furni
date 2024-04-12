@@ -5,6 +5,7 @@ using furni.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace furni.Areas.Admin.Controllers
 {
@@ -12,12 +13,12 @@ namespace furni.Areas.Admin.Controllers
     [Area("Admin")]
     public class OrdersController : Controller
     {
-        private readonly IGenericRepository<OrdersModel, int> _orderRepo;
+        private readonly IGenericRepository<OrderModel, int> _orderRepo;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<OrdersController> _logger;
         public readonly UserManager<ApplicationUser> _userManager;
 
-        public OrdersController(ApplicationDbContext context, IGenericRepository<OrdersModel,int> orderRepo, UserManager<ApplicationUser> userManager, ILogger<OrdersController> logger)
+        public OrdersController(ApplicationDbContext context, IGenericRepository<OrderModel, int> orderRepo, UserManager<ApplicationUser> userManager, ILogger<OrdersController> logger)
         {
             _orderRepo = orderRepo;
             _context = context;
@@ -45,16 +46,48 @@ namespace furni.Areas.Admin.Controllers
             }
         }
 
+        // Display a single order
+        public async Task<IActionResult> Display(int id)
+        {
+            var order = await _orderRepo.GetByIdWithIncludesAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return View(order);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
             try
             {
-                var order = await _orderRepo.GetByIdAsync(id);
+                var order = await _orderRepo.GetByIdWithIncludesAsync(id);
                 if (order == null)
                 {
                     return NotFound();
                 }
+                // Create a list of SelectListItems for the order statuses
+                var statusOptions = new List<SelectListItem>
+                                        {
+                                            new SelectListItem { Text = "Pending", Value = "Pending" },
+                                            new SelectListItem { Text = "Processing", Value = "Processing" },
+                                            new SelectListItem { Text = "Shipped", Value = "Shipped" },
+                                            new SelectListItem { Text = "Delivered", Value = "Delivered" },
+                                            new SelectListItem { Text = "Cancelled", Value = "Cancelled" }
+                                        };
+
+                // Optionally, select the current status of the order
+                foreach (var option in statusOptions)
+                {
+                    if (option.Value == order.Status.ToString())
+                    {
+                        option.Selected = true;
+                        break; // Assuming 'order.Status' is a string that matches one of the option values
+                    }
+                }
+
+                ViewBag.OptionsStatus = statusOptions;
                 return View(order);
             }
             catch (Exception ex)
@@ -65,7 +98,7 @@ namespace furni.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(int id, OrdersModel model)
+        public async Task<IActionResult> Update(int id, OrderModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +123,7 @@ namespace furni.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var order = await _orderRepo.GetByIdAsync(id);
+            var order = await _orderRepo.GetByIdWithIncludesAsync(id);
             if (order == null)
             {
                 TempData["ErrorMessage"] = "Order not found.";

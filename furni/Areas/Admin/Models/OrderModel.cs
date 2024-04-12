@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace furni.Areas.Admin.Models
 {
-    public class OrdersModel
+    public class OrderModel
     {
         public int Id { get; set; } // Unique identifier for the order.
 
@@ -25,6 +25,7 @@ namespace furni.Areas.Admin.Models
         public string Status { get; set; } // The current status of the order
 
         public int? CouponId { get; set; } // Optional coupon ID applied to the order
+        public virtual Coupon? Coupon { get; set; } // Navigation property
 
         public virtual ICollection<OrderItem> OrderItems { get; set; } // The items that are part of this order.
     }
