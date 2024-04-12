@@ -1,23 +1,73 @@
 ﻿@page
 @model RegisterConfirmationModel
 @{
-    ViewData["Title"] = "Register confirmation";
+    Layout = null;
 }
 
-<h1>@ViewData["Title"]</h1>
-@{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
-    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Xác nhận Email</title>
+
+    <style>
+        body {
+            font-family: "Inter";
+        }
+
+        .main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5b46ca;
+        }
+
+        p {
+            padding-bottom: 150px;
+            text-align: center;
+            color: #b3b3b5;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="image">
+            <img src="/images/logoemail.jpg" alt="" width="250px" height="250px">
+        </div>
+        <h1>Vui lòng kiểm tra Email của bạn!</h1>
+        <p>Tài khoản đã được đăng ký thành công. Để hoàn tất vui lòng kiểm tra email xác thực.</p>
+    </div>
+</body>
+</html>
+
+<script>
+    function checkEmailConfirmation() {
+        fetch('/api/check-confirmation?email=' + encodeURIComponent(userEmail))
+            .then(response => response.json())
+            .then(data => {
+                if (data.confirmed) {
+                    window.location.reload(); // Tự động tải lại trang hoặc chuyển hướng
+                } else {
+                    setTimeout(checkEmailConfirmation, 5000); // Kiểm tra lại sau 5 giây
+                }
+            })
+            .catch(error => console.error('Error checking email confirmation:', error));
     }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
-}
+
+    // Gọi hàm này khi trang được tải
+    checkEmailConfirmation();
+</script>
 
