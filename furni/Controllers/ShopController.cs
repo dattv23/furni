@@ -36,11 +36,12 @@ namespace furni.Controllers
             IQueryable<Product> query = _context.Products;
             if (categoryId.HasValue)
             {
-                query = query.Where(p => p.CategoryId == categoryId && (p.IsDeleted == false || p.IsDeleted == null));
+                query = query.Where(p => p.CategoryId == categoryId );
             }
 
 
             var products = await query
+                          .Where(p => (p.IsDeleted == false || p.IsDeleted == null))
                          .Skip((pageNumber - 1) * PageSize)
                          .Take(PageSize)
                          .ToListAsync();

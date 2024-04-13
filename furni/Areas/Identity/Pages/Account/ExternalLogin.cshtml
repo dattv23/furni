@@ -1,33 +1,122 @@
 ﻿@page
 @model ExternalLoginModel
 @{
-    ViewData["Title"] = "Register";
+    Layout = null;
 }
 
-<h1>@ViewData["Title"]</h1>
-<h2 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h2>
-<hr />
 
-<p id="external-login-description" class="text-info">
-    You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
-    Please enter an email address for this site below and click the Register button to finish
-    logging in.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: "Inter";
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="email" />
-                <label asp-for="Input.Email" class="form-label"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
+        .main {
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+
+        .text-danger {
+            position: absolute;
+            top: -42px;
+            left: 0px;
+            color: red;
+        }
+
+        .main .content {
+            margin: auto;
+        }
+
+        input {
+            margin-top: 50px;
+        }
+
+        .btn {
+            font-size: 14px;
+            border-radius: 2px;
+            line-height: 1.5;
+            padding: 5px 10px;
+            transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+            border: 2px solid #dee1e2;
+            color: rgb(14, 14, 16);
+            background: #dee1e2;
+            display: block;
+            height: 36px;
+            width: 95%;
+        }
+
+            .btn:hover {
+                border-color: #ccc;
+            }
+
+            .btn:focus {
+                border-color: #9147ff;
+                background: #fff;
+            }
+
+        .btn {
+            width: 95%;
+            margin-top: 15x
+        }
+
+        .btn-lg {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 3px;
+            padding: 12px 24px;
+            border: 0;
+            color: #fff;
+            background: #1de9b6;
+            line-height: 1.15;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+
+            .btn-lg:hover {
+                transition: all .1s ease;
+                box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+            }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="content">
+            <h1 style="color: #5b46ca;">Đăng ký tài khoản xác thực</h1>
+            <p style="color: #b3b3b5;">Xác thực thành công. Vui lòng ấn đăng ký để tham gia cùng chúng tôi.</p>
+            <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post" style="position: relative">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control btn" autocomplete="" email" aria-required="true" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="w-100 btn-lg ">Register</button>
+                <p>Go back @Html.ActionLink("Login", "Login", "Account")</p>
+            </form>
+        </div>
     </div>
-</div>
-
+</body>
+</html>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

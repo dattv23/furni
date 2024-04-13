@@ -147,6 +147,7 @@ namespace furni.Controllers
                     UserId = user.Id,
                     IsDeleted = false,
                     OrderDate = DateTime.Now,
+                    Status = "Pending",
                     TotalAmount = (decimal)totalSum
                 };
                 _context.Orders.Add(order);

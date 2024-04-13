@@ -198,6 +198,9 @@
   <data name="Sản phẩn đẹp và chất lượng" xml:space="preserve">
     <value>Beautiful and quality products</value>
   </data>
+  <data name="Số lượng" xml:space="preserve">
+    <value>Quatity</value>
+  </data>
   <data name="Số điện thoại" xml:space="preserve">
     <value>Phone Number</value>
   </data>

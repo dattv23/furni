@@ -76,7 +76,7 @@
                             </li>
                             <li>
                                 <a class="active" href="#" style="text-decoration: none; font-weight: 500; font-size: 16px">
-                                    <span style="font-size: 16px; font-weight: 500">@Localizer["Khả dụng"]</span> : @Localizer["Trong kho"]
+                                    <span style="font-size: 16px; font-weight: 500; text-decoration: none">@Localizer["Số lượng"]</span> : @Model.StockQuantity
                                 </a>
                             </li>
                             <li>
@@ -103,7 +103,7 @@
                             <form id="addToCartForm" asp-controller="Cart" asp-action="AddToCart" method="post">
                                 <input type="hidden" name="productId" value="@Model.Id" />
                                 <input id="formQuantity" type="hidden" name="quantity" value="1" min="1" />
-                                <button class="btn_3" type="submit">@Localizer["Thêm vào giỏ hàng"]</button>
+                                <button class="btn_3" type="submit" style="opacity: @(Model.StockQuantity <= 0 ? "0.4" : "")" disabled={@(Model.StockQuantity > 0)}>@Localizer["Thêm vào giỏ hàng"]</button>
                             </form>
 
 
@@ -164,12 +164,13 @@
                      id="home"
                      role="tabpanel"
                      aria-labelledby="home-tab">
-                    <p>
+                    @*<p>
                         "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
                     </p>
                     <p>
                         @Localizer["Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]
-                    </p>
+                    </p>*@
+                    <p>@Html.Raw(Model.Description)</p>
                 </div>
                 <div class="tab-pane fade"
                      id="profile"
@@ -216,6 +217,14 @@
                                     </td>
                                     <td>
                                         <h5>@(Model.Specification.QualityChecking ? "Tốt" : "Không tốt")</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>@Localizer["Số lượng"]</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.StockQuantity</h5>
                                     </td>
                                 </tr>
                                 <tr>
