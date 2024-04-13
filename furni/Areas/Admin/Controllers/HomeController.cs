@@ -46,7 +46,8 @@ namespace furni.Areas.Admin.Controllers
         public async Task<int> CountPendingRequestsAsync()
         {
             var count = await _context.Orders
-                .CountAsync(o => o.Status == "Pending" && !o.IsDeleted);
+                .Where(o => !o.IsDeleted)
+                .CountAsync(o => o.Status == "Pending");
 
             return count;
         }
@@ -64,8 +65,8 @@ namespace furni.Areas.Admin.Controllers
             }
 
             var nonPendingOrdersCount = await _context.Orders
-                .Where(o => o.Status != "Pending" && !o.IsDeleted)
-                .CountAsync();
+                .Where(o => !o.IsDeleted)
+                .CountAsync(o => o.Status != "Pending");
 
             // Calculate the percentage
             var percentage = (double)nonPendingOrdersCount / totalOrdersCount * 100;
