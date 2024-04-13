@@ -9,12 +9,12 @@
         .shop--detail .thumbnail:hover {
             cursor: pointer;
         }
+
         .fancybox__container *:empty {
             background: white !important;
         }
-
     </style>
-          @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css\" />")
+    @Html.Raw("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css\" />")
 
 </head>
 <div class="shop--detail">
@@ -103,14 +103,22 @@
                             <form id="addToCartForm" asp-controller="Cart" asp-action="AddToCart" method="post">
                                 <input type="hidden" name="productId" value="@Model.Id" />
                                 <input id="formQuantity" type="hidden" name="quantity" value="1" min="1" />
-                                <button class="btn_3" type="submit" style="opacity: @(Model.StockQuantity <= 0 ? "0.4" : "")" disabled={@(Model.StockQuantity > 0)}>@Localizer["Thêm vào giỏ hàng"]</button>
+                                @*style="opacity: @(Model.StockQuantity <= 0 ? "0.4" : "")" disabled={@(Model.StockQuantity > 0)}*@
+                                @if (Model.StockQuantity > 0)
+                                {
+                                    <button class="btn_3" type="submit">@Localizer["Thêm vào giỏ hàng"]</button>
+                                }
+                                else
+                                {
+                                    <button class="btn_3" type="submit" style="opacity: 0.4" disabled>@Localizer["Thêm vào giỏ hàng"]</button>
+                                }
                             </form>
 
 
                             @* <a href="#" class="btn_3" style="text-decoration: none;">Thêm vào giỏ hàng</a> *@
                             @*  <a href="#" class="like_us">
-                        <i class="ti-heart fa-regular fa-heart"></i>
-                    </a> *@
+                                    <i class="ti-heart fa-regular fa-heart"></i>
+                                </a> *@
                         </div>
                     </div>
                 </div>
@@ -165,11 +173,11 @@
                      role="tabpanel"
                      aria-labelledby="home-tab">
                     @*<p>
-                        "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
-                    </p>
-                    <p>
-                        @Localizer["Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]
-                    </p>*@
+                            "@Model.Name @Localizer["mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]"
+                        </p>
+                        <p>
+                            @Localizer["Nó mang lại sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng tiện lợi. Với thiết kế gọn gàng và sự chăm chút tỉ mỉ trong từng chi tiết, sản phẩm này không chỉ cung cấp một không gian làm việc lý tưởng mà còn nâng cao vẻ đẹp thẩm mỹ cho mọi nơi đặt nó. Bàn được trang bị kệ để đồ ngăn nắp, giúp bạn tổ chức không gian sống và làm việc một cách khoa học và gọn gàng hơn. Bên cạnh đó, chất liệu cao cấp đảm bảo sự bền bỉ và dễ dàng vệ sinh là điểm cộng lớn. 'Mowism UA' không chỉ là một món đồ nội thất, mà còn là người bạn đồng hành đáng tin cậy trong mọi khoảnh khắc làm việc và sáng tạo của bạn."]
+                        </p>*@
                     <p>@Html.Raw(Model.Description)</p>
                 </div>
                 <div class="tab-pane fade"
@@ -579,7 +587,8 @@
         </div>
     </section>
 </div>
-<script>//clikc ảnh
+<script>
+//clikc ảnh
     $(document).ready(function () {
         $(".thumbnail").click(function () {
             var imgUrl = $(this).find("img").attr("src");
@@ -647,7 +656,8 @@
     });</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js\"></script>")
-<script>Fancybox.bind('[data-fancybox="gallery"]', {
+<script>
+    Fancybox.bind('[data-fancybox="gallery"]', {
         //
     });</script>
 <script>
