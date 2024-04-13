@@ -36,7 +36,7 @@
     <div class="payment">
         <div class="contai container d-flex justify-content-between">
             <div class="logo d-flex align-items-center">
-                <h1 style="margin: 0px;">@Html.ActionLink("Furni", "Index")</h1>
+                <h1 style="margin: 0px;">@Html.ActionLink("Furni", "Index", "Home")</h1>
                 <p style="margin: 0px;">@Localizer["Thanh toán"]</p>
             </div>
             <div class="mess d-flex align-items-center">
@@ -130,7 +130,7 @@
                     <p style="margin-top: 15px; padding-right: 20px; font-size: 16px; color: #4d4dec;">@Localizer["Thay đổi"]</p>
                 </di>
                 <div class="address d-flex">
-                    <p class="name infor">@(user.FirstName + user.LastName)</p>
+                    <p class="name infor">@(user.LastName + user.FirstName)</p>
                     <p class="infor">@user.PhoneNumber</p>
                 </div>
                 <p style="color: #808089;"><span style="padding: 4px 8px; background: #f1f4e3; margin-right: 4px;">@Localizer["Nhà"]</span>@user.Address</p>

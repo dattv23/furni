@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Net.Mail;
+using System.Net;
 
 namespace furni.Areas.Identity.Pages.Account
 {
@@ -50,6 +52,38 @@ namespace furni.Areas.Identity.Pages.Account
             public string Email { get; set; }
         }
 
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await _userManager.FindByEmailAsync(Input.Email);
+        //        if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+        //        {
+        //            // Don't reveal that the user does not exist or is not confirmed
+        //            return RedirectToPage("./ForgotPasswordConfirmation");
+        //        }
+
+        //        // For more information on how to enable account confirmation and password reset please
+        //        // visit https://go.microsoft.com/fwlink/?LinkID=532713
+        //        var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+        //        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+        //        var callbackUrl = Url.Page(
+        //            "/Account/ResetPassword",
+        //            pageHandler: null,
+        //            values: new { area = "Identity", code },
+        //            protocol: Request.Scheme);
+
+        //        await _emailSender.SendEmailAsync(
+        //            Input.Email,
+        //            "Reset Password",
+        //            $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+        //        return RedirectToPage("./ForgotPasswordConfirmation");
+        //    }
+
+        //    return Page();
+        //}
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
@@ -61,8 +95,7 @@ namespace furni.Areas.Identity.Pages.Account
                     return RedirectToPage("./ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please
-                // visit https://go.microsoft.com/fwlink/?LinkID=532713
+                // Generate the password reset code
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                 var callbackUrl = Url.Page(
@@ -71,15 +104,38 @@ namespace furni.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                // Prepare the email content
+                var subject = "Reset Password";
+                var htmlContent = $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.";
+
+                // Send email using the custom SendConfirmEmail method
+                SendComfirmEmail(Input.Email, subject, htmlContent);
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
 
             return Page();
+        }
+
+
+        // Make sure this method is accessible, adjust its access modifier and location as necessary
+        public void SendComfirmEmail(string toEmail, string subject, string htmlContent)
+        {
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential("tiep.nguyentonyfake@hcmut.edu.vn", "zrddeegmguihuuor");
+
+            // Tạo mail message
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("tiep.nguyentonyfake@hcmut.edu.vn");
+            mail.To.Add(toEmail);
+            mail.Subject = subject;
+            mail.Body = htmlContent;
+            mail.IsBodyHtml = true; // Quan trọng nếu bạn gửi HTML
+
+            // Gửi email
+            smtpClient.Send(mail);
         }
     }
 }
