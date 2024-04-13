@@ -94,7 +94,9 @@ namespace furni.Areas.Admin.Controllers
                 }
 
                 // Fetch the list of categories
-                ViewBag.Categories = new SelectList(await _categoryRepo.GetAllAsync(), "ParentId", "Name");
+                var categories = await _categoryRepo.GetAllAsync();
+                var filteredCategories = categories.Where(c => c.ParentId == null).ToList();
+                ViewBag.Categories = new SelectList(filteredCategories, "Id", "Name");
                 return View(category);
             }
             catch (Exception ex)
@@ -119,7 +121,6 @@ namespace furni.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     await _categoryRepo.UpdateAsync(id, model);
-                    TempData["SuccessMessage"] = "Category updated successfully.";
                     // Add a success message to TempData
                     TempData["SuccessMessage"] = $"Category {model.Name} was updated successfully.";
                     return RedirectToAction("Index"); 

@@ -36,7 +36,7 @@ namespace furni.Controllers
             IQueryable<Product> query = _context.Products;
             if (categoryId.HasValue)
             {
-                query = query.Where(p => p.CategoryId == categoryId);
+                query = query.Where(p => p.CategoryId == categoryId && (p.IsDeleted == false || p.IsDeleted == null));
             }
 
 

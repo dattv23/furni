@@ -43,9 +43,17 @@ namespace furni.Areas.Admin.Repositories
             return _mapper.Map<CategoryModel>(CategoryEntity);
         }
 
-        public Task<CategoryModel> GetByIdWithIncludesAsync(int id)
+        public async Task<CategoryModel> GetByIdWithIncludesAsync(int id)
         {
-            throw new NotImplementedException();
+            var CategoryEntity = await _context.Categories
+                                                .Where(category => category.IsDeleted == false)
+                                                .Include(category => category.Parent)
+                                                .FirstOrDefaultAsync();
+            if (CategoryEntity == null || CategoryEntity.IsDeleted == true)
+            {
+                return null; // or handle as appropriate
+            }
+            return _mapper.Map<CategoryModel>(CategoryEntity);
         }
 
         public async Task RemoveAsync(int id)
