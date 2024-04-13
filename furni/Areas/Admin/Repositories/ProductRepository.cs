@@ -57,6 +57,19 @@ namespace furni.Areas.Admin.Repositories
         public async Task<int> AddAsync(ProductModel model)
         {
             var productEntity = _mapper.Map<Product>(model);
+            // Create default Specification
+            var defaultSpecification = new Specification
+            {
+                Width = 100,  // Default width
+                Height = 50,  // Default height
+                Depth = 20,   // Default depth
+                Weight = 5,   // Default weight
+                QualityChecking = true,  // Assume quality checking passed
+                FreshnessDuration = 0    // Default to no freshness concern
+            };
+
+            // Assuming productEntity has a Specification property
+            productEntity.Specification = defaultSpecification;
             await _context.Products.AddAsync(productEntity);
             return await _context.SaveChangesAsync();
         }
